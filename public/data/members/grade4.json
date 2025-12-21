@@ -1,0 +1,175 @@
+{
+    "members": [
+        {
+            "name": "入濵",
+            "fullName": "入濵 輝大",
+            "reading": "いりはま きひろ",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "13'54\"97"
+                },
+                {
+                    "event": "10000m",
+                    "time": "28'13\"80"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:02'07"
+                }
+            ]
+        },
+        {
+            "name": "赤星",
+            "fullName": "赤星 龍治",
+            "reading": "あかほし りゅうじ",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'08\"30"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'20\"09"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'05"
+                }
+            ]
+        },
+        {
+            "name": "小野",
+            "fullName": "小野 恭汰",
+            "reading": "おの きょうた",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'14\"64"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'30\"09"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'54"
+                }
+            ]
+        },
+        {
+            "name": "照井",
+            "fullName": "照井 海翔",
+            "reading": "てるい かいと",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'15\"67"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'39\"97"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:03'23"
+                }
+            ]
+        },
+        {
+            "name": "戸田",
+            "fullName": "戸田 健真",
+            "reading": "とだ けんしん",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'18\"49"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'51\"54"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:07'08"
+                }
+            ]
+        },
+        {
+            "name": "松本",
+            "fullName": "松本 雄大",
+            "reading": "まつもと たけひろ",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'20\"23"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'36\"82"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'54"
+                }
+            ]
+        },
+        {
+            "name": "五十嵐",
+            "fullName": "五十嵐 優汰",
+            "reading": "いがらし ゆうた",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'21\"76"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'44\"67"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'28"
+                }
+            ]
+        },
+        {
+            "name": "上野",
+            "fullName": "上野 隼弥",
+            "reading": "うえの しゅんや",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'26\"00"
+                },
+                {
+                    "event": "10000m",
+                    "time": "33'08\"71"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:09'54"
+                }
+            ]
+        },
+        {
+            "name": "阪東",
+            "fullName": "阪東 晴斗",
+            "reading": "ばんどう はると",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'42\"38"
+                },
+                {
+                    "event": "10000m",
+                    "time": "31'20\"26"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:09'46"
+                }
+            ]
+        }
+    ]
+}

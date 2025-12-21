@@ -1,0 +1,220 @@
+{
+    "members": [
+        {
+            "name": "宮倉",
+            "fullName": "宮倉 騎士",
+            "reading": "みやくら ないと",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'04\"83"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'25\"74"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:03'29"
+                }
+            ]
+        },
+        {
+            "name": "西村",
+            "fullName": "西村 真周",
+            "reading": "にしむら ましゅう",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'06\"81"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'27\"02"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'21"
+                }
+            ]
+        },
+        {
+            "name": "半澤",
+            "fullName": "半澤 駿",
+            "reading": "はんざわ しゅん",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'09\"17"
+                },
+                {
+                    "event": "10000m",
+                    "time": "30'20\"35"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:09'57"
+                }
+            ]
+        },
+        {
+            "name": "藤原",
+            "fullName": "藤原 幹大",
+            "reading": "ふじわら かんた",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'10\"38"
+                },
+                {
+                    "event": "10000m",
+                    "time": "28'50\"30"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:02'34"
+                }
+            ]
+        },
+        {
+            "name": "棟方",
+            "fullName": "棟方 一楽",
+            "reading": "むなかた いっと",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'11\"09"
+                },
+                {
+                    "event": "10000m",
+                    "time": "28'19\"82"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:01'38"
+                }
+            ]
+        },
+        {
+            "name": "庄司",
+            "fullName": "庄司 瑞輝",
+            "reading": "しょうじ みずき",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'12\"77"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'24\"55"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:02'52"
+                }
+            ]
+        },
+        {
+            "name": "小野寺",
+            "fullName": "小野寺 颯太",
+            "reading": "おのでら そうた",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'18\"33"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'35\"98"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:07'53"
+                }
+            ]
+        },
+        {
+            "name": "沖野",
+            "fullName": "沖野 凌駆",
+            "reading": "おきの りょうく",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'19\"66"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'42\"86"
+                }
+            ]
+        },
+        {
+            "name": "髙草木",
+            "fullName": "髙草木 蓮",
+            "reading": "たかくさぎ れん",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'24\"78"
+                }
+            ]
+        },
+        {
+            "name": "和田",
+            "fullName": "和田 麻里",
+            "reading": "わだ あさと",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'25\"17"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'42\"89"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:03'43"
+                }
+            ]
+        },
+        {
+            "name": "早乙女",
+            "fullName": "早乙女 良真",
+            "reading": "さおとめ りょうま",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'29\"76"
+                },
+                {
+                    "event": "10000m",
+                    "time": "30'41\"30"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:06'26"
+                }
+            ]
+        },
+        {
+            "name": "石川",
+            "fullName": "石川 蒼大",
+            "reading": "いしかわ そうた",
+            "personalBests": [
+                {
+                    "event": "5000m",
+                    "time": "14'39\"97"
+                },
+                {
+                    "event": "10000m",
+                    "time": "29'48\"02"
+                },
+                {
+                    "event": "ハーフ",
+                    "time": "1:04'23"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# ブロック対象
+Disallow: /api/
+Disallow: /_next/
+Disallow: /exclusive/
+
+# サイトマップ
+Sitemap: https://daito-ekiden.com/sitemap.xml
