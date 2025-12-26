@@ -90,7 +90,7 @@ export function reportWebVitalsMetric(metric: WebVitalsMetric) {
     }
     const windowWithVa = window as WindowWithVa;
     if (windowWithVa.va) {
-      windowWithVa.va('web-vitals', metric as any);
+      windowWithVa.va('web-vitals', { ...metric });
     }
   }
 
