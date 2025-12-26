@@ -1,14 +1,39 @@
 "use client";
 
-import Image from 'next/image';
+import OptimizedImage from '@/app/components/ui/OptimizedImage';
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
+
+// パーティクルの型定義
+interface Particle {
+  id: number;
+  width: number;
+  height: number;
+  top: number;
+  left: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // prefers-reduced-motion の検出
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setPrefersReducedMotion(mediaQuery.matches);
+      
+      const handleChange = (e: MediaQueryListEvent) => {
+        setPrefersReducedMotion(e.matches);
+      };
+      
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
   }, []);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -20,6 +45,7 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const mainTitle = "歴史への礎";
   const subTitle = "～あの場所でやり返す〜";
@@ -37,19 +63,36 @@ export default function Hero() {
     }),
   };
 
+  // パーティクルをメモ化（再計算を防ぐ）
+  const particles = useMemo<Particle[]>(() => {
+    if (prefersReducedMotion) return [];
+    
+    return Array.from({ length: 10 }, (_, i) => ({
+      id: i,
+      width: Math.random() * 4 + 1,
+      height: Math.random() * 4 + 1,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.5 + 0.2,
+    }));
+  }, [prefersReducedMotion]);
+
   return (
     <motion.section
       ref={ref}
       className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden"
     >
       {/* Parallax Background */}
-      <motion.div style={{ scale, y: useTransform(scrollYProgress, [0, 1], ["0%", "20%"]) }} className="absolute inset-0">
-        <Image
+      <motion.div style={{ scale, y: parallaxY }} className="absolute inset-0">
+        <OptimizedImage
           src="/images/daio-ekiden-img3.jpg"
-          alt="大東文化大学駅伝"
+          alt="大東文化大学陸上競技部男子長距離ブロックの駅伝チーム"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
         />
         {/* Stronger overlay for green image - much darker for better readability */}
         {/* Stronger overlay with noise for cinematic look */}
@@ -57,24 +100,26 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/30 via-transparent to-neutral-950" />
       </motion.div>
 
-      {/* Floating Particles (CSS Animation) */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        {mounted && [...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white blur-[1px] animate-blob"
-            style={{
-              width: Math.random() * 4 + 1 + 'px',
-              height: Math.random() * 4 + 1 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDuration: Math.random() * 10 + 10 + 's',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating Particles (CSS Animation) - パフォーマンス最適化 */}
+      {mounted && particles.length > 0 && (
+        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none" aria-hidden="true">
+          {particles.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute rounded-full bg-white blur-[1px] animate-blob"
+              style={{
+                width: `${particle.width}px`,
+                height: `${particle.height}px`,
+                top: `${particle.top}%`,
+                left: `${particle.left}%`,
+                animationDuration: `${particle.duration}s`,
+                animationDelay: `${particle.delay}s`,
+                opacity: particle.opacity,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Content */}
       <motion.div

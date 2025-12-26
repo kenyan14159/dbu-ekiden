@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { Metadata } from 'next';
+import Script from 'next/script';
 import ResultDetailView from './ResultDetailView';
+import { generateSportsEventSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 
 interface Result {
     event: string;
@@ -48,6 +51,50 @@ type Props = {
     params: Promise<{ slug: string }>;
 }
 
+const BASE_URL = 'https://daito-ekiden.com';
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const params = await props.params;
+    const { slug } = params;
+    
+    const data = await getResultsData();
+    const event = data.events.find((e) => e.slug === slug);
+
+    if (!event) {
+        return {
+            title: 'リザルトが見つかりません | 大東文化大学陸上競技部',
+        };
+    }
+
+    const description = event.teamResult 
+        ? `${event.title} - ${event.venue} - チーム成績: ${event.teamResult.rank}位（${event.teamResult.totalTime}）`
+        : `${event.title} - ${event.venue}`;
+
+    return {
+        title: `${event.title} | 大東文化大学陸上競技部`,
+        description: description,
+        openGraph: {
+            title: event.title,
+            description: description,
+            images: [
+                {
+                    url: `${BASE_URL}/images/ogp/default-ogp.jpg`,
+                    width: 1200,
+                    height: 630,
+                    alt: event.title,
+                },
+            ],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: event.title,
+            description: description,
+            images: [`${BASE_URL}/images/ogp/default-ogp.jpg`],
+        },
+    };
+}
+
 export default async function ResultDetailPage(props: Props) {
     const params = await props.params;
     const { slug } = params;
@@ -55,5 +102,39 @@ export default async function ResultDetailPage(props: Props) {
     const data = await getResultsData();
     const event = data.events.find((e) => e.slug === slug) || null;
 
-    return <ResultDetailView event={event} />;
+    if (!event) {
+        return <ResultDetailView event={null} />;
+    }
+
+    const sportsEventSchema = generateSportsEventSchema({
+        name: event.title,
+        startDate: event.date,
+        location: event.venue,
+        url: `/results/${event.slug}/`,
+        description: event.teamResult 
+            ? `チーム成績: ${event.teamResult.rank}位（${event.teamResult.totalTime}）`
+            : undefined,
+    });
+
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'ホーム', url: '/' },
+        { name: 'リザルト', url: '/results/' },
+        { name: event.title, url: `/results/${event.slug}/` },
+    ]);
+
+    return (
+        <>
+            <Script
+                id="sports-event-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventSchema) }}
+            />
+            <Script
+                id="breadcrumb-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <ResultDetailView event={event} />
+        </>
+    );
 }

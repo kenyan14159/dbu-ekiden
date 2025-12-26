@@ -7,25 +7,41 @@ export default function OpeningLoader() {
     const [isPresent, setIsPresent] = useState(true);
 
     useEffect(() => {
-        // Check if we've already shown the loader in this session
-        const hasVisited = sessionStorage.getItem('hasVisited');
+        // localStorageを使用して、一度表示したら24時間は表示しない
+        const lastVisit = typeof window !== 'undefined' ? localStorage.getItem('lastVisit') : null;
+        const now = Date.now();
+        const oneDay = 24 * 60 * 60 * 1000;
 
-        if (hasVisited) {
+        if (lastVisit && (now - parseInt(lastVisit)) < oneDay) {
             setIsPresent(false);
             return;
         }
 
-        // Set session storage to prevent showing again on reload (optional, maybe we want it every refresh for 'demo' feel)
-        // For now, let's keep it showing every time or use a short timeout.
-        // Let's implement full cinematic mode every refresh for the "demo" feeling the user requested "100 points".
-        // Or set it after the animation completes.
-
+        // 初回訪問または24時間経過後は表示
         const timer = setTimeout(() => {
             setIsPresent(false);
-            sessionStorage.setItem('hasVisited', 'true');
-        }, 2500);
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('lastVisit', now.toString());
+            }
+        }, 2000); // 2秒に短縮
 
         return () => clearTimeout(timer);
+    }, []);
+
+    // ページ読み込みが完了したら即座に非表示にする
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        if (document.readyState === 'complete') {
+            const timer = setTimeout(() => setIsPresent(false), 500);
+            return () => clearTimeout(timer);
+        }
+
+        const handleLoad = () => {
+            setTimeout(() => setIsPresent(false), 500);
+        };
+        window.addEventListener('load', handleLoad);
+        return () => window.removeEventListener('load', handleLoad);
     }, []);
 
     return (

@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Lock, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
 
-const CORRECT_PASSWORD = "1010";
+const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_EXCLUSIVE_PASSWORD || "1010";
 
 export default function ExclusivePage() {
   const [password, setPassword] = useState('');
@@ -33,14 +33,14 @@ export default function ExclusivePage() {
   };
 
   // Check sessionStorage on mount
-  useState(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const auth = sessionStorage.getItem('exclusive_auth');
       if (auth === 'true') {
         setIsAuthenticated(true);
       }
     }
-  });
+  }, []);
 
   if (isAuthenticated) {
     return (
@@ -165,6 +165,7 @@ export default function ExclusivePage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
+                      aria-label={showPassword ? "パスワードを非表示" : "パスワードを表示"}
                       className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
                     >
                       {showPassword ? (

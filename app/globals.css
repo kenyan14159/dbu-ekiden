@@ -139,8 +139,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  --font-serif: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  --font-sans: var(--font-noto-sans-jp), "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-serif: var(--font-noto-serif-jp), "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* カスタムアニメーション */
@@ -169,6 +169,23 @@ body {
   font-feature-settings: "palt";
   letter-spacing: 0.05em;
   overflow-x: hidden;
+}
+
+/* カスタムカーソルが有効な場合のみデフォルトカーソルを非表示 */
+@media (pointer: fine) and (hover: hover) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+  
+  body {
+    cursor: none !important;
+  }
+  
+  html {
+    cursor: none !important;
+  }
 }
 
 /* Film Grain Overlay */

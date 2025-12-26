@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
+import OptimizedImage from '@/app/components/ui/OptimizedImage';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -102,7 +102,7 @@ export default function Header() {
         <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
+            <OptimizedImage
               src="/images/daito-ekiden.png"
               alt="大東文化大学 陸上競技部 男子長距離ブロック"
               width={180}
@@ -251,6 +251,8 @@ export default function Header() {
                       <div className="group">
                         <button
                           onClick={() => toggleMobileSection(section.title)}
+                          aria-expanded={openMobileSections.includes(section.title)}
+                          aria-label={`${section.title}メニューを${openMobileSections.includes(section.title) ? '閉じる' : '開く'}`}
                           className="text-2xl font-serif font-medium text-neutral-900 group-hover:text-daito-green transition-colors flex items-center justify-center mx-auto gap-2"
                         >
                           {section.title}

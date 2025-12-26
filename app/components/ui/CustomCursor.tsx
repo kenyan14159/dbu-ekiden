@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
+    const [isPointerDevice, setIsPointerDevice] = useState(false);
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
@@ -13,9 +14,23 @@ export default function CustomCursor() {
     const cursorYSpring = useSpring(cursorY, springConfig);
 
     useEffect(() => {
+        // タッチデバイスかどうかを検出
+        const checkPointerDevice = () => {
+            if (typeof window === 'undefined') return false;
+            return window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(hover: none)').matches;
+        };
+
+        const isPointer = checkPointerDevice();
+        setIsPointerDevice(isPointer);
+
+        // ポインターデバイスでない場合は早期リターン
+        if (!isPointer) {
+            return;
+        }
+
         const moveCursor = (e: MouseEvent) => {
-            cursorX.set(e.clientX - 16);
-            cursorY.set(e.clientY - 16);
+            cursorX.set(e.clientX - 12);
+            cursorY.set(e.clientY - 12);
         };
 
         const handleMouseOver = (e: MouseEvent) => {
@@ -33,24 +48,38 @@ export default function CustomCursor() {
             }
         };
 
+        // リサイズ時に再チェック
+        const handleResize = () => {
+            const isPointer = checkPointerDevice();
+            setIsPointerDevice(isPointer);
+        };
+
         window.addEventListener('mousemove', moveCursor);
         window.addEventListener('mouseover', handleMouseOver);
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('resize', handleResize);
         };
     }, [cursorX, cursorY]);
 
+    // タッチデバイスの場合はカーソルを表示しない
+    if (!isPointerDevice) {
+        return null;
+    }
+
     return (
         <motion.div
-            className="fixed top-0 left-0 w-8 h-8 rounded-full border border-daito-green z-[9999] pointer-events-none mix-blend-difference"
+            className="fixed top-0 left-0 w-6 h-6 rounded-full bg-white border-2 border-black z-[99999] pointer-events-none"
             style={{
                 x: cursorXSpring,
                 y: cursorYSpring,
-                backgroundColor: isHovered ? 'rgba(0, 77, 37, 1)' : 'transparent',
-                scale: isHovered ? 1.5 : 1,
+                scale: isHovered ? 1.8 : 1,
+                boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 15px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.3)',
             }}
+            aria-hidden="true"
         />
     );
 }
