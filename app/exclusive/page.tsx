@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Lock, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
 
 const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_EXCLUSIVE_PASSWORD || "1010";

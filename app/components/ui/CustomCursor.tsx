@@ -64,7 +64,7 @@ export default function CustomCursor() {
             window.removeEventListener('mouseover', handleMouseOver);
             window.removeEventListener('resize', handleResize);
         };
-    }, [cursorX, cursorY]);
+    }, [cursorX, cursorY, isPointerDevice]);
 
     // タッチデバイスの場合はカーソルを表示しない
     if (!isPointerDevice) {

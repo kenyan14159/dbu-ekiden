@@ -21,19 +21,29 @@ export default function Hero() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
     // prefers-reduced-motion の検出
     if (typeof window !== 'undefined') {
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      setPrefersReducedMotion(mediaQuery.matches);
-      
+      const timer2 = setTimeout(() => {
+        setPrefersReducedMotion(mediaQuery.matches);
+      }, 0);
+
       const handleChange = (e: MediaQueryListEvent) => {
         setPrefersReducedMotion(e.matches);
       };
-      
+
       mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2);
+        mediaQuery.removeEventListener('change', handleChange);
+      };
     }
+    return () => clearTimeout(timer);
   }, []);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -68,22 +78,28 @@ export default function Hero() {
 
   useEffect(() => {
     if (prefersReducedMotion) {
-      setParticles([]);
-      return;
+      const timer = setTimeout(() => {
+        setParticles([]);
+      }, 0);
+      return () => clearTimeout(timer);
     }
-    
-    setParticles(
-      Array.from({ length: 10 }, (_, i) => ({
-        id: i,
-        width: Math.random() * 4 + 1,
-        height: Math.random() * 4 + 1,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        duration: Math.random() * 10 + 10,
-        delay: Math.random() * 5,
-        opacity: Math.random() * 0.5 + 0.2,
-      }))
-    );
+
+    const timer = setTimeout(() => {
+      setParticles(
+        Array.from({ length: 10 }, (_, i) => ({
+          id: i,
+          width: Math.random() * 4 + 1,
+          height: Math.random() * 4 + 1,
+          top: Math.random() * 100,
+          left: Math.random() * 100,
+          duration: Math.random() * 10 + 10,
+          delay: Math.random() * 5,
+          opacity: Math.random() * 0.5 + 0.2,
+        }))
+      );
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [prefersReducedMotion]);
 
   return (
