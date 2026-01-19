@@ -22,12 +22,25 @@ async function getNewsArticles() {
 
 async function getResults() {
   try {
-    const resultsPath = path.join(process.cwd(), 'public/data/results/results-2025.json');
-    if (fs.existsSync(resultsPath)) {
-      const resultsData = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
-      return resultsData.results || [];
+    const years = [2026, 2025]; // 新しい年度から順に読み込む
+    const allEvents: Array<{ slug: string; date?: string }> = [];
+    
+    for (const year of years) {
+      try {
+        const resultsPath = path.join(process.cwd(), 'public/data/results', `results-${year}.json`);
+        if (fs.existsSync(resultsPath)) {
+          const resultsData = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+          if (resultsData.events) {
+            allEvents.push(...resultsData.events);
+          }
+        }
+      } catch (error) {
+        // ファイルが存在しない場合はスキップ
+        console.warn(`Failed to load results-${year}.json:`, error);
+      }
     }
-    return [];
+    
+    return allEvents;
   } catch (error) {
     console.error('Failed to load results:', error);
     return [];

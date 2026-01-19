@@ -14,6 +14,10 @@ interface Result {
 interface TeamResult {
   rank: string;
   totalTime: string;
+  outboundRank?: string;
+  outboundTime?: string;
+  inboundRank?: string;
+  inboundTime?: string;
 }
 
 interface ResultEvent {
@@ -24,6 +28,7 @@ interface ResultEvent {
   venue: string;
   results: Result[];
   teamResult?: TeamResult;
+  description?: string;
 }
 
 interface ResultsClientProps {

@@ -171,22 +171,7 @@ body {
   overflow-x: hidden;
 }
 
-/* カスタムカーソルが有効な場合のみデフォルトカーソルを非表示 */
-@media (pointer: fine) and (hover: hover) {
-  *,
-  *::before,
-  *::after {
-    cursor: none !important;
-  }
-  
-  body {
-    cursor: none !important;
-  }
-  
-  html {
-    cursor: none !important;
-  }
-}
+/* カスタムカーソルは無効化 - デフォルトカーソルを使用 */
 
 /* Film Grain Overlay */
 .film-grain {

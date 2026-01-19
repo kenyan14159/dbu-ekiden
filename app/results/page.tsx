@@ -13,6 +13,10 @@ interface Result {
 interface TeamResult {
   rank: string;
   totalTime: string;
+  outboundRank?: string;
+  outboundTime?: string;
+  inboundRank?: string;
+  inboundTime?: string;
 }
 
 interface ResultEvent {
@@ -23,6 +27,7 @@ interface ResultEvent {
   venue: string;
   results: Result[];
   teamResult?: TeamResult;
+  description?: string;
 }
 
 interface ResultsData {
@@ -32,17 +37,30 @@ interface ResultsData {
 
 async function getResultsData(): Promise<ResultsData> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'data', 'results', 'results-2025.json');
-    const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    const years = [2026, 2025]; // 新しい年度から順に読み込む
+    const allEvents: ResultEvent[] = [];
+    
+    for (const year of years) {
+      try {
+        const filePath = path.join(process.cwd(), 'public', 'data', 'results', `results-${year}.json`);
+        const fileContents = await fs.promises.readFile(filePath, 'utf8');
+        const data = JSON.parse(fileContents) as ResultsData;
+        allEvents.push(...data.events);
+      } catch (error) {
+        // ファイルが存在しない場合はスキップ
+        console.warn(`Failed to load results-${year}.json:`, error);
+      }
+    }
+    
     // 日付でソート（新しい順）
-    data.events.sort((a: ResultEvent, b: ResultEvent) =>
+    allEvents.sort((a: ResultEvent, b: ResultEvent) =>
       new Date(b.date).getTime() - new Date(a.date).getTime()
     );
-    return data;
+    
+    return { year: Math.max(...years), events: allEvents };
   } catch (error) {
     console.error('Failed to load results data:', error);
-    return { year: 2025, events: [] };
+    return { year: 2026, events: [] };
   }
 }
 

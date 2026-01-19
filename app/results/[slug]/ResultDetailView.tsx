@@ -15,6 +15,10 @@ interface Result {
 interface TeamResult {
     rank: string;
     totalTime: string;
+    outboundRank?: string;
+    outboundTime?: string;
+    inboundRank?: string;
+    inboundTime?: string;
 }
 
 interface ResultEvent {
@@ -25,6 +29,7 @@ interface ResultEvent {
     venue: string;
     results: Result[];
     teamResult?: TeamResult;
+    description?: string;
 }
 
 function formatDate(dateStr: string): string {
@@ -86,16 +91,44 @@ export default function ResultDetailView({ event }: ResultDetailViewProps) {
                             </span>
                             <span className="text-white/60 text-sm">{formatDate(event.date)}</span>
                         </div>
-                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-light text-white leading-tight mb-4">
-                            {event.title}
+                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-light text-white leading-tight mb-4" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+                            {event.title.includes('第102回') ? (
+                                <>
+                                    第102回
+                                    <br className="hidden md:block" />
+                                    東京箱根間往復大学駅伝競走
+                                </>
+                            ) : (
+                                event.title
+                            )}
                         </h1>
                         <p className="text-white/60">
                             {event.venue}
                         </p>
                         {event.teamResult && (
-                            <div className="mt-6 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full">
-                                <span className="font-bold text-lg">{event.teamResult.rank}</span>
-                                <span className="text-white/60">（{event.teamResult.totalTime}）</span>
+                            <div className="mt-6 flex flex-col items-center gap-4">
+                                <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full">
+                                    <span className="font-bold text-lg">総合 {event.teamResult.rank}</span>
+                                    <span className="text-white/60">（{event.teamResult.totalTime}）</span>
+                                </div>
+                                {(event.teamResult.outboundRank || event.teamResult.inboundRank) && (
+                                    <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
+                                        {event.teamResult.outboundRank && (
+                                            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+                                                <span className="text-white/80">往路</span>
+                                                <span className="font-bold">{event.teamResult.outboundRank}</span>
+                                                <span className="text-white/60">（{event.teamResult.outboundTime}）</span>
+                                            </div>
+                                        )}
+                                        {event.teamResult.inboundRank && (
+                                            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+                                                <span className="text-white/80">復路</span>
+                                                <span className="font-bold">{event.teamResult.inboundRank}</span>
+                                                <span className="text-white/60">（{event.teamResult.inboundTime}）</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         )}
                     </motion.div>
@@ -119,6 +152,15 @@ export default function ResultDetailView({ event }: ResultDetailViewProps) {
                             <ArrowLeft className="w-4 h-4" />
                             リザルト一覧に戻る
                         </Link>
+
+                        {/* Description */}
+                        {event.description && (
+                            <div className="mb-8 bg-white rounded-2xl border border-neutral-100 p-6 md:p-8 shadow-sm">
+                                <div className="prose prose-sm max-w-none text-neutral-700 whitespace-pre-line leading-relaxed">
+                                    {event.description}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Results Table (Desktop) */}
                         <div className="hidden md:block bg-white rounded-2xl border border-neutral-100 overflow-hidden shadow-sm">
