@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     title: '大東文化大学陸上競技部男子長距離ブロック',
     description: '大東文化大学陸上競技部男子長距離ブロック公式サイト。箱根駅伝、全日本大学駅伝、出雲駅伝などの情報を発信しています。',
     keywords: ['大東文化大学', '駅伝', '箱根駅伝', '陸上競技', '長距離'],
+    robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+            index: false,
+            follow: false,
+        },
+    },
     icons: {
         icon: '/images/daito-ekiden-logo.png',
         apple: '/images/daito-ekiden-logo.png',
