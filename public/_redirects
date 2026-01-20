@@ -1,5 +1,5 @@
-# Cloudflare Pages redirects
-# 必要に応じてリダイレクトルールを追加してください
+# Cloudflare Pages redirects and rewrites
+# SPAルーティング用のフォールバック設定
 
-# 例: 旧URLから新URLへのリダイレクト
-# /old-path /new-path 301
+# すべてのパスをindex.htmlにフォールバック（404エラーを防ぐ）
+/* /index.html 200
