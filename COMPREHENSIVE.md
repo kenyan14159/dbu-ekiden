@@ -24,7 +24,7 @@
 | 項目 | 内容 |
 |------|------|
 | **サイト名** | 大東文化大学陸上競技部男子長距離ブロック 公式ウェブサイト |
-| **本番URL** | https://daito-ekiden.com (予定) |
+| **本番URL** | https://dbu-ekiden.com |
 | **リポジトリ** | https://github.com/xxx/daito-ekiden |
 | **ホスティング** | Cloudflare Pages / Vercel |
 | **自動デプロイ** | GitHub Actions（mainブランチへのpush時） |
@@ -652,7 +652,7 @@ import { generateSportsTeamSchema } from '@/lib/structured-data';
 const schema = generateSportsTeamSchema({
   name: '大東文化大学陸上競技部男子長距離ブロック',
   sport: '陸上競技（駅伝・長距離）',
-  url: 'https://daito-ekiden.com/',
+  url: 'https://dbu-ekiden.com/',
   memberOf: '大東文化大学'
 });
 ```
@@ -663,9 +663,9 @@ const schema = generateSportsTeamSchema({
 import { generateBreadcrumbSchema } from '@/lib/structured-data';
 
 const schema = generateBreadcrumbSchema([
-  { name: 'ホーム', url: 'https://daito-ekiden.com/' },
-  { name: 'ニュース', url: 'https://daito-ekiden.com/news/' },
-  { name: '記事タイトル', url: 'https://daito-ekiden.com/news/slug/' }
+  { name: 'ホーム', url: 'https://dbu-ekiden.com/' },
+  { name: 'ニュース', url: 'https://dbu-ekiden.com/news/' },
+  { name: '記事タイトル', url: 'https://dbu-ekiden.com/news/slug/' }
 ]);
 ```
 
@@ -680,7 +680,7 @@ const schema = generateArticleSchema({
   datePublished: '2025-03-15',
   dateModified: '2025-03-16',
   image: '/images/news/xxx.jpg',
-  url: 'https://daito-ekiden.com/news/slug/'
+  url: 'https://dbu-ekiden.com/news/slug/'
 });
 ```
 
@@ -693,7 +693,7 @@ const schema = generatePersonSchema({
   name: '大東 太郎',
   affiliation: '大東文化大学陸上競技部',
   alumniOf: '○○高校',
-  url: 'https://daito-ekiden.com/members/',
+  url: 'https://dbu-ekiden.com/members/',
   image: '/images/members/xxx.jpg'
 });
 ```
@@ -708,7 +708,7 @@ const schema = generateSportsEventSchema({
   startDate: '2026-01-02',
   endDate: '2026-01-03',
   location: '東京〜箱根',
-  url: 'https://daito-ekiden.com/schedule/'
+  url: 'https://dbu-ekiden.com/schedule/'
 });
 ```
 
@@ -767,7 +767,7 @@ generateNewsAlt("出雲駅伝エントリー決定", "2025-10-18")
 User-agent: *
 Allow: /
 
-Sitemap: https://daito-ekiden.com/sitemap.xml
+Sitemap: https://dbu-ekiden.com/sitemap.xml
 ```
 
 ---
@@ -952,7 +952,7 @@ export function MyComponent({ title, onClick }: Props) {
 
 # 📞 サポート
 
-- **ウェブサイト**: https://daito-ekiden.com（予定）
+- **ウェブサイト**: https://dbu-ekiden.com（予定）
 - **GitHub Issues**: https://github.com/xxx/daito-ekiden/issues
 
 ---

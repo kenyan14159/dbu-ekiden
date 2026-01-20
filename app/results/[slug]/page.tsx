@@ -74,7 +74,7 @@ type Props = {
     params: Promise<{ slug: string }>;
 }
 
-const BASE_URL = 'https://daito-ekiden.com';
+const BASE_URL = 'https://dbu-ekiden.com';
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;

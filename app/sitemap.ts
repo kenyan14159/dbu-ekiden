@@ -4,7 +4,7 @@ import path from 'path';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = 'https://daito-ekiden.com';
+const BASE_URL = 'https://dbu-ekiden.com';
 
 async function getNewsArticles() {
   try {

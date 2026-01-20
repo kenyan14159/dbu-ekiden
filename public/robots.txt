@@ -7,4 +7,4 @@ Disallow: /_next/
 Disallow: /exclusive/
 
 # サイトマップ
-Sitemap: https://daito-ekiden.com/sitemap.xml
+Sitemap: https://dbu-ekiden.com/sitemap.xml

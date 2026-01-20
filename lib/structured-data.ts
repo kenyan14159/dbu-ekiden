@@ -3,7 +3,7 @@
  * Schema.org準拠の構造化データを生成します
  */
 
-const BASE_URL = 'https://daito-ekiden.com';
+const BASE_URL = 'https://dbu-ekiden.com';
 
 /**
  * Organization（組織）スキーマを生成
