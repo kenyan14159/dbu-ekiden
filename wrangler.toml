@@ -1,0 +1,9 @@
+# Cloudflare Pages設定
+# このファイルはCloudflare Pagesの自動デプロイでは使用されませんが、
+# 手動デプロイ時に参照される場合があります
+
+name = "dbu-ekiden"
+compatibility_date = "2026-01-20"
+
+[env.production]
+name = "dbu-ekiden"
