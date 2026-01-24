@@ -27,7 +27,7 @@ interface Staff {
   image?: string;
 }
 
-export const revalidate = 0;
+export const dynamic = 'force-static';
 
 const normalizePersonalBests = (member: { personalBests?: PersonalBest[] } | null | undefined) =>
   member?.personalBests ?? [];
