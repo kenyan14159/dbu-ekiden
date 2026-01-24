@@ -5,28 +5,10 @@
 
 import fs from 'fs';
 import path from 'path';
-import type { TopicItem } from './types';
+import type { TopicItem, NewsMetadata, ResultMetadata } from './types';
 
-// 簡略化されたメタデータ型
-export interface NewsMetadata {
-  articles: {
-    slug: string;
-    id: number | string;
-    title: string;
-    date: string;
-    image: string;
-  }[];
-}
-
-export interface ResultMetadata {
-  articles: {
-    slug: string;
-    id: number;
-    title: string;
-    date: string;
-    image: string;
-  }[];
-}
+// 型を再エクスポート
+export type { NewsMetadata, ResultMetadata } from './types';
 
 /**
  * ニュース記事のメタデータを取得
@@ -35,12 +17,14 @@ export async function getNewsMetadata(): Promise<NewsMetadata> {
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'news', 'news-2026.json');
     const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents) as NewsMetadata;
+    const data = JSON.parse(fileContents);
     
     // 日付でソート（新しい順）
-    data.articles.sort((a, b) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    if (data.articles && Array.isArray(data.articles)) {
+      data.articles.sort((a: any, b: any) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+    }
     
     return data;
   } catch (error) {
@@ -56,12 +40,14 @@ export async function getResultsMetadata(): Promise<ResultMetadata> {
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'results', 'results-2026.json');
     const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents) as ResultMetadata;
+    const data = JSON.parse(fileContents);
     
     // 日付でソート（新しい順）
-    data.articles.sort((a, b) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    if (data.articles && Array.isArray(data.articles)) {
+      data.articles.sort((a: any, b: any) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+    }
     
     return data;
   } catch (error) {

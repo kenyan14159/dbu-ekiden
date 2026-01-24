@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import type { NewsMetadata } from '@/lib/types';
+import type { NewsMetadata } from '@/lib/data';
 import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 interface NewsClientProps {
-  articles: NewsMetadata[];
+  newsMetadata: NewsMetadata;
 }
 
 function formatDate(dateStr: string): string {
@@ -17,7 +17,9 @@ function formatDate(dateStr: string): string {
   return `${year}.${month}.${day}`;
 }
 
-export default function NewsClient({ articles }: NewsClientProps) {
+export default function NewsClient({ newsMetadata }: NewsClientProps) {
+  const articles = newsMetadata.articles;
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}

@@ -1,27 +1,6 @@
 {
   "articles": [
     {
-      "slug": "takeda-10000m-2026",
-      "id": "ob-2026-001",
-      "title": "卒業生・武田遥斗選手が関東実業団10,000mで自己ベスト",
-      "date": "2026-01-18",
-      "image": "/images/news/ob-takeda.jpg"
-    },
-    {
-      "slug": "matsuda-award-2026",
-      "id": "ob-2026-002",
-      "title": "卒業生・松田彩乃さんが地域スポーツ振興賞を受賞",
-      "date": "2026-01-12",
-      "image": "/images/news/ob-matsuda.jpg"
-    },
-    {
-      "slug": "nishikawa-half-2026",
-      "id": "ob-2026-003",
-      "title": "卒業生・西川大輝選手がハーフマラソンで大会新",
-      "date": "2026-01-05",
-      "image": "/images/news/ob-nishikawa.jpg"
-    },
-    {
       "slug": "hakone-102-soukoukai",
       "id": 1,
       "title": "第102回箱根駅伝壮行会を開催",

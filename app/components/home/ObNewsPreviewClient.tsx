@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import type { NewsMetadata } from '@/lib/types';
+import type { NewsMetadata } from '@/lib/data';
 
 interface ObNewsPreviewClientProps {
-  articles: NewsMetadata[];
+  newsMetadata: NewsMetadata;
 }
 
 function formatDate(dateStr: string): string {
@@ -16,7 +16,9 @@ function formatDate(dateStr: string): string {
   return `${year}.${month}.${day}`;
 }
 
-export default function ObNewsPreviewClient({ articles }: ObNewsPreviewClientProps) {
+export default function ObNewsPreviewClient({ newsMetadata }: ObNewsPreviewClientProps) {
+  const articles = newsMetadata.articles;
+
   return (
     <section className="py-24 md:py-32 bg-neutral-50">
       <div className="container mx-auto px-6">

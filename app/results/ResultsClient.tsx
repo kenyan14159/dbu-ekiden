@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import type { ResultMetadata } from '@/lib/types';
+import type { ResultMetadata } from '@/lib/data';
 import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 interface ResultsClientProps {
-  events: ResultMetadata[];
+  resultsMetadata: ResultMetadata;
 }
 
 function formatDate(dateStr: string): string {
@@ -17,7 +17,9 @@ function formatDate(dateStr: string): string {
   return `${year}.${month}.${day}`;
 }
 
-export default function ResultsClient({ events }: ResultsClientProps) {
+export default function ResultsClient({ resultsMetadata }: ResultsClientProps) {
+  const events = resultsMetadata.articles;
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}

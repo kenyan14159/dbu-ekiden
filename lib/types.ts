@@ -6,22 +6,26 @@
  * ニュース記事のメタデータ型（簡略版）
  */
 export interface NewsMetadata {
-  slug: string;
-  id: number;
-  title: string;
-  date: string;
-  image: string;
+  articles: {
+    slug: string;
+    id: string | number;
+    title: string;
+    date: string;
+    image: string;
+  }[];
 }
 
 /**
  * リザルトのメタデータ型（簡略版）
  */
 export interface ResultMetadata {
-  slug: string;
-  id: number;
-  title: string;
-  date: string;
-  image: string;
+  articles: {
+    slug: string;
+    id: number;
+    title: string;
+    date: string;
+    image: string;
+  }[];
 }
 
 /**

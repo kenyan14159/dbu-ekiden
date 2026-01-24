@@ -94,9 +94,9 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           className="flex items-baseline gap-4 mb-16"
         >
           <div>
-            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Result</div>
-            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Result</h2>
-            <p className="text-sm text-neutral-500 mt-2">リザルト</p>
+            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Latest Topics</div>
+            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Latest Topics</h2>
+            <p className="text-sm text-neutral-500 mt-2">最新トピックス</p>
           </div>
         </motion.div>
 

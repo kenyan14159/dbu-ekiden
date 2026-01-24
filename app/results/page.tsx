@@ -4,5 +4,5 @@ import { getResultsMetadata } from '@/lib/data';
 export default async function ResultsPage() {
   const resultsMetadata = await getResultsMetadata();
 
-  return <ResultsClient events={resultsMetadata.results} />;
+  return <ResultsClient resultsMetadata={resultsMetadata} />;
 }
