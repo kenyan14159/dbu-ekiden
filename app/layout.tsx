@@ -10,14 +10,14 @@ import WebVitals from '@/app/components/WebVitals';
 import { generateOrganizationSchema, generateSportsTeamSchema } from '@/lib/structured-data';
 
 const notoSansJP = Noto_Sans_JP({
-    subsets: ['latin', 'japanese'],
+    subsets: ['latin'],
     variable: '--font-noto-sans-jp',
     display: 'swap',
     preload: true,
 });
 
 const notoSerifJP = Noto_Serif_JP({
-    subsets: ['latin', 'japanese'],
+    subsets: ['latin'],
     weight: ['400', '500', '600', '700'],
     variable: '--font-noto-serif-jp',
     display: 'swap',
