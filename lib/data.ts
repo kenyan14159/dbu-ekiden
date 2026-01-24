@@ -17,11 +17,11 @@ export async function getNewsMetadata(): Promise<NewsMetadata> {
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'news', 'news-2026.json');
     const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    const data: NewsMetadata = JSON.parse(fileContents);
     
     // 日付でソート（新しい順）
     if (data.articles && Array.isArray(data.articles)) {
-      data.articles.sort((a: any, b: any) =>
+      data.articles.sort((a, b) =>
         new Date(b.date).getTime() - new Date(a.date).getTime()
       );
     }
@@ -40,11 +40,11 @@ export async function getResultsMetadata(): Promise<ResultMetadata> {
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'results', 'results-2026.json');
     const fileContents = await fs.promises.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    const data: ResultMetadata = JSON.parse(fileContents);
     
     // 日付でソート（新しい順）
     if (data.articles && Array.isArray(data.articles)) {
-      data.articles.sort((a: any, b: any) =>
+      data.articles.sort((a, b) =>
         new Date(b.date).getTime() - new Date(a.date).getTime()
       );
     }
@@ -94,7 +94,7 @@ export async function getLatestTopics(limit: number = 3): Promise<TopicItem[]> {
     ]
       .sort((a, b) => b.sortKey - a.sortKey)
       .slice(0, limit)
-      .map(({ sortKey, ...item }) => item);
+      .map(({ sortKey: _sortKey, ...item }) => item);
 
     return combined;
   } catch (error) {

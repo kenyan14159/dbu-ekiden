@@ -1,6 +1,5 @@
 "use client";
 
-import OptimizedImage from '@/app/components/ui/OptimizedImage';
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
@@ -52,10 +51,7 @@ export default function Hero() {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const mainTitle = "歴史への礎";
   const subTitle = "～あの場所でやり返す〜";

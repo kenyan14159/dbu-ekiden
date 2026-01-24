@@ -4,18 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function OpeningLoader() {
-    const [isPresent, setIsPresent] = useState(false);
-
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-
+    const [isPresent, setIsPresent] = useState(() => {
+        if (typeof window === 'undefined') return false;
         const lastVisit = localStorage.getItem('lastVisit');
         const now = Date.now();
         const oneDay = 24 * 60 * 60 * 1000;
-        const shouldShow = !(lastVisit && (now - parseInt(lastVisit, 10)) < oneDay);
-
-        setIsPresent(shouldShow);
-    }, []);
+        return !(lastVisit && (now - parseInt(lastVisit, 10)) < oneDay);
+    });
 
     useEffect(() => {
         if (!isPresent) return;

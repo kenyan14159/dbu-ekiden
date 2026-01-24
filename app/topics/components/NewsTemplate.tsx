@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface NewsTemplateProps {
@@ -83,12 +84,12 @@ export default function NewsTemplate({
             {/* Related Links */}
             <div className="mt-16 pt-8 border-t border-neutral-200">
               <div className="flex flex-wrap gap-4">
-                <a href="/news" className={`inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full ${theme.hoverColor} transition-colors duration-300`}>
+                <Link href="/news" className={`inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full ${theme.hoverColor} transition-colors duration-300`}>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                   <span className="text-sm font-medium">ニュース一覧へ</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
