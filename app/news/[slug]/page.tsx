@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Script from 'next/script';
+import { notFound } from 'next/navigation';
 import NewsArticleView from './NewsArticleView';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
 import { getNewsData } from '@/lib/data';
@@ -32,16 +33,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     }
 
     const ogImageUrl = article.image 
-        ? `${BASE_URL}${article.image}` 
+        ? (article.image.startsWith('http') ? article.image : `${BASE_URL}${article.image}`)
         : `${BASE_URL}/images/ogp/default-ogp.jpg`;
 
     return {
         title: `${article.title} | 大東文化大学陸上競技部`,
-        description: article.excerpt,
+        description: article.excerpt || article.title,
         keywords: ['大東文化大学', '駅伝', article.category, article.title],
         openGraph: {
             title: article.title,
-            description: article.excerpt,
+            description: article.excerpt || article.title,
             type: 'article',
             locale: 'ja_JP',
             publishedTime: article.date,
@@ -59,7 +60,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         twitter: {
             card: 'summary_large_image',
             title: article.title,
-            description: article.excerpt,
+            description: article.excerpt || article.title,
             images: [ogImageUrl],
         },
         alternates: {
@@ -74,19 +75,24 @@ export default async function NewsDetailPage(props: Props) {
 
     const data = await getNewsData();
     const article = data.articles.find((a) => a.slug === slug) || null;
+    const currentIndex = data.articles.findIndex((a) => a.slug === slug);
+    const previousArticle = currentIndex > 0 ? data.articles[currentIndex - 1] : null;
+    const nextArticle = currentIndex >= 0 && currentIndex < data.articles.length - 1
+        ? data.articles[currentIndex + 1]
+        : null;
 
     if (!article) {
-        return <NewsArticleView article={null} />;
+        notFound();
     }
 
     const articleSchema = generateArticleSchema({
         headline: article.title,
-        description: article.excerpt,
+        description: article.excerpt || article.title,
         datePublished: article.date,
-        dateModified: article.dateModified || article.date,
+        dateModified: article.date,
         image: article.image,
         url: `/news/${article.slug}/`,
-        author: article.author,
+        author: article.author || '大東文化大学陸上競技部',
     });
 
     const breadcrumbSchema = generateBreadcrumbSchema([
@@ -107,7 +113,11 @@ export default async function NewsDetailPage(props: Props) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
-            <NewsArticleView article={article} />
+            <NewsArticleView
+                article={article}
+                previousArticle={previousArticle}
+                nextArticle={nextArticle}
+            />
         </>
     );
 }

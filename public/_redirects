@@ -1,5 +1,2 @@
 # Cloudflare Pages redirects and rewrites
-# SPAルーティング用のフォールバック設定
-
-# すべてのパスをindex.htmlにフォールバック（404エラーを防ぐ）
-/* /index.html 200
+# 静的エクスポートのためSPAフォールバックは不要

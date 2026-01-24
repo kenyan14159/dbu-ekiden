@@ -93,10 +93,10 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           transition={{ duration: 0.8 }}
           className="flex items-baseline gap-4 mb-16"
         >
-          <span className="text-8xl md:text-9xl font-serif font-light text-neutral-100">01</span>
-          <div className="-ml-6">
-            <div className="text-[10px] tracking-[0.3em] text-neutral-400 uppercase">Latest Topics</div>
-            <h2 className="text-2xl md:text-4xl font-medium text-neutral-900">最新トピックス</h2>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Result</div>
+            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Result</h2>
+            <p className="text-sm text-neutral-500 mt-2">リザルト</p>
           </div>
         </motion.div>
 
@@ -120,12 +120,6 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <Link
-            href="/news"
-            className="px-8 py-4 border border-neutral-200 rounded-full text-sm font-medium text-neutral-600 hover:border-daito-green hover:text-daito-green transition-all duration-300"
-          >
-            ニュース一覧
-          </Link>
           <Link
             href="/results"
             className="px-8 py-4 border border-neutral-200 rounded-full text-sm font-medium text-neutral-600 hover:border-daito-orange hover:text-daito-orange transition-all duration-300"

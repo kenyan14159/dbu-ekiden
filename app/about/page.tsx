@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -16,12 +17,12 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
-              ABOUT SITE
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white">
-              本サイトについて
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+              ABOUT US
             </h1>
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              サイトについて
+            </p>
           </motion.div>
         </div>
       </section>
@@ -36,11 +37,17 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
+            {/* Breadcrumbs */}
+            <Breadcrumbs 
+              items={[{ label: 'サイトについて' }]} 
+              className="mb-8"
+            />
+
             {/* Introduction */}
             <div className="bg-white rounded-2xl border border-neutral-100 p-8 mb-8 shadow-sm">
               <h2 className="text-xl font-bold text-neutral-900 mb-4">はじめに</h2>
               <p className="text-neutral-600 leading-relaxed mb-4">
-                このホームページは、大東文化大学 陸上競技部 男子長距離ブロックを応援する皆様との繋がりを広げるため、また、より多くの方々からのご支援をいただけるよう願いを込めて、公式サイトの一つとして運営しております。
+                このホームページは、大東文化大学 陸上競技部 長距離ブロックを応援する皆様との繋がりを広げるため、また、より多くの方々からのご支援をいただけるよう願いを込めて、公式サイトの一つとして運営しております。
               </p>
               <div className="text-sm text-neutral-500 border-l-2 border-daito-green pl-4">
                 <p>管理：趣味で制作する現役駅伝部学生</p>
@@ -134,7 +141,7 @@ export default function AboutPage() {
                 箱根路を一緒に駆け抜ける日を、部員一同心待ちにしております。
               </p>
               <p className="text-neutral-900 font-medium">
-                大東文化大学 陸上競技部 男子長距離ブロック 一同
+                大東文化大学 陸上競技部 長距離ブロック 一同
               </p>
             </motion.div>
           </motion.div>

@@ -1,0 +1,46 @@
+{
+    "articles": [
+        {
+            "slug": "hakone-102-soukoukai",
+            "id": 1,
+            "title": "第102回箱根駅伝壮行会を開催",
+            "date": "2026-01-01",
+            "image": "/images/daito-ekiden-logo.avif"
+        },
+        {
+            "slug": "hakone-102-entry",
+            "id": 2,
+            "title": "第102回箱根駅伝エントリーメンバー（16名）発表！",
+            "date": "2026-01-01",
+            "image": "/images/daito-ekiden-logo.avif"
+        },
+        {
+            "slug": "winter-camp-2025",
+            "id": 3,
+            "title": "冬季強化合宿を実施",
+            "date": "2026-01-01",
+            "image": "/images/daito-ekiden-logo.avif"
+        },
+        {
+            "slug": "nishikawa-half-2026",
+            "id": 4,
+            "title": "卒業生・西川大輝選手がハーフマラソンで大会新",
+            "date": "2026-01-05",
+            "image": "/images/daito-ekiden-logo.avif"
+        },
+        {
+            "slug": "matsuda-award-2026",
+            "id": 5,
+            "title": "卒業生・松田彩乃さんが地域スポーツ振興賞を受賞",
+            "date": "2026-01-12",
+            "image": "/images/daito-ekiden-logo.avif"
+        },
+        {
+            "slug": "takeda-10000m-2026",
+            "id": 6,
+            "title": "卒業生・武田遥斗選手が関東実業団10,000mで自己ベスト",
+            "date": "2026-01-18",
+            "image": "/images/daito-ekiden-logo.avif"
+        }
+    ]
+}

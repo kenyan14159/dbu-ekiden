@@ -1,8 +1,8 @@
 import NewsClient from './NewsClient';
-import { getNewsData } from '@/lib/data';
+import { getNewsMetadata } from '@/lib/data';
 
 export default async function NewsPage() {
-  const newsData = await getNewsData();
+  const newsMetadata = await getNewsMetadata();
 
-  return <NewsClient articles={newsData.articles} />;
+  return <NewsClient articles={newsMetadata.articles} />;
 }

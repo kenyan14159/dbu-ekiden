@@ -5,20 +5,19 @@ import './globals.css';
 import Header from '@/app/components/layout/Header';
 import Footer from '@/app/components/layout/Footer';
 import CustomCursor from '@/app/components/ui/CustomCursor';
-import OpeningLoader from '@/app/components/layout/OpeningLoader';
 import ErrorBoundary from '@/app/components/ErrorBoundary';
 import WebVitals from '@/app/components/WebVitals';
 import { generateOrganizationSchema, generateSportsTeamSchema } from '@/lib/structured-data';
 
 const notoSansJP = Noto_Sans_JP({
-    subsets: ['latin', 'latin-ext'],
+    subsets: ['latin', 'japanese'],
     variable: '--font-noto-sans-jp',
     display: 'swap',
     preload: true,
 });
 
 const notoSerifJP = Noto_Serif_JP({
-    subsets: ['latin', 'latin-ext'],
+    subsets: ['latin', 'japanese'],
     weight: ['400', '500', '600', '700'],
     variable: '--font-noto-serif-jp',
     display: 'swap',
@@ -31,11 +30,11 @@ export const metadata: Metadata = {
     description: '大東文化大学陸上競技部男子長距離ブロック公式サイト。箱根駅伝、全日本大学駅伝、出雲駅伝などの情報を発信しています。',
     keywords: ['大東文化大学', '駅伝', '箱根駅伝', '陸上競技', '長距離'],
     robots: {
-        index: false,
-        follow: false,
+        index: process.env.NODE_ENV === 'production',
+        follow: process.env.NODE_ENV === 'production',
         googleBot: {
-            index: false,
-            follow: false,
+            index: process.env.NODE_ENV === 'production',
+            follow: process.env.NODE_ENV === 'production',
         },
     },
     icons: {
@@ -87,7 +86,6 @@ export default function RootLayout({
                 />
                 <ErrorBoundary>
                     <div className="film-grain" />
-                    <OpeningLoader />
                     <CustomCursor />
                     <WebVitals />
                     <Header />

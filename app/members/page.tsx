@@ -16,6 +16,7 @@ interface Member {
   image?: string;
   personalBests: PersonalBest[];
   highSchool?: string;
+  department?: string;
 }
 
 interface Staff {
@@ -25,6 +26,21 @@ interface Staff {
   role: string;
   image?: string;
 }
+
+export const revalidate = 0;
+
+const normalizePersonalBests = (member: { personalBests?: PersonalBest[] } | null | undefined) =>
+  member?.personalBests ?? [];
+
+const normalizeMember = (member: Partial<Member> & { personalBests?: PersonalBest[] }) => ({
+  name: member.name ?? member.fullName ?? '',
+  fullName: member.fullName ?? member.name ?? '',
+  reading: member.reading ?? '',
+  image: member.image,
+  personalBests: normalizePersonalBests(member),
+  highSchool: member.highSchool,
+  department: member.department,
+});
 
 interface MembersData {
   fourthYear: Member[];
@@ -48,10 +64,10 @@ async function getMembersData(): Promise<{ membersData: MembersData; staffData: 
 
     return {
       membersData: {
-        firstYear: grade1.members || [],
-        secondYear: grade2.members || [],
-        thirdYear: grade3.members || [],
-        fourthYear: fourthYearMembers,
+        firstYear: (grade1.members || []).map(normalizeMember),
+        secondYear: (grade2.members || []).map(normalizeMember),
+        thirdYear: (grade3.members || []).map(normalizeMember),
+        fourthYear: fourthYearMembers.map(normalizeMember),
       },
       staffData: staff.staff || [],
     };

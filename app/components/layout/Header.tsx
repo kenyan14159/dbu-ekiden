@@ -16,17 +16,21 @@ const navSections = [
   {
     title: 'トピックス',
     items: [
-      { title: 'スケジュール', link: '/schedule' },
-      { title: 'ニュース', link: '/news' },
       { title: 'リザルト', link: '/results' },
+      { title: 'ニュース', link: '/news' },
+      { title: 'スケジュール', link: '/schedule' },
     ],
+  },
+  {
+    title: '歴代記録',
+    link: '/records',
+    items: null,
   },
   {
     title: 'チーム情報',
     items: [
-      { title: 'サポーターの皆様', link: '/supporters' },
-      { title: '応援してくださる皆様へ', link: '/message' },
-      { title: 'ホームページについて', link: '/about' },
+      { title: 'メッセージ', link: '/message' },
+      { title: 'サポーター', link: '/supporters' },
       { title: 'お問い合わせ', link: '/contact' },
     ],
   },
@@ -131,6 +135,8 @@ export default function Header() {
                           : "hover:text-daito-green hover:bg-daito-green/5"
                       )}
                       aria-expanded={openDropdown === section.title}
+                      aria-haspopup="menu"
+                      aria-controls={`nav-menu-${section.title}`}
                     >
                       {section.title}
                       <ChevronDown
@@ -148,6 +154,7 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
+                          id={`nav-menu-${section.title}`}
                           className="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg py-2 border border-gray-100"
                         >
                           {section.items.map((item) => (

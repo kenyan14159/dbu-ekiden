@@ -34,7 +34,10 @@ export default function OptimizedImage({
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className={fill ? undefined : 'relative'} style={fill ? undefined : { width, height }}>
+    <div
+      className={fill ? 'relative w-full h-full' : 'relative'}
+      style={fill ? { width: '100%', height: '100%' } : { width, height }}
+    >
       {isLoading && !hasError && (
         <div className="absolute inset-0 bg-neutral-100 animate-pulse" aria-hidden="true" />
       )}

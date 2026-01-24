@@ -4,11 +4,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 // 選手データ型定義
 interface PersonalBest {
   event: string;
   time: string;
+  date?: string;
+  competition?: string;
 }
 
 interface Member {
@@ -18,6 +21,7 @@ interface Member {
   image?: string;
   personalBests: PersonalBest[];
   highSchool?: string;
+  department?: string;
   grade?: number;
 }
 
@@ -26,6 +30,8 @@ interface Staff {
   fullName: string;
   reading: string;
   role: string;
+  highSchool?: string;
+  department?: string;
   image?: string;
 }
 
@@ -43,20 +49,20 @@ interface MembersClientProps {
 
 // 学年データ（大学院を削除）
 const gradeData = [
-  { id: '4year', label: '4年生', en: '4th Year', key: 'fourthYear' as const },
-  { id: '3year', label: '3年生', en: '3rd Year', key: 'thirdYear' as const },
-  { id: '2year', label: '2年生', en: '2nd Year', key: 'secondYear' as const },
-  { id: '1year', label: '1年生', en: '1st Year', key: 'firstYear' as const },
+  { id: '4year', label: '新4年生', en: '4th Year', key: 'fourthYear' as const },
+  { id: '3year', label: '新3年生', en: '3rd Year', key: 'thirdYear' as const },
+  { id: '2year', label: '新2年生', en: '2nd Year', key: 'secondYear' as const },
+  { id: '1year', label: '新1年生', en: '1st Year', key: 'firstYear' as const },
   { id: 'staff', label: 'スタッフ', en: 'STAFF', key: null },
 ];
 
 // Parallax Hero
 function ParallaxHero() {
   return (
-    <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-neutral-950">
+    <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-50 via-white to-neutral-100">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -71,16 +77,12 @@ function ParallaxHero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div>
-          <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-6">
-            TEAM ROSTER
-          </p>
-
-          <h1 className="text-white">
+          <h1 className="text-neutral-900">
             <span className="block text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight leading-none">
-              部員紹介
-            </span>
-            <span className="block text-lg md:text-xl font-light tracking-[0.3em] mt-4 text-white/50">
               MEMBERS
+            </span>
+            <span className="block text-lg md:text-xl font-light tracking-[0.3em] mt-4 text-neutral-600">
+              部員紹介
             </span>
           </h1>
         </div>
@@ -121,15 +123,29 @@ function MemberCard({ member, index, grade }: { member: Member; index: number; g
             {member.fullName}
           </h3>
           <p className="text-xs text-neutral-500 mt-0.5">{member.reading}</p>
+          {(member.highSchool || member.department) && (
+            <div className="text-[10px] text-neutral-400 mt-1 space-y-0.5">
+              {member.highSchool && <div>出身: {member.highSchool}</div>}
+              {member.department && <div className="line-clamp-1">{member.department}</div>}
+            </div>
+          )}
         </div>
 
         {/* Personal Bests */}
         {member.personalBests && member.personalBests.length > 0 && (
-          <div className="space-y-1 mt-3 pt-3 border-t border-neutral-50">
-            {member.personalBests.slice(0, 2).map((pb, idx) => (
-              <div key={idx} className="flex items-center justify-between text-xs">
-                <span className="text-neutral-500">{pb.event}</span>
-                <span className="font-mono font-medium text-neutral-900">{pb.time}</span>
+          <div className="space-y-2 mt-3 pt-3 border-t border-neutral-50">
+            {member.personalBests.map((pb, idx) => (
+              <div key={idx} className="space-y-0.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-neutral-500">{pb.event}</span>
+                  <span className="font-mono font-medium text-neutral-900">{pb.time}</span>
+                </div>
+                {(pb.date || pb.competition) && (
+                  <div className="text-[10px] text-neutral-400 space-y-0.5">
+                    {pb.date && <div>{pb.date}</div>}
+                    {pb.competition && <div className="line-clamp-2">{pb.competition}</div>}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -172,6 +188,12 @@ function StaffCard({ staff, index }: { staff: Staff; index: number }) {
         <p className="text-xs text-neutral-500 mt-0.5">{staff.reading}</p>
         {staff.role && (
           <p className="text-xs text-daito-green mt-1 font-medium">{staff.role}</p>
+        )}
+        {(staff.highSchool || staff.department) && (
+          <div className="text-[10px] text-neutral-400 mt-1 space-y-0.5">
+            {staff.highSchool && <div>出身: {staff.highSchool}</div>}
+            {staff.department && <div className="line-clamp-1">{staff.department}</div>}
+          </div>
         )}
       </div>
     </motion.div>
@@ -234,6 +256,12 @@ export default function MembersClient({ membersData, staffData }: MembersClientP
       {/* Content */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ label: 'メンバー紹介' }]} 
+            className="mb-8"
+          />
+
           <>
             {/* Section Header */}
             <motion.div

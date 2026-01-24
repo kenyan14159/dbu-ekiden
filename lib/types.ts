@@ -3,6 +3,28 @@
  */
 
 /**
+ * ニュース記事のメタデータ型（簡略版）
+ */
+export interface NewsMetadata {
+  slug: string;
+  id: number;
+  title: string;
+  date: string;
+  image: string;
+}
+
+/**
+ * リザルトのメタデータ型（簡略版）
+ */
+export interface ResultMetadata {
+  slug: string;
+  id: number;
+  title: string;
+  date: string;
+  image: string;
+}
+
+/**
  * ニュース記事の型定義
  */
 export interface NewsArticle {
@@ -10,6 +32,22 @@ export interface NewsArticle {
   slug: string;
   date: string;
   dateModified?: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  content?: string;
+  image?: string;
+  tags?: string[];
+  author?: string;
+}
+
+/**
+ * OBニュース記事の型定義
+ */
+export interface ObNewsArticle {
+  id: string;
+  slug: string;
+  date: string;
   category: string;
   title: string;
   excerpt: string;
@@ -28,6 +66,14 @@ export interface NewsData {
 }
 
 /**
+ * OBニュースデータの型定義
+ */
+export interface ObNewsData {
+  year: number;
+  articles: ObNewsArticle[];
+}
+
+/**
  * リザルトイベントの型定義
  */
 export interface ResultEvent {
@@ -35,9 +81,11 @@ export interface ResultEvent {
   slug: string;
   date: string;
   title: string;
+  venue?: string;
   location?: string;
   description?: string;
   results?: Result[];
+  teamResult?: TeamResult;
   image?: string;
 }
 
@@ -45,11 +93,27 @@ export interface ResultEvent {
  * 個別リザルトの型定義
  */
 export interface Result {
+  event?: string;
+  name?: string;
+  time?: string;
+  rank?: string;
+  note?: string;
   runnerName?: string;
   position?: number;
-  time?: string;
   distance?: string;
   notes?: string;
+}
+
+/**
+ * 団体成績の型定義
+ */
+export interface TeamResult {
+  rank: string;
+  totalTime: string;
+  outboundRank?: string;
+  outboundTime?: string;
+  inboundRank?: string;
+  inboundTime?: string;
 }
 
 /**

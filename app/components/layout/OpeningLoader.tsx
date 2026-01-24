@@ -4,15 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function OpeningLoader() {
-    // 初期状態を計算（useEffect内でのsetStateを回避）
-    const [isPresent, setIsPresent] = useState(() => {
-        if (typeof window === 'undefined') return true;
+    const [isPresent, setIsPresent] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         const lastVisit = localStorage.getItem('lastVisit');
         const now = Date.now();
         const oneDay = 24 * 60 * 60 * 1000;
-        // 24時間以内の訪問の場合は初期状態をfalseに
-        return !(lastVisit && (now - parseInt(lastVisit)) < oneDay);
-    });
+        const shouldShow = !(lastVisit && (now - parseInt(lastVisit, 10)) < oneDay);
+
+        setIsPresent(shouldShow);
+    }, []);
 
     useEffect(() => {
         if (!isPresent) return;
@@ -30,7 +33,7 @@ export default function OpeningLoader() {
 
     // ページ読み込みが完了したら即座に非表示にする
     useEffect(() => {
-        if (typeof window === 'undefined') return;
+        if (typeof window === 'undefined' || !isPresent) return;
 
         if (document.readyState === 'complete') {
             const timer = setTimeout(() => setIsPresent(false), 500);
@@ -42,7 +45,7 @@ export default function OpeningLoader() {
         };
         window.addEventListener('load', handleLoad);
         return () => window.removeEventListener('load', handleLoad);
-    }, []);
+    }, [isPresent]);
 
     return (
         <AnimatePresence>

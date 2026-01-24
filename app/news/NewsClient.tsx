@@ -2,18 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-interface NewsArticle {
-  id: string;
-  slug: string;
-  date: string;
-  category: string;
-  title: string;
-  excerpt: string;
-}
+import type { NewsMetadata } from '@/lib/types';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 interface NewsClientProps {
-  articles: NewsArticle[];
+  articles: NewsMetadata[];
 }
 
 function formatDate(dateStr: string): string {
@@ -28,8 +21,8 @@ export default function NewsClient({ articles }: NewsClientProps) {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -37,12 +30,12 @@ export default function NewsClient({ articles }: NewsClientProps) {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
               NEWS
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white">
-              ニュース
             </h1>
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              ニュース
+            </p>
           </motion.div>
         </div>
       </section>
@@ -50,6 +43,11 @@ export default function NewsClient({ articles }: NewsClientProps) {
       {/* News Grid */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ label: 'ニュース' }]} 
+            className="mb-8"
+          />
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -65,12 +63,12 @@ export default function NewsClient({ articles }: NewsClientProps) {
                 transition={{ delay: index * 0.05, duration: 0.5 }}
               >
                 <Link
-                  href={`/news/${article.slug}`}
+                  href={`/topics/news/2026/${article.slug}`}
                   className="block bg-white rounded-xl border border-neutral-100 p-5 md:p-6 transition-all duration-300 hover:shadow-xl hover:border-daito-green/30 group h-full"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2 py-0.5 bg-daito-green text-white text-[10px] font-medium rounded">
-                      {article.category}
+                      ニュース
                     </span>
                   </div>
                   <p className="text-xs text-neutral-400 mb-2">{formatDate(article.date)}</p>

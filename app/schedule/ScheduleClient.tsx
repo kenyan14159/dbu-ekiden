@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 interface ScheduleEvent {
   id: number;
@@ -50,8 +51,8 @@ export default function ScheduleClient({ year, events }: ScheduleClientProps) {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -59,13 +60,13 @@ export default function ScheduleClient({ year, events }: ScheduleClientProps) {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
               SCHEDULE
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-              年間スケジュール
             </h1>
-            <p className="text-white/60 text-lg">
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              年間スケジュール
+            </p>
+            <p className="text-neutral-500 text-sm mt-2">
               {year}年度 大会予定
             </p>
           </motion.div>
@@ -101,6 +102,12 @@ export default function ScheduleClient({ year, events }: ScheduleClientProps) {
       {/* Events List */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ label: 'スケジュール' }]} 
+            className="mb-8"
+          />
+
           {/* Section Header */}
           <motion.div
             key={activeSeason}

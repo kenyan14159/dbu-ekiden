@@ -105,31 +105,32 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
-      className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-100 via-amber-50 to-orange-100"
     >
-      {/* Parallax Background */}
-      <motion.div style={{ scale, y: parallaxY }} className="absolute inset-0">
-        <OptimizedImage
-          src="/images/daio-ekiden-img3.jpg"
-          alt="大東文化大学陸上競技部男子長距離ブロックの駅伝チーム"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
+      {/* Animated Background Gradient */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/8 via-transparent to-daito-orange/12" />
+        <motion.div
+          animate={{
+            background: [
+              'radial-gradient(circle at 20% 50%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
+              'radial-gradient(circle at 80% 50%, rgba(243, 152, 0, 0.08) 0%, transparent 50%)',
+              'radial-gradient(circle at 50% 80%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
+              'radial-gradient(circle at 20% 50%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
+            ],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0"
         />
-        {/* Stronger overlay for green image - much darker for better readability */}
-        {/* Stronger overlay with noise for cinematic look */}
-        <div className="absolute inset-0 bg-neutral-950/50 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/30 via-transparent to-neutral-950" />
-      </motion.div>
+      </div>
 
       {/* Floating Particles (CSS Animation) - パフォーマンス最適化 */}
       {mounted && particles.length > 0 && (
-        <div className="absolute inset-0 z-0 opacity-30 pointer-events-none" aria-hidden="true">
-          {particles.map((particle) => (
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" aria-hidden="true">
+          {particles.map((particle, index) => (
             <div
               key={particle.id}
-              className="absolute rounded-full bg-white blur-[1px] animate-blob"
+              className={`absolute rounded-full blur-[1px] animate-blob ${index % 3 === 0 ? 'bg-daito-orange' : 'bg-daito-green'}`}
               style={{
                 width: `${particle.width}px`,
                 height: `${particle.height}px`,
@@ -145,28 +146,31 @@ export default function Hero() {
       )}
 
       {/* Content */}
-      <motion.div
-        style={{ y, opacity }}
-        className="relative z-10 container mx-auto px-6 text-center"
-      >
-        {/* English Title */}
+      {mounted && (
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          style={{ opacity }}
+          className="relative z-10 container mx-auto px-6 text-center"
         >
-          <span
-            className="text-white font-mono text-xs sm:text-sm tracking-[0.4em]"
-            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
+          {/* English Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 md:mb-12"
           >
-            DAITO BUNKA UNIVERSITY EKIDEN TEAM
-          </span>
-        </motion.div>
+            <span className="font-mono text-xs sm:text-sm tracking-[0.5em] font-light bg-gradient-to-r from-daito-green via-daito-green/90 to-daito-orange bg-clip-text text-transparent">
+              DAITO BUNKA UNIVERSITY EKIDEN TEAM
+            </span>
+          </motion.div>
 
-        {/* Main Title - Character by Character Animation */}
-        <h1 className="font-serif text-white mb-6">
-          <div className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-wider mb-6 overflow-hidden">
+          {/* Main Title - Character by Character Animation */}
+          <motion.h1 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="font-serif mb-6 md:mb-12"
+          >
+          <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-extralight tracking-wide mb-6 md:mb-10 overflow-hidden leading-tight">
             {mainTitle.split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -176,54 +180,54 @@ export default function Hero() {
                 animate="visible"
                 className="inline-block"
                 style={{
-                  textShadow: '0 4px 30px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.9)',
-                  color: '#ffffff'
+                  background: 'linear-gradient(135deg, #004d25 0%, #006633 40%, #d97706 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
               >
                 {char}
               </motion.span>
             ))}
           </div>
+          
+          {/* Subtitle */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="text-xl sm:text-2xl md:text-3xl font-light tracking-[0.2em]"
-            style={{
-              textShadow: '0 2px 20px rgba(0,0,0,0.9)',
-              color: '#ffffff'
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-4 md:mt-6"
           >
-            {subTitle}
+            <span className="text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.3em] bg-gradient-to-r from-daito-green/80 via-daito-green/70 to-daito-orange/80 bg-clip-text text-transparent">
+              {subTitle}
+            </span>
           </motion.div>
-        </h1>
+        </motion.h1>
 
-        {/* Decorative Line */}
+        {/* Decorative Elements */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 1.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-32 h-0.5 mx-auto bg-white mb-8"
-        />
-
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-[1px] h-20 bg-white/20 relative overflow-hidden">
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8, duration: 1 }}
+          className="flex items-center justify-center gap-4 mt-6 md:mt-12"
+        >
           <motion.div
-            animate={{ y: ["-100%", "100%"] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-20 h-[1px] bg-gradient-to-r from-transparent via-daito-green/40 to-daito-orange/40"
           />
-        </div>
-        <p className="text-[10px] text-white/40 tracking-[0.3em] uppercase mt-4 text-center">Scroll</p>
-      </motion.div>
+          <div className="w-2 h-2 rounded-full bg-gradient-to-br from-daito-green to-daito-orange shadow-lg" />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-20 h-[1px] bg-gradient-to-l from-transparent via-daito-orange/40 to-daito-green/40"
+          />
+        </motion.div>
+
+        </motion.div>
+      )}
     </motion.section>
   );
 }

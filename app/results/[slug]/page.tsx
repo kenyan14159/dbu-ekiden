@@ -1,66 +1,9 @@
-import fs from 'fs';
-import path from 'path';
 import { Metadata } from 'next';
 import Script from 'next/script';
+import { notFound } from 'next/navigation';
 import ResultDetailView from './ResultDetailView';
 import { generateSportsEventSchema, generateBreadcrumbSchema } from '@/lib/structured-data';
-
-interface Result {
-    event: string;
-    name: string;
-    time: string;
-    rank: string;
-    note?: string;
-}
-
-interface TeamResult {
-    rank: string;
-    totalTime: string;
-    outboundRank?: string;
-    outboundTime?: string;
-    inboundRank?: string;
-    inboundTime?: string;
-}
-
-interface ResultEvent {
-    id: string;
-    slug: string;
-    date: string;
-    title: string;
-    venue: string;
-    results: Result[];
-    teamResult?: TeamResult;
-    description?: string;
-}
-
-interface ResultsData {
-    year: number;
-    events: ResultEvent[];
-}
-
-async function getResultsData(): Promise<ResultsData> {
-    const years = [2026, 2025]; // 新しい年度から順に読み込む
-    const allEvents: ResultEvent[] = [];
-    
-    for (const year of years) {
-        try {
-            const filePath = path.join(process.cwd(), 'public', 'data', 'results', `results-${year}.json`);
-            const fileContents = await fs.promises.readFile(filePath, 'utf8');
-            const data = JSON.parse(fileContents) as ResultsData;
-            allEvents.push(...data.events);
-        } catch (error) {
-            // ファイルが存在しない場合はスキップ
-            console.warn(`Failed to load results-${year}.json:`, error);
-        }
-    }
-    
-    // 日付でソート（新しい順）
-    allEvents.sort((a: ResultEvent, b: ResultEvent) =>
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-    
-    return { year: Math.max(...years), events: allEvents };
-}
+import { getResultsData } from '@/lib/data';
 
 export async function generateStaticParams() {
     const data = await getResultsData();
@@ -89,9 +32,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         };
     }
 
+    const venue = event.venue ?? event.location ?? '';
     const description = event.teamResult 
-        ? `${event.title} - ${event.venue} - チーム成績: ${event.teamResult.rank}位（${event.teamResult.totalTime}）`
-        : `${event.title} - ${event.venue}`;
+        ? `${event.title} - ${venue} - チーム成績: ${event.teamResult.rank}位（${event.teamResult.totalTime}）`
+        : `${event.title} - ${venue}`;
 
     return {
         title: `${event.title} | 大東文化大学陸上競技部`,
@@ -101,7 +45,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             description: description,
             images: [
                 {
-                    url: `${BASE_URL}/images/ogp/default-ogp.jpg`,
+                    url: event.image ? (event.image.startsWith('http') ? event.image : `${BASE_URL}${event.image}`) : `${BASE_URL}/images/ogp/default-ogp.jpg`,
                     width: 1200,
                     height: 630,
                     alt: event.title,
@@ -113,7 +57,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             card: 'summary_large_image',
             title: event.title,
             description: description,
-            images: [`${BASE_URL}/images/ogp/default-ogp.jpg`],
+            images: [event.image ? (event.image.startsWith('http') ? event.image : `${BASE_URL}${event.image}`) : `${BASE_URL}/images/ogp/default-ogp.jpg`],
         },
     };
 }
@@ -124,40 +68,16 @@ export default async function ResultDetailPage(props: Props) {
 
     const data = await getResultsData();
     const event = data.events.find((e) => e.slug === slug) || null;
+    const currentIndex = data.results.findIndex((r) => r.slug === slug);
+    const previousEvent = currentIndex > 0 ? data.results[currentIndex - 1] : null;
+    const nextEvent = currentIndex >= 0 && currentIndex < data.results.length - 1
+        ? data.results[currentIndex + 1]
+        : null;
 
-    if (!event) {
-        return <ResultDetailView event={null} />;
+    if (!result) {
+        notFound();
     }
 
-    const sportsEventSchema = generateSportsEventSchema({
-        name: event.title,
-        startDate: event.date,
-        location: event.venue,
-        url: `/results/${event.slug}/`,
-        description: event.teamResult 
-            ? `チーム成績: ${event.teamResult.rank}位（${event.teamResult.totalTime}）`
-            : undefined,
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: 'ホーム', url: '/' },
-        { name: 'リザルト', url: '/results/' },
-        { name: event.title, url: `/results/${event.slug}/` },
-    ]);
-
-    return (
-        <>
-            <Script
-                id="sports-event-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventSchema) }}
-            />
-            <Script
-                id="breadcrumb-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-            />
-            <ResultDetailView event={event} />
-        </>
-    );
+    // 新しい構造にリダイレクト
+    redirect(`/topics/results/2026/${slug}`);
 }

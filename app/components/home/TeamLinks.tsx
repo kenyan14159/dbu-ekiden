@@ -5,30 +5,46 @@ import { motion } from 'framer-motion';
 
 const teamLinks = [
   {
-    title: 'メンバー紹介',
+    title: 'Members',
     description: '選手・スタッフの紹介',
     link: '/members',
   },
   {
-    title: '限定コンテンツ',
-    description: '限定情報など',
-    link: '/exclusive',
+    title: 'News',
+    description: 'ニュース',
+    link: '/news',
   },
   {
-    title: 'サポーターの皆様',
+    title: 'Records',
+    description: '大東記録（準備中）',
+    link: '/records',
+  },
+  {
+    title: 'Supporters',
     description: 'ご支援いただいている皆様',
     link: '/supporters',
   },
   {
-    title: 'お問い合わせ',
+    title: 'Contact',
     description: 'チームへのお問い合わせ',
     link: '/contact',
+  },
+  {
+    title: 'Exclusive',
+    description: '限定情報など',
+    link: '/exclusive',
+  },
+  {
+    title: 'University',
+    description: '大学公式サイト',
+    link: 'https://www.daito.ac.jp',
+    external: true,
   },
 ];
 
 export default function TeamLinks() {
   return (
-    <section className="py-20 md:py-28 bg-neutral-50">
+    <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -42,12 +58,13 @@ export default function TeamLinks() {
             EXPLORE TEAM
           </p>
           <h2 className="text-2xl md:text-4xl font-serif font-light text-neutral-900">
-            チームを知る
+            Team Links
           </h2>
+          <p className="text-sm text-neutral-500 mt-2">チームを知る</p>
         </motion.div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           {teamLinks.map((item, index) => (
             <motion.div
               key={item.title}
@@ -56,20 +73,39 @@ export default function TeamLinks() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <Link
-                href={item.link}
-                className="block h-full bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-daito-green/30 group"
-              >
-                <h3 className="text-base md:text-lg font-bold text-neutral-900 mb-2 group-hover:text-daito-green transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs md:text-sm text-neutral-500 mb-4">
-                  {item.description}
-                </p>
-                <span className="text-sm font-medium text-daito-green">
-                  詳細を見る →
-                </span>
-              </Link>
+              {item.external ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-daito-green/30 group"
+                >
+                  <h3 className="text-base md:text-lg font-bold text-neutral-900 mb-2 group-hover:text-daito-green transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-neutral-500 mb-4">
+                    {item.description}
+                  </p>
+                  <span className="text-sm font-medium text-daito-green">
+                    詳細を見る →
+                  </span>
+                </a>
+              ) : (
+                <Link
+                  href={item.link}
+                  className="block h-full bg-white rounded-xl border border-neutral-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-daito-green/30 group"
+                >
+                  <h3 className="text-base md:text-lg font-bold text-neutral-900 mb-2 group-hover:text-daito-green transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-neutral-500 mb-4">
+                    {item.description}
+                  </p>
+                  <span className="text-sm font-medium text-daito-green">
+                    詳細を見る →
+                  </span>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>

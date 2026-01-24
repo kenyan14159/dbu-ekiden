@@ -1,21 +1,24 @@
 "use client";
 
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
 
-const footerLinks = {
-  topics: [
-    { title: 'スケジュール', link: '/schedule' },
-    { title: 'ニュース', link: '/news' },
-    { title: 'リザルト', link: '/results' },
-  ],
-  team: [
-    { title: 'メンバー紹介', link: '/members' },
-    { title: 'サポーターの皆様', link: '/supporters' },
-    { title: '応援してくださる皆様へ', link: '/message' },
-    { title: 'お問い合わせ', link: '/contact' },
-  ],
-};
+const footerLinks = [
+  { title: 'ニュース', link: '/news' },
+  { title: 'スケジュール', link: '/schedule' },
+  { title: 'リザルト', link: '/results' },
+  { title: 'メンバー紹介', link: '/members' },
+  { title: '歴代記録', link: '/records' },
+  { title: 'サイトについて', link: '/about' },
+  { title: 'メッセージ', link: '/message' },
+  { title: 'サポーターの皆様', link: '/supporters' },
+  { title: '限定コンテンツ', link: '/exclusive' },
+  { title: 'お問い合わせ', link: '/contact' },
+];
+
+const universityLinks = [
+  { title: '大東文化大学', link: 'https://www.daito.ac.jp' },
+  { title: '大学スポーツ', link: 'https://www.daito.ac.jp/sport/' },
+];
 
 const socialLinks = [
   {
@@ -40,66 +43,102 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-daito-green text-white">
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-          {/* Logo & Address */}
-          <div className="md:col-span-2">
-
-            <div className="flex items-start gap-2 text-[11px] text-white/70">
-              <MapPin className="w-3 h-3 mt-0.5 flex-shrink-0" />
-              <p>埼玉県東松山市大字西本宿1753 大東文化大学陸上競技部クラブハウス</p>
+    <footer className="bg-daito-green text-white border-t border-white/5">
+      <div className="container mx-auto px-6">
+        {/* Main Content */}
+        <div className="py-16 md:py-20">
+          <div className="max-w-5xl mx-auto">
+            {/* Brand */}
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-serif font-light tracking-wider text-white/90 mb-3">
+                DAITO BUNKA UNIVERSITY
+              </h2>
+              <p className="text-sm text-white/40 tracking-[0.3em]">EKIDEN TEAM</p>
             </div>
-            <div className="flex gap-2 mt-2">
-              {socialLinks.map((social) => (
+
+            {/* Navigation */}
+            <nav className="mb-12">
+              <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
+                {footerLinks.map((link, index) => (
+                  <li key={link.link}>
+                    <Link 
+                      href={link.link} 
+                      className="text-white/60 hover:text-white transition-colors duration-300 tracking-wide"
+                    >
+                      {link.title}
+                    </Link>
+                    {index < footerLinks.length - 1 && (
+                      <span className="inline-block ml-8 text-white/20">·</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Social & Contact */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+              {/* Social Links */}
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="hidden md:block w-px h-8 bg-white/10" />
+
+              {/* Contact */}
+              <div className="text-center md:text-left">
+                <p className="text-xs text-white/40 mb-1">CONTACT</p>
+                <a 
+                  href="tel:070-6453-0318" 
+                  className="text-sm text-white/70 hover:text-white transition-colors tracking-wider"
+                >
+                  070-6453-0318
+                </a>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="text-center mb-8">
+              <p className="text-xs text-white/70 leading-relaxed">
+                埼玉県東松山市大字西本宿1828番地2<br className="md:hidden" />
+                <span className="hidden md:inline"> · </span>
+                大東文化大学陸上競技部クラブハウス
+              </p>
+            </div>
+
+            {/* University Links */}
+            <div className="flex justify-center gap-6 mb-8">
+              {universityLinks.map((link) => (
                 <a
-                  key={social.label}
-                  href={social.href}
+                  key={link.link}
+                  href={link.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-7 h-7 bg-white/10 hover:bg-daito-orange rounded-full flex items-center justify-center transition-colors"
+                  className="text-sm text-white/70 hover:text-white transition-colors tracking-wide border-b border-white/20 hover:border-white pb-1"
                 >
-                  {social.icon}
+                  {link.title}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Topics */}
-          <div>
-            <h4 className="font-bold text-xs mb-2">トピックス</h4>
-            <ul className="space-y-1">
-              {footerLinks.topics.map((link) => (
-                <li key={link.link}>
-                  <Link href={link.link} className="text-[11px] text-white/70 hover:text-daito-orange transition-colors">
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Team Info */}
-          <div>
-            <h4 className="font-bold text-xs mb-2">チーム情報</h4>
-            <ul className="space-y-1">
-              {footerLinks.team.map((link) => (
-                <li key={link.link}>
-                  <Link href={link.link} className="text-[11px] text-white/70 hover:text-daito-orange transition-colors">
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-4 pt-3 border-t border-white/10 text-center">
-          <p className="text-[10px] text-white/50">
-            &copy; {new Date().getFullYear()} Daito Bunka University Ekiden Team. All Rights Reserved.
-          </p>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 py-6">
+          <div className="text-center text-xs text-white/70">
+            <p>&copy; {new Date().getFullYear()} Daito Bunka University Ekiden Team</p>
+          </div>
         </div>
       </div>
     </footer>

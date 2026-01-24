@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Lock, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
-const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_EXCLUSIVE_PASSWORD || "1010";
+const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_EXCLUSIVE_PASSWORD ?? "";
 
 export default function ExclusivePage() {
   const [password, setPassword] = useState('');
@@ -16,6 +17,7 @@ export default function ExclusivePage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const isPasswordConfigured = CORRECT_PASSWORD.length > 0;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +26,12 @@ export default function ExclusivePage() {
 
     // Simulate a brief delay for UX
     await new Promise(resolve => setTimeout(resolve, 500));
+
+    if (!isPasswordConfigured) {
+      setError('現在このページは管理者が準備中です。');
+      setIsLoading(false);
+      return;
+    }
 
     if (password === CORRECT_PASSWORD) {
       setIsAuthenticated(true);
@@ -40,8 +48,8 @@ export default function ExclusivePage() {
     return (
       <div className="min-h-screen bg-neutral-50">
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+        <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -49,14 +57,11 @@ export default function ExclusivePage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
-                EXCLUSIVE CONTENT
-              </p>
-              <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-                限定コンテンツ
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+                EXCLUSIVE
               </h1>
-              <p className="text-white/60 text-lg">
-                関係者限定の特別なコンテンツ
+              <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+                限定コンテンツ
               </p>
             </motion.div>
           </div>
@@ -71,6 +76,12 @@ export default function ExclusivePage() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto"
             >
+              {/* Breadcrumbs */}
+              <Breadcrumbs 
+                items={[{ label: '限定コンテンツ' }]} 
+                className="mb-8"
+              />
+
               <div className="bg-white rounded-2xl border border-neutral-100 p-8 md:p-12 shadow-sm mb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <CheckCircle className="w-6 h-6 text-daito-green" />
@@ -96,8 +107,8 @@ export default function ExclusivePage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -105,14 +116,11 @@ export default function ExclusivePage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
-              EXCLUSIVE CONTENT
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-              限定コンテンツ
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+              EXCLUSIVE
             </h1>
-            <p className="text-white/60 text-lg">
-              関係者専用ページ
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              限定コンテンツ
             </p>
           </motion.div>
         </div>
@@ -127,6 +135,12 @@ export default function ExclusivePage() {
             transition={{ duration: 0.6 }}
             className="max-w-md mx-auto"
           >
+            {/* Breadcrumbs */}
+            <Breadcrumbs 
+              items={[{ label: '限定コンテンツ' }]} 
+              className="mb-8"
+            />
+
             <div className="bg-white rounded-2xl border border-neutral-100 p-8 shadow-sm">
               <div className="flex justify-center mb-6">
                 <div className="w-16 h-16 bg-daito-green/10 rounded-full flex items-center justify-center">
@@ -140,6 +154,11 @@ export default function ExclusivePage() {
               <p className="text-sm text-neutral-500 text-center mb-8">
                 このコンテンツは関係者限定です
               </p>
+              {!isPasswordConfigured && (
+                <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700">
+                  現在このページは準備中です。閲覧には管理者側の設定が必要です。
+                </div>
+              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
@@ -154,7 +173,7 @@ export default function ExclusivePage() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="パスワード"
                       className="w-full px-4 py-3 pr-12 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-daito-green focus:border-daito-green transition-colors"
-                      disabled={isLoading}
+                        disabled={isLoading || !isPasswordConfigured}
                     />
                     <button
                       type="button"
@@ -184,7 +203,7 @@ export default function ExclusivePage() {
 
                 <button
                   type="submit"
-                  disabled={isLoading || !password}
+                  disabled={isLoading || !password || !isPasswordConfigured}
                   className="w-full py-3 bg-daito-green text-white font-bold rounded-lg hover:bg-daito-green/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isLoading ? (

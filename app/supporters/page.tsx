@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 const supporters = [
   {
@@ -16,14 +17,20 @@ const supporters = [
     logo: '/images/adidas_daito.png',
     url: 'https://www.adidas.jp/',
   },
+  {
+    name: '日本ロジテム',
+    company: 'NIPPON LOGITEM',
+    logo: '/images/japan-lojitemu.png',
+    url: 'https://www.logitem.co.jp/',
+  },
 ];
 
 export default function SupportersPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -31,12 +38,12 @@ export default function SupportersPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
               SUPPORTERS
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-              サポーターの皆様
             </h1>
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              サポーターの皆様
+            </p>
           </motion.div>
         </div>
       </section>
@@ -44,6 +51,12 @@ export default function SupportersPage() {
       {/* Thank You Message */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ label: 'サポーター' }]} 
+            className="mb-8"
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +82,7 @@ export default function SupportersPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 text-center mb-8">
               オフィシャルパートナー
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
               {supporters.map((supporter, index) => (
                 <motion.a
                   key={supporter.name}
@@ -82,14 +95,21 @@ export default function SupportersPage() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className="group bg-white rounded-xl border border-neutral-100 p-8 flex flex-col items-center justify-center hover:shadow-lg hover:border-neutral-200 transition-all"
                 >
-                  <div className="relative w-full h-32 mb-4">
-                    <Image
-                      src={supporter.logo}
-                      alt={supporter.name}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
+                  {supporter.logo ? (
+                    <div className="relative w-full h-32 mb-4">
+                      <Image
+                        src={supporter.logo}
+                        alt={supporter.name}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 80vw, 40vw"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full h-32 mb-4 flex items-center justify-center bg-neutral-50 rounded-lg border border-neutral-100">
+                      <span className="text-sm text-neutral-400 tracking-widest">LOGO</span>
+                    </div>
+                  )}
                   <h3 className="text-lg font-bold text-neutral-900 group-hover:text-daito-green transition-colors">
                     {supporter.name}
                   </h3>

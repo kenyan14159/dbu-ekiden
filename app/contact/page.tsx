@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Send, CheckCircle, MapPin, Mail } from 'lucide-react';
+import { Send, CheckCircle, MapPin, Mail, Phone } from 'lucide-react';
+import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -38,12 +39,26 @@ export default function ContactPage() {
         throw new Error('お問い合わせ内容を入力してください');
       }
 
-      // 実際の送信処理はここに実装
-      // 例: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-      
-      // デモ用: 送信成功をシミュレート
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const subjectLabelMap: Record<string, string> = {
+        general: '一般的なお問い合わせ',
+        support: 'ご支援・サポーター関連',
+        media: '取材・メディア関連',
+        other: 'その他',
+      };
+
+      const subjectLabel = subjectLabelMap[formData.subject] || 'お問い合わせ';
+      const mailSubject = `【${subjectLabel}】${formData.name}`;
+      const mailBody =
+        `お名前: ${formData.name}\n` +
+        `メールアドレス: ${formData.email}\n` +
+        `お問い合わせ種類: ${subjectLabel}\n\n` +
+        `${formData.message}`;
+
+      if (typeof window !== 'undefined') {
+        const mailto = `mailto:Info@daito-ekiden.jp?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+        window.location.href = mailto;
+      }
+
       setIsSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : '送信に失敗しました。もう一度お試しください。');
@@ -62,8 +77,8 @@ export default function ContactPage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-neutral-50">
-        <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+        <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -71,12 +86,12 @@ export default function ContactPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
-                CONTACT
-              </p>
-              <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-                お問い合わせ
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+                THANK YOU
               </h1>
+              <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+                お問い合わせ完了
+              </p>
             </motion.div>
           </div>
         </section>
@@ -93,12 +108,12 @@ export default function ContactPage() {
                 <CheckCircle className="w-8 h-8 text-daito-green" />
               </div>
               <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                送信完了
+                送信手続きのご案内
               </h2>
               <p className="text-neutral-600 mb-6">
-                お問い合わせいただきありがとうございます。
+                既定のメールアプリが開きます。
                 <br />
-                内容を確認の上、担当者よりご連絡いたします。
+                送信内容をご確認のうえ、送信してください。
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
@@ -116,8 +131,8 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-neutral-950 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -125,14 +140,11 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
               CONTACT
-            </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
-              お問い合わせ
             </h1>
-            <p className="text-white/60 text-lg">
-              ご質問・取材のご依頼はこちらから
+            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
+              お問い合わせ
             </p>
           </motion.div>
         </div>
@@ -141,6 +153,12 @@ export default function ContactPage() {
       {/* Contact Info & Form */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[{ label: 'お問い合わせ' }]} 
+            className="mb-8 max-w-3xl mx-auto"
+          />
+
           <div className="max-w-3xl mx-auto space-y-12">
             {/* Contact Information */}
             <motion.div
@@ -148,7 +166,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white rounded-xl border border-neutral-100 p-6 shadow-sm flex items-start gap-4">
                   <div className="w-10 h-10 bg-daito-green/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-daito-green" />
@@ -156,7 +174,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="text-sm font-medium text-neutral-900 mb-1">住所</h4>
                     <p className="text-sm text-neutral-600 leading-relaxed">
-                      埼玉県東松山市大字西本宿1753<br />
+                      埼玉県東松山市大字西本宿1828番地2<br />
                       大東文化大学陸上競技部クラブハウス
                     </p>
                   </div>
@@ -171,6 +189,16 @@ export default function ContactPage() {
                     <p className="text-sm text-neutral-600">
                       Info@daito-ekiden.jp
                     </p>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl border border-neutral-100 p-6 shadow-sm flex items-start gap-4">
+                  <div className="w-10 h-10 bg-daito-green/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-daito-green" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-neutral-900 mb-1">電話番号</h4>
+                    <p className="text-sm text-neutral-600">070-6453-0318</p>
                   </div>
                 </div>
               </div>
