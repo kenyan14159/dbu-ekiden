@@ -70,11 +70,13 @@ export default async function ResultDetailPage(props: Props) {
 
   // 詳細データがある場合はそれを使用、ない場合は基本データを使用
   const event = detail || {
-    id: article.id.toString(),
+    id: article.id,
     slug: article.slug,
     date: article.date,
     title: article.title,
     venue: '',
+    location: '',
+    description: '',
     results: [],
     teamResult: undefined,
   };
