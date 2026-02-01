@@ -205,6 +205,7 @@ export async function getLatestResults(limit: number = 3): Promise<TopicItem[]> 
     }))
     .sort((a, b) => b.sortKey - a.sortKey)
     .slice(0, limit)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .map(({ sortKey, ...item }) => item);
 
     return results;
@@ -255,7 +256,8 @@ export async function getLatestTopics(limit: number = 3): Promise<TopicItem[]> {
     const combined: TopicItem[] = [...newsItems, ...resultItems]
       .sort((a, b) => b.sortKey - a.sortKey)
       .slice(0, limit)
-      .map(({ sortKey, ...item }) => item);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .map(({ sortKey, ...item }) => item);
 
     return combined;
   } catch (error) {

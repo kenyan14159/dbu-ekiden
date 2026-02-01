@@ -9,9 +9,7 @@ interface NewsArticle {
 interface NewsTemplateProps {
   date: string;
   title: string;
-  subtitle?: string;
   colorTheme?: 'green' | 'orange';
-  image?: string;
   previousArticle?: NewsArticle | null;
   nextArticle?: NewsArticle | null;
   children: ReactNode;
@@ -20,9 +18,7 @@ interface NewsTemplateProps {
 export default function NewsTemplate({ 
   date, 
   title, 
-  subtitle, 
   colorTheme = 'green',
-  image,
   previousArticle,
   nextArticle,
   children 

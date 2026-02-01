@@ -130,9 +130,7 @@ export default async function NewsDetailPage(props: Props) {
       <NewsTemplate
         date={article.date}
       title={article.title}
-      subtitle="大東文化大学陸上競技部男子長距離ブロックからのお知らせ"
       colorTheme="green"
-      image={article.image}
     >
       <div className="prose prose-lg max-w-none">
         {content.split('\n\n').map((paragraph, index) => (

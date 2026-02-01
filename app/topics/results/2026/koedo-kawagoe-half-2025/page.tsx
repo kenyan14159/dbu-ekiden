@@ -20,7 +20,6 @@ export default async function ResultDetailPage() {
       date={article.date}
       title={article.title}
       location="川越"
-      image={article.image}
       previousArticle={navigation.previous ? { slug: navigation.previous.slug, title: navigation.previous.title } : null}
       nextArticle={navigation.next ? { slug: navigation.next.slug, title: navigation.next.title } : null}
     >

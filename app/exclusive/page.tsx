@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Lock, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
+import { Lock, Eye, EyeOff, XCircle } from 'lucide-react';
 import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
 const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_EXCLUSIVE_PASSWORD ?? "";

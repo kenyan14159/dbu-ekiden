@@ -20,7 +20,6 @@ export default async function ResultDetailPage() {
       date={article.date}
       title={article.title}
       location="東京～箱根間"
-      image={article.image}
       teamResult={{
         rank: "第19位",
         totalTime: "11:04:57",

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { getResultArticleBySlug, getResultDetailBySlug, getResultsMetadata } from '@/lib/data';
+import { ResultEvent } from '@/lib/types';
 import { generateSportsEventSchema } from '@/lib/structured-data';
 import ResultTemplate from '@/app/topics/components/ResultTemplate';
 
@@ -69,7 +70,7 @@ export default async function ResultDetailPage(props: Props) {
   }
 
   // 詳細データがある場合はそれを使用、ない場合は基本データを使用
-  const event = detail || {
+  const event: ResultEvent = detail || {
     id: article.id,
     slug: article.slug,
     date: article.date,
@@ -79,12 +80,13 @@ export default async function ResultDetailPage(props: Props) {
     description: '',
     results: [],
     teamResult: undefined,
+    image: article.image,
   };
 
   const eventSchema = generateSportsEventSchema({
     name: event.title,
     startDate: event.date,
-    location: event.venue || (event as any).location || '会場情報なし',
+    location: event.venue || event.location || '会場情報なし',
     url: `/topics/results/2026/${slug}`,
     description: event.description,
   });
@@ -100,7 +102,6 @@ export default async function ResultDetailPage(props: Props) {
         date={event.date}
       title={event.title}
       location={event.venue || event.location || '会場情報なし'}
-      image={article.image || (event as any).image}
       teamResult={event.teamResult ? {
         rank: event.teamResult.rank,
         totalTime: event.teamResult.totalTime,

@@ -20,7 +20,6 @@ export default async function ResultDetailPage() {
       date={article.date}
       title={article.title}
       location="黒山・鎌北湖"
-      image={article.image}
       teamResult={{
         rank: "総合1位",
         totalTime: "1:17:34",
@@ -58,7 +57,7 @@ export default async function ResultDetailPage() {
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">1区（3.2km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">松本 雄大（4）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">10'15</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">10&apos;15</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間1位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-daito-orange/10 text-daito-orange">区間新</span>
@@ -67,21 +66,21 @@ export default async function ResultDetailPage() {
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">2区（3.6km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">阪東 巧翔（4）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">11'14</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">11&apos;14</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間11位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
                   </tr>
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">3区（4.4km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">小野 翔太郎（4）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">13'02</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">13&apos;02</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間1位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
                   </tr>
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">4区（4.2km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">五十嵐 優貴（4）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">12'35</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">12&apos;35</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間1位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-daito-orange/10 text-daito-orange">区間新</span>
@@ -90,14 +89,14 @@ export default async function ResultDetailPage() {
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">5区（5.1km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">上野 隼弥（4）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">17'35</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">17&apos;35</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間13位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
                   </tr>
                   <tr className="hover:bg-neutral-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">6区（4.6km）</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">喜早 駿介（M2）</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">12'53</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-neutral-900">12&apos;53</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">区間1位</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-daito-orange/10 text-daito-orange">区間新</span>

@@ -10,7 +10,6 @@ interface ResultTemplateProps {
   date: string;
   title: string;
   location: string;
-  image?: string;
   teamResult?: {
     rank?: string;
     totalTime?: string;
@@ -28,7 +27,6 @@ export default function ResultTemplate({
   date, 
   title, 
   location,
-  image,
   teamResult,
   previousArticle,
   nextArticle,
