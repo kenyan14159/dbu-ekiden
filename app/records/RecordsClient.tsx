@@ -27,11 +27,11 @@ interface RecordsClientProps {
 }
 
 const eventCategories = [
-  { id: '1500m', label: '1500m', key: '1500m' },
-  { id: '3000m', label: '3000m', key: '3000m' },
-  { id: '5000m', label: '5000m', key: '5000m' },
-  { id: '10000m', label: '10000m', key: '10000m' },
-  { id: 'half', label: 'ハーフマラソン', key: 'half-marathon' },
+  { id: '1500m', label: '1500m', key: '1500m', displayLabel: '1500m' },
+  { id: '3000m', label: '3000m', key: '3000m', displayLabel: '3000mSC' },
+  { id: '5000m', label: '5000m', key: '5000m', displayLabel: '5000m' },
+  { id: '10000m', label: '10000m', key: '10000m', displayLabel: '10000m' },
+  { id: 'half', label: 'ハーフマラソン', key: 'half-marathon', displayLabel: 'ハーフマラソン' },
 ];
 
 function ParallaxHero() {
@@ -151,8 +151,8 @@ export default function RecordsClient({ recordsData }: RecordsClientProps) {
 
       {/* Tab Navigation */}
       <div className="sticky top-16 md:top-20 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-center py-4 gap-1 overflow-x-auto">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex justify-center py-3 md:py-4 gap-0.5 md:gap-1 flex-wrap">
             {eventCategories.map((event) => (
               <button
                 key={event.id}
@@ -160,13 +160,13 @@ export default function RecordsClient({ recordsData }: RecordsClientProps) {
                 aria-label={`${event.label}を表示`}
                 aria-pressed={activeTab === event.id}
                 className={cn(
-                  "relative px-4 md:px-6 py-3 text-sm font-medium transition-all duration-300 whitespace-nowrap",
+                  "relative px-2.5 py-2 md:px-4 md:py-3 text-xs md:text-sm font-medium transition-all duration-300",
                   activeTab === event.id
                     ? "text-neutral-900"
                     : "text-neutral-400 hover:text-neutral-600"
                 )}
               >
-                {event.label}
+                <span className="whitespace-nowrap">{event.label}</span>
                 {activeTab === event.id && (
                   <motion.div
                     layoutId="activeRecordTab"
@@ -221,8 +221,8 @@ export default function RecordsClient({ recordsData }: RecordsClientProps) {
             {currentRecords.length > 0 ? (
               <RecordTable records={currentRecords} />
             ) : (
-              <div className="text-center py-20 text-neutral-400">
-                データがありません
+              <div className="text-center py-20">
+                <p className="text-neutral-500 text-lg font-medium">準備中</p>
               </div>
             )}
           </motion.div>

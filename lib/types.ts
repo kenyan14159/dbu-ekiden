@@ -3,36 +3,40 @@
  */
 
 /**
- * ニュース記事のメタデータ型（簡略版）
+ * ニュース記事のメタデータ型
  */
 export interface NewsMetadata {
-  articles: {
-    slug: string;
-    id: string | number;
-    title: string;
-    date: string;
-    image: string;
-  }[];
+  articles: NewsArticleMeta[];
+}
+
+export interface NewsArticleMeta {
+  slug: string;
+  id: number;
+  title: string;
+  date: string;
+  image: string;
 }
 
 /**
- * リザルトのメタデータ型（簡略版）
+ * リザルトのメタデータ型
  */
 export interface ResultMetadata {
-  articles: {
-    slug: string;
-    id: number;
-    title: string;
-    date: string;
-    image: string;
-  }[];
+  articles: ResultArticleMeta[];
+}
+
+export interface ResultArticleMeta {
+  slug: string;
+  id: number;
+  title: string;
+  date: string;
+  image: string;
 }
 
 /**
- * ニュース記事の型定義
+ * ニュース記事の型定義（詳細）
  */
 export interface NewsArticle {
-  id: string;
+  id: number;
   slug: string;
   date: string;
   dateModified?: string;
@@ -49,7 +53,7 @@ export interface NewsArticle {
  * OBニュース記事の型定義
  */
 export interface ObNewsArticle {
-  id: string;
+  id: number;
   slug: string;
   date: string;
   category: string;
@@ -81,7 +85,7 @@ export interface ObNewsData {
  * リザルトイベントの型定義
  */
 export interface ResultEvent {
-  id: string;
+  id: number;
   slug: string;
   date: string;
   title: string;
@@ -132,7 +136,7 @@ export interface ResultsData {
  * イベントの型定義
  */
 export interface Event {
-  id: string;
+  id: number;
   slug: string;
   date: string;
   endDate?: string;
@@ -188,6 +192,7 @@ export interface TopicItem {
   title: string;
   link: string;
   excerpt?: string;
+  image?: string;
 }
 
 /**
@@ -201,7 +206,7 @@ export function isNewsArticle(data: unknown): data is NewsArticle {
     'slug' in data &&
     'title' in data &&
     'date' in data &&
-    typeof (data as NewsArticle).id === 'string' &&
+    typeof (data as NewsArticle).id === 'number' &&
     typeof (data as NewsArticle).slug === 'string' &&
     typeof (data as NewsArticle).title === 'string'
   );
@@ -215,7 +220,7 @@ export function isResultEvent(data: unknown): data is ResultEvent {
     'slug' in data &&
     'title' in data &&
     'date' in data &&
-    typeof (data as ResultEvent).id === 'string' &&
+    typeof (data as ResultEvent).id === 'number' &&
     typeof (data as ResultEvent).slug === 'string' &&
     typeof (data as ResultEvent).title === 'string'
   );
@@ -230,7 +235,7 @@ export function isEvent(data: unknown): data is Event {
     'title' in data &&
     'date' in data &&
     'location' in data &&
-    typeof (data as Event).id === 'string' &&
+    typeof (data as Event).id === 'number' &&
     typeof (data as Event).slug === 'string' &&
     typeof (data as Event).title === 'string'
   );

@@ -8,12 +8,24 @@ const BASE_URL = 'https://dbu-ekiden.com';
 
 async function getNewsArticles() {
   try {
-    const newsPath = path.join(process.cwd(), 'public/data/news/news-2025.json');
-    if (fs.existsSync(newsPath)) {
-      const newsData = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
-      return newsData.articles || [];
+    const years = [2026, 2025]; // 新しい年度から順に読み込む
+    const allArticles: Array<{ slug: string; date?: string }> = [];
+
+    for (const year of years) {
+      try {
+        const newsPath = path.join(process.cwd(), 'public/data/news', `news-${year}.json`);
+        if (fs.existsSync(newsPath)) {
+          const newsData = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
+          if (newsData.articles) {
+            allArticles.push(...newsData.articles);
+          }
+        }
+      } catch (error) {
+        // ファイルが存在しない場合はスキップ
+        console.warn(`Failed to load news-${year}.json:`, error);
+      }
     }
-    return [];
+    return allArticles;
   } catch (error) {
     console.error('Failed to load news articles:', error);
     return [];

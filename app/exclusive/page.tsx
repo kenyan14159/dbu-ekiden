@@ -83,18 +83,8 @@ export default function ExclusivePage() {
               />
 
               <div className="bg-white rounded-2xl border border-neutral-100 p-8 md:p-12 shadow-sm mb-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <CheckCircle className="w-6 h-6 text-daito-green" />
-                  <span className="text-daito-green font-medium">認証済み</span>
-                </div>
-                <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                  ようこそ、限定コンテンツへ
-                </h2>
-                <p className="text-neutral-600 leading-relaxed">
-                  このページは大東文化大学陸上競技部男子長距離ブロックの関係者限定コンテンツです。 ここでは、チームの内部情報やメンバー限定のお知らせなどを閲覧できます。
-                </p>
-                <div className="mt-8 p-4 bg-neutral-50 rounded-lg text-sm text-neutral-500 text-center">
-                  コンテンツ準備中...
+                <div className="text-center py-12">
+                  <p className="text-neutral-500 text-lg font-medium">コンテンツ準備中</p>
                 </div>
               </div>
             </motion.div>

@@ -35,9 +35,15 @@ const teamLinks = [
     link: '/exclusive',
   },
   {
-    title: 'University',
+    title: '大東文化大学',
     description: '大学公式サイト',
     link: 'https://www.daito.ac.jp',
+    external: true,
+  },
+  {
+    title: '大学スポーツ',
+    description: '大学スポーツ情報',
+    link: 'https://www.daito.ac.jp/sport/',
     external: true,
   },
 ];

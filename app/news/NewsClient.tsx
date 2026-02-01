@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { NewsMetadata } from '@/lib/data';
 import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
 
@@ -66,17 +67,40 @@ export default function NewsClient({ newsMetadata }: NewsClientProps) {
               >
                 <Link
                   href={`/topics/news/2026/${article.slug}`}
-                  className="block bg-white rounded-xl border border-neutral-100 p-5 md:p-6 transition-all duration-300 hover:shadow-xl hover:border-daito-green/30 group h-full"
+                  className="block bg-white rounded-xl border border-neutral-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-daito-green/30 group h-full flex flex-col"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2 py-0.5 bg-daito-green text-white text-[10px] font-medium rounded">
-                      ニュース
-                    </span>
+                  {/* Image */}
+                  <div className="relative w-full aspect-video overflow-hidden bg-neutral-100">
+                    {article.image ? (
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+                        <div className="text-center">
+                          <p className="text-xs text-neutral-400 font-medium">no image</p>
+                        </div>
+                      </div>
+                    )}
+                    {/* Badge overlay */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-0.5 bg-daito-green text-white text-[10px] font-medium rounded shadow-sm">
+                        ニュース
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-xs text-neutral-400 mb-2">{formatDate(article.date)}</p>
-                  <h2 className="text-sm md:text-base font-bold text-neutral-900 group-hover:text-daito-green transition-colors line-clamp-3">
-                    {article.title}
-                  </h2>
+                  
+                  {/* Content */}
+                  <div className="p-4 md:p-5 flex-1 flex flex-col">
+                    <p className="text-xs text-neutral-400 mb-2">{formatDate(article.date)}</p>
+                    <h2 className="text-sm md:text-base font-bold text-neutral-900 group-hover:text-daito-green transition-colors line-clamp-3">
+                      {article.title}
+                    </h2>
+                  </div>
                 </Link>
               </motion.article>
             ))}

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import type { TopicItem } from '@/lib/types';
@@ -12,66 +12,53 @@ interface TopicCardProps {
 }
 
 function TopicCard({ topic, index }: TopicCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
       className="group h-full"
     >
-      <Link href={topic.link} className="block h-full">
-        <motion.div
-          className="relative h-full bg-white border border-neutral-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-neutral-200 hover:shadow-2xl hover:shadow-neutral-200/50"
-          whileHover={{ y: -4 }}
-        >
-          {/* Number */}
-          <div className="absolute top-6 right-6 text-6xl font-serif font-light text-neutral-100 group-hover:text-daito-green/10 transition-colors duration-300">
-            {String(index + 1).padStart(2, '0')}
+      <Link
+        href={topic.link}
+        className="block bg-white rounded-xl border border-neutral-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-daito-orange/30 h-full flex flex-col"
+      >
+        {/* Image */}
+        <div className="relative w-full aspect-video overflow-hidden bg-neutral-100">
+          {topic.image ? (
+            <Image
+              src={topic.image}
+              alt={topic.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+            />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+                        <div className="text-center">
+                          <p className="text-xs text-neutral-400 font-medium">no image</p>
+                        </div>
+                      </div>
+                    )}
+          {/* Badge overlay */}
+          <div className="absolute top-3 left-3">
+            <span className={cn(
+              "px-2 py-0.5 text-white text-[10px] font-medium rounded shadow-sm",
+              topic.type === 'NEWS' ? "bg-daito-green" : "bg-daito-orange"
+            )}>
+              {topic.type}
+            </span>
           </div>
-
-          <div className="p-6 md:p-8 relative h-full flex flex-col">
-            <div className="flex items-center gap-3 mb-4">
-              <span className={cn(
-                "px-3 py-1 rounded-full text-[10px] tracking-wider font-medium",
-                topic.type === 'NEWS' ? "bg-daito-green text-white" : "bg-daito-orange text-white"
-              )}>
-                {topic.type}
-              </span>
-              <span className="text-sm font-mono text-neutral-400">{topic.date}</span>
-            </div>
-
-            <h3 className="text-lg md:text-xl font-medium text-neutral-900 group-hover:text-daito-green transition-colors duration-300 pr-12 flex-1">
-              {topic.title}
-            </h3>
-
-            {/* Arrow */}
-            <motion.div
-              className="mt-6 flex items-center gap-2 text-sm font-medium text-daito-green"
-              initial={{ x: 0 }}
-              animate={isHovered ? { x: 5 } : { x: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span>続きを読む</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </motion.div>
-          </div>
-
-          {/* Bottom Gradient Line */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-daito-green to-daito-orange"
-            initial={{ scaleX: 0 }}
-            animate={isHovered ? { scaleX: 1 } : { scaleX: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ transformOrigin: 'left' }}
-          />
-        </motion.div>
+        </div>
+        
+        {/* Content */}
+        <div className="p-4 md:p-5 flex-1 flex flex-col">
+          <p className="text-xs text-neutral-400 mb-2">{topic.date}</p>
+          <h2 className="text-sm md:text-base font-bold text-neutral-900 group-hover:text-daito-orange transition-colors line-clamp-2 flex-1">
+            {topic.title}
+          </h2>
+        </div>
       </Link>
     </motion.article>
   );
@@ -94,19 +81,19 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           className="flex items-baseline gap-4 mb-16"
         >
           <div>
-            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Latest Topics</div>
-            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Latest Topics</h2>
-            <p className="text-sm text-neutral-500 mt-2">最新トピックス</p>
+            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Latest Results</div>
+            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Latest Results</h2>
+            <p className="text-sm text-neutral-500 mt-2">最新リザルト</p>
           </div>
         </motion.div>
 
         {/* Topics Grid */}
         {topics.length === 0 ? (
           <div className="text-center py-20 text-neutral-400">
-            最新のトピックスがありません
+            最新のリザルトがありません
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
             {topics.map((topic, index) => (
               <TopicCard key={topic.id} topic={topic} index={index} />
             ))}

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import Breadcrumbs from '@/app/components/ui/Breadcrumbs';
+import TimeDisplay from '@/app/components/ui/TimeDisplay';
 
 // 選手データ型定義
 interface PersonalBest {
@@ -111,8 +112,10 @@ function MemberCard({ member, index, grade }: { member: Member; index: number; g
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-neutral-300 text-4xl">
-              {member.name.charAt(0)}
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+              <div className="text-center">
+                <p className="text-xs text-neutral-400 font-medium">no image</p>
+              </div>
             </div>
           )}
         </div>
@@ -136,10 +139,12 @@ function MemberCard({ member, index, grade }: { member: Member; index: number; g
           <div className="space-y-2 mt-3 pt-3 border-t border-neutral-50">
             {member.personalBests.map((pb, idx) => (
               <div key={idx} className="space-y-0.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-neutral-500">{pb.event}</span>
-                  <span className="font-mono font-medium text-neutral-900">{pb.time}</span>
-                </div>
+                <TimeDisplay 
+                  event={pb.event} 
+                  time={pb.time} 
+                  size="sm"
+                  className="justify-between"
+                />
                 {(pb.date || pb.competition) && (
                   <div className="text-[10px] text-neutral-400 space-y-0.5">
                     {pb.date && <div>{pb.date}</div>}
@@ -174,8 +179,10 @@ function StaffCard({ staff, index }: { staff: Staff; index: number }) {
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-neutral-300 text-4xl">
-            {staff.name.charAt(0)}
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+            <div className="text-center">
+              <p className="text-xs text-neutral-400 font-medium">no image</p>
+            </div>
           </div>
         )}
       </div>
@@ -223,8 +230,8 @@ export default function MembersClient({ membersData, staffData }: MembersClientP
 
       {/* Tab Navigation - Modern Design */}
       <div className="sticky top-16 md:top-20 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-center py-4 gap-1">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex justify-center py-3 md:py-4 gap-0.5 md:gap-1">
             {gradeData.map((grade) => (
               <button
                 key={grade.id}
@@ -232,7 +239,7 @@ export default function MembersClient({ membersData, staffData }: MembersClientP
                 aria-label={`${grade.label}を表示`}
                 aria-pressed={activeTab === grade.id}
                 className={cn(
-                  "relative px-6 py-3 text-sm font-medium transition-all duration-300",
+                  "relative px-3 py-2 md:px-6 md:py-3 text-xs md:text-sm font-medium transition-all duration-300",
                   activeTab === grade.id
                     ? "text-neutral-900"
                     : "text-neutral-400 hover:text-neutral-600"
