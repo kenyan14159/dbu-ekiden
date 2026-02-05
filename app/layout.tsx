@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google';
+import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
 import Header from '@/app/components/layout/Header';
 import Footer from '@/app/components/layout/Footer';
@@ -12,14 +12,6 @@ import { generateOrganizationSchema, generateSportsTeamSchema } from '@/lib/stru
 const notoSansJP = Noto_Sans_JP({
     subsets: ['latin'],
     variable: '--font-noto-sans-jp',
-    display: 'swap',
-    preload: true,
-});
-
-const notoSerifJP = Noto_Serif_JP({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-noto-serif-jp',
     display: 'swap',
     preload: true,
 });
@@ -48,7 +40,7 @@ export const metadata: Metadata = {
         locale: 'ja_JP',
         images: [
             {
-                url: '/images/ogp/default-ogp.jpg',
+                url: '/images/default-ogp.jpg',
                 width: 1200,
                 height: 630,
                 alt: '大東文化大学陸上競技部男子長距離ブロック',
@@ -59,7 +51,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: '大東文化大学陸上競技部男子長距離ブロック',
         description: '大東文化大学陸上競技部男子長距離ブロック公式サイト',
-        images: ['/images/ogp/default-ogp.jpg'],
+        images: ['/images/default-ogp.jpg'],
     },
 };
 
@@ -72,7 +64,7 @@ export default function RootLayout({
     const sportsTeamSchema = generateSportsTeamSchema();
 
     return (
-        <html lang="ja" className={`${notoSansJP.variable} ${notoSerifJP.variable}`}>
+        <html lang="ja" className={notoSansJP.variable}>
             <body className="font-sans antialiased">
                 <Script
                     id="organization-schema"

@@ -17,20 +17,7 @@ export interface NewsArticleMeta {
   image: string;
 }
 
-/**
- * リザルトのメタデータ型
- */
-export interface ResultMetadata {
-  articles: ResultArticleMeta[];
-}
 
-export interface ResultArticleMeta {
-  slug: string;
-  id: number;
-  title: string;
-  date: string;
-  image: string;
-}
 
 /**
  * ニュース記事の型定義（詳細）
@@ -82,54 +69,33 @@ export interface ObNewsData {
 }
 
 /**
- * リザルトイベントの型定義
+ * トピックアイテムの型定義
  */
-export interface ResultEvent {
-  id: number;
-  slug: string;
+export interface TopicItem {
+  id: string;
+  type: 'NEWS';
   date: string;
   title: string;
-  venue?: string;
-  location?: string;
-  description?: string;
-  results?: Result[];
-  teamResult?: TeamResult;
+  link: string;
+  excerpt?: string;
   image?: string;
 }
 
 /**
- * 個別リザルトの型定義
+ * 型ガード関数
  */
-export interface Result {
-  event?: string;
-  name?: string;
-  time?: string;
-  rank?: string;
-  note?: string;
-  runnerName?: string;
-  position?: number;
-  distance?: string;
-  notes?: string;
-}
-
-/**
- * 団体成績の型定義
- */
-export interface TeamResult {
-  rank: string;
-  totalTime: string;
-  outboundRank?: string;
-  outboundTime?: string;
-  inboundRank?: string;
-  inboundTime?: string;
-}
-
-/**
- * リザルトデータの型定義
- */
-export interface ResultsData {
-  year: number;
-  events: ResultEvent[];
+export function isNewsArticle(data: unknown): data is NewsArticle {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    'id' in data &&
+    'slug' in data &&
+    'title' in data &&
+    'date' in data &&
+    typeof (data as NewsArticle).id === 'number' &&
+    typeof (data as NewsArticle).slug === 'string' &&
+    typeof (data as NewsArticle).title === 'string'
+  );
 }
 
 /**
@@ -182,49 +148,7 @@ export interface MembersData {
   members: Member[];
 }
 
-/**
- * トピックアイテムの型定義
- */
-export interface TopicItem {
-  id: string;
-  type: 'NEWS' | 'RESULT';
-  date: string;
-  title: string;
-  link: string;
-  excerpt?: string;
-  image?: string;
-}
 
-/**
- * 型ガード関数
- */
-export function isNewsArticle(data: unknown): data is NewsArticle {
-  return (
-    typeof data === 'object' &&
-    data !== null &&
-    'id' in data &&
-    'slug' in data &&
-    'title' in data &&
-    'date' in data &&
-    typeof (data as NewsArticle).id === 'number' &&
-    typeof (data as NewsArticle).slug === 'string' &&
-    typeof (data as NewsArticle).title === 'string'
-  );
-}
-
-export function isResultEvent(data: unknown): data is ResultEvent {
-  return (
-    typeof data === 'object' &&
-    data !== null &&
-    'id' in data &&
-    'slug' in data &&
-    'title' in data &&
-    'date' in data &&
-    typeof (data as ResultEvent).id === 'number' &&
-    typeof (data as ResultEvent).slug === 'string' &&
-    typeof (data as ResultEvent).title === 'string'
-  );
-}
 
 export function isEvent(data: unknown): data is Event {
   return (

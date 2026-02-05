@@ -73,7 +73,7 @@ export default function UpcomingEvents() {
           transition={{ duration: 0.8 }}
           className="flex items-baseline gap-4 mb-16"
         >
-          <span className="text-8xl md:text-9xl font-serif font-light text-white/10">02</span>
+          <span className="text-8xl md:text-9xl font-sans font-light text-white/10">02</span>
           <div className="-ml-6">
             <div className="text-[10px] tracking-[0.3em] text-daito-orange uppercase">Upcoming Events</div>
             <h2 className="text-2xl md:text-4xl font-medium text-white">今後の試合予定</h2>
@@ -109,7 +109,7 @@ export default function UpcomingEvents() {
                 )}>
                   <span className="text-[10px] tracking-[0.2em] text-white/40 uppercase mb-1">{event.month}</span>
                   <span className={cn(
-                    "text-3xl md:text-4xl font-light font-mono",
+                    "text-3xl md:text-4xl font-light font-sans",
                     event.highlight ? "text-daito-orange" : "text-white"
                   )}>
                     {event.date}

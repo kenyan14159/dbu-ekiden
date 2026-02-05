@@ -1,4 +1,191 @@
 {
   "event": "10000m",
-  "records": []
+  "records": [
+    {
+      "rank": 1,
+      "fullName": "棟方 一楽",
+      "highSchool": "弘前実業",
+      "time": "28:19.82"
+    },
+    {
+      "rank": 2,
+      "fullName": "エヴァンス・キプロップ",
+      "highSchool": "セントピーターズ",
+      "time": "28:29.35"
+    },
+    {
+      "rank": 3,
+      "fullName": "中澤 真大",
+      "highSchool": "埼玉栄",
+      "time": "28:29.46"
+    },
+    {
+      "rank": 4,
+      "fullName": "大濱 逞真",
+      "highSchool": "仙台育英",
+      "time": "28:33.58"
+    },
+    {
+      "rank": 5,
+      "fullName": "藤原 幹大",
+      "highSchool": "東海大札幌",
+      "time": "28:50.30"
+    },
+    {
+      "rank": 6,
+      "fullName": "清水 雄翔",
+      "highSchool": "慶誠",
+      "time": "28:56.45"
+    },
+    {
+      "rank": 7,
+      "fullName": "松浦 輝仁",
+      "highSchool": "坂戸西",
+      "time": "29:00.89"
+    },
+    {
+      "rank": 8,
+      "fullName": "菅﨑 大翔",
+      "highSchool": "トヨタ工業",
+      "time": "29:04.7"
+    },
+    {
+      "rank": 9,
+      "fullName": "鈴木 青空",
+      "highSchool": "武蔵越生",
+      "time": "29:21.48"
+    },
+    {
+      "rank": 10,
+      "fullName": "大澤 琉欧",
+      "highSchool": "学法石川",
+      "time": "29:24.44"
+    },
+    {
+      "rank": 11,
+      "fullName": "庄司 瑞輝",
+      "highSchool": "酒田南",
+      "time": "29:24.55"
+    },
+    {
+      "rank": 12,
+      "fullName": "宮倉 騎士",
+      "highSchool": "遊学館",
+      "time": "29:25.74"
+    },
+    {
+      "rank": 13,
+      "fullName": "西村 悠誠",
+      "highSchool": "東海大札幌",
+      "time": "29:27.02"
+    },
+    {
+      "rank": 14,
+      "fullName": "井上 陸斗",
+      "highSchool": "埼玉栄",
+      "time": "29:35.76"
+    },
+    {
+      "rank": 15,
+      "fullName": "小野寺 颯太",
+      "highSchool": "花巻東",
+      "time": "29:35.98"
+    },
+    {
+      "rank": 16,
+      "fullName": "平田 碧",
+      "highSchool": "比叡山",
+      "time": "29:36.78"
+    },
+    {
+      "rank": 17,
+      "fullName": "日髙 龍之助",
+      "highSchool": "宮崎日大",
+      "time": "29:38.63"
+    },
+    {
+      "rank": 18,
+      "fullName": "鈴木 要",
+      "highSchool": "水城",
+      "time": "29:38.90"
+    },
+    {
+      "rank": 19,
+      "fullName": "沖野 凌我",
+      "highSchool": "学法石川",
+      "time": "29:42.86"
+    },
+    {
+      "rank": 20,
+      "fullName": "和田 麻里",
+      "highSchool": "宮崎日大",
+      "time": "29:42.89"
+    },
+    {
+      "rank": 21,
+      "fullName": "増子 岳",
+      "highSchool": "東海大山形",
+      "time": "29:45.70"
+    },
+    {
+      "rank": 22,
+      "fullName": "野﨑 想",
+      "highSchool": "大牟田",
+      "time": "29:46.71"
+    },
+    {
+      "rank": 23,
+      "fullName": "石川 郁弥",
+      "highSchool": "花咲徳栄",
+      "time": "29:48.02"
+    },
+    {
+      "rank": 24,
+      "fullName": "庄治 大翔",
+      "highSchool": "岡山商大付",
+      "time": "29:53.49"
+    },
+    {
+      "rank": 25,
+      "fullName": "越前谷 洋武",
+      "highSchool": "城西大城西",
+      "time": "29:54.78"
+    },
+    {
+      "rank": 26,
+      "fullName": "金子 大和",
+      "highSchool": "大東一",
+      "time": "29:57.26"
+    },
+    {
+      "rank": 27,
+      "fullName": "岡村 将英",
+      "highSchool": "三重",
+      "time": "30:11.49"
+    },
+    {
+      "rank": 28,
+      "fullName": "福井 陽仁",
+      "highSchool": "青森山田",
+      "time": "30:31.83"
+    },
+    {
+      "rank": 29,
+      "fullName": "中澤 拓斗",
+      "highSchool": "仙台育英",
+      "time": "30:36.95"
+    },
+    {
+      "rank": 30,
+      "fullName": "早乙女 良真",
+      "highSchool": "学法石川",
+      "time": "30:41.30"
+    },
+    {
+      "rank": 31,
+      "fullName": "上田 翔大",
+      "highSchool": "西脇工",
+      "time": "32:54.88"
+    }
+  ]
 }

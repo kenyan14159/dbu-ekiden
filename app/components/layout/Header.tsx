@@ -9,34 +9,38 @@ import { cn } from '@/lib/utils';
 
 const navSections = [
   {
-    title: 'メンバー紹介',
+    title: 'Members',
     link: '/members',
     items: null,
   },
   {
-    title: 'トピックス',
-    items: [
-      { title: 'リザルト', link: '/results' },
-      { title: 'ニュース', link: '/news' },
-      { title: 'スケジュール', link: '/schedule' },
-    ],
-  },
-  {
-    title: '歴代記録',
+    title: 'Records',
     link: '/records',
     items: null,
   },
   {
-    title: 'チーム情報',
-    items: [
-      { title: 'メッセージ', link: '/message' },
-      { title: 'サポーター', link: '/supporters' },
-      { title: 'お問い合わせ', link: '/contact' },
-    ],
+    title: 'News',
+    link: '/news',
+    items: null,
   },
   {
-    title: '限定コンテンツ',
-    link: '/exclusive',
+    title: 'Schedule',
+    link: '/schedule',
+    items: null,
+  },
+  {
+    title: 'Message',
+    link: '/message',
+    items: null,
+  },
+  {
+    title: 'Supporters',
+    link: '/supporters',
+    items: null,
+  },
+  {
+    title: 'Contact',
+    link: '/contact',
     items: null,
   },
 ];
@@ -260,7 +264,7 @@ export default function Header() {
                           onClick={() => toggleMobileSection(section.title)}
                           aria-expanded={openMobileSections.includes(section.title)}
                           aria-label={`${section.title}メニューを${openMobileSections.includes(section.title) ? '閉じる' : '開く'}`}
-                          className="text-2xl font-serif font-medium text-neutral-900 group-hover:text-daito-green transition-colors flex items-center justify-center mx-auto gap-2"
+                          className="text-2xl font-sans font-medium text-neutral-900 group-hover:text-daito-green transition-colors flex items-center justify-center mx-auto gap-2"
                         >
                           {section.title}
                           <ChevronDown
@@ -299,7 +303,7 @@ export default function Header() {
                       <Link
                         href={section.link!}
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-2xl font-serif font-medium text-neutral-900 hover:text-daito-green transition-colors block"
+                        className="text-2xl font-sans font-medium text-neutral-900 hover:text-daito-green transition-colors block"
                       >
                         {section.title}
                       </Link>

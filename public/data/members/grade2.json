@@ -1,350 +1,219 @@
 {
   "members": [
     {
-      "name": "井上",
       "fullName": "井上 陸斗",
       "reading": "いのうえ りくと",
       "highSchool": "埼玉栄",
-      "department": "スポーツ・健康科学部スポーツ科",
-      "grade": "2年",
+      "faculty": "スポーツ・健康科学部",
+      "department": "スポーツ科学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'50\"11",
-          "date": "2025/04/19",
-          "competition": "第1回早稲田大学競技会"
-        },
-        {
           "event": "5000m",
-          "time": "14'25\"31",
-          "date": "2025/06/01",
-          "competition": "第321回日本体育大学長距離競技会兼第15回NITTAIDAI Challenge Games"
+          "time": "14:25.31"
         },
         {
           "event": "10000m",
-          "time": "29'35\"76",
-          "date": "2025/10/25",
-          "competition": "2025国士舘大学Combined Challenge"
+          "time": "29:35.76"
         }
       ],
       "image": ""
     },
     {
-      "name": "上田",
       "fullName": "上田 翔大",
       "reading": "うえだ しょうだい",
-      "highSchool": "西脇工業",
-      "department": "スポーツ・健康科学部スポーツ科",
-      "grade": "2年",
+      "highSchool": "西脇工",
+      "faculty": "スポーツ・健康科学部",
+      "department": "スポーツ科学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'49\"65",
-          "date": "2024/06/14",
-          "competition": "第77回近畿高校対抗選手権"
-        },
-        {
           "event": "5000m",
-          "time": "14'08\"55",
-          "date": "2024/09/21",
-          "competition": "第1回強化中・長距離競技会"
+          "time": "14:08.55"
         },
         {
           "event": "10000m",
-          "time": "32'54\"88",
-          "date": "2025/09/20",
-          "competition": "第124回平成国際大学長距離競技会"
+          "time": "32:54.88"
         },
         {
-          "event": "ハーフ",
-          "time": "1:04'03",
-          "date": "2025/10/18",
-          "competition": "第102回東京箱根間往復大学駅伝競走予選会"
+          "event": "Half Marathon",
+          "time": "1:04:03"
         }
       ],
       "image": ""
     },
     {
-      "name": "越前谷",
       "fullName": "越前谷 洋武",
       "reading": "えちぜんや ひろむ",
       "highSchool": "城西大城西",
-      "department": "経営学部経営学科",
-      "grade": "2年",
+      "faculty": "経営学部",
+      "department": "経営学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'57\"48",
-          "date": "2022/06/04",
-          "competition": "第296回日本体育大学長距離競技会"
-        },
-        {
           "event": "5000m",
-          "time": "14'27\"51",
-          "date": "2023/11/12",
-          "competition": "第309回日本体育大学長距離競技会兼第5回NITTAIDAI Challenge Games"
+          "time": "14:27.51"
         },
         {
           "event": "10000m",
-          "time": "29'54\"78",
-          "date": "2025/10/25",
-          "competition": "2025国士舘大学Combined challenge"
+          "time": "29:54.78"
         },
         {
-          "event": "ハーフ",
-          "time": "1:16'15",
-          "date": "2025/11/30",
-          "competition": "小江戸川越ハーフマラソン"
+          "event": "Half Marathon",
+          "time": "1:16:15"
         }
       ],
       "image": ""
     },
     {
-      "name": "岡村",
       "fullName": "岡村 将英",
       "reading": "おかむら しょうえい",
       "highSchool": "三重",
-      "department": "経済学部社会経済学科",
-      "grade": "2年",
+      "faculty": "経済学部",
+      "department": "社会経済学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "4'05\"50",
-          "date": "2024/06/02",
-          "competition": "第87回三重県選手権"
-        },
-        {
           "event": "5000m",
-          "time": "14'41\"32",
-          "date": "2025/10/05",
-          "competition": "第5回公使館大学競技会"
+          "time": "14:41.32"
         },
         {
           "event": "10000m",
-          "time": "30'11\"49",
-          "date": "2025/11/29",
-          "competition": "第325回日本体育大学長距離競技会兼第19回NITTAIDAI Challenge Games"
+          "time": "30:11.49"
         },
         {
-          "event": "ハーフ",
-          "time": "1:19'12",
-          "date": "2025/11/30",
-          "competition": "小江戸川越ハーフマラソン"
+          "event": "Half Marathon",
+          "time": "1:19:12"
         }
       ],
       "image": ""
     },
     {
-      "name": "金子",
       "fullName": "金子 大和",
       "reading": "かねこ やまと",
       "highSchool": "大東一",
-      "department": "国際関係学部国際関係学科",
-      "grade": "2年",
+      "faculty": "国際関係学部",
+      "department": "国際関係学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "4'07\"33",
-          "date": "2023/05/13",
-          "competition": "第76回東京都高校対校選手権"
-        },
-        {
           "event": "5000m",
-          "time": "14'26\"93",
-          "date": "2023/11/12",
-          "competition": "第309回日本体育大学長距離競技会兼第5回NITTAIDAI Challenge Games"
+          "time": "14:26.93"
         },
         {
           "event": "10000m",
-          "time": "29'57\"26",
-          "date": "2023/12/24",
-          "competition": "第109回平成国際大学長距離競技会"
+          "time": "29:57.26"
         }
       ],
       "image": ""
     },
     {
-      "name": "菅﨑",
       "fullName": "菅﨑 大翔",
       "reading": "すがさき やまと",
-      "highSchool": "科技高豊田",
-      "department": "スポーツ・健康科学部スポーツ科",
-      "grade": "2年",
+      "highSchool": "トヨタ工業",
+      "faculty": "スポーツ・健康科学部",
+      "department": "スポーツ科学科 ",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'52\"69",
-          "date": "2025/06/22",
-          "competition": "第123回平成国際大学長距離競技会"
-        },
-        {
           "event": "5000m",
-          "time": "14'12\"55",
-          "date": "2024/11/10",
-          "competition": "第317回日本体育大学長距離競技会兼第12回NITTAIDAI Challenge Games"
+          "time": "14:12.55"
         },
         {
           "event": "10000m",
-          "time": "29'04\"7",
-          "date": "2025/05/24",
-          "competition": "第57回全日本大学駅伝対校選手権大会関東学生陸上連盟推薦校選考会"
+          "time": "29:04.7"
         },
         {
-          "event": "ハーフ",
-          "time": "1:02'17",
-          "date": "2025/11/16",
-          "competition": "第38回2025上尾シティハーフマラソン"
+          "event": "Half Marathon",
+          "time": "1:02:17"
         }
       ],
       "image": ""
     },
     {
-      "name": "鈴木",
       "fullName": "鈴木 要",
       "reading": "すずき かなめ",
       "highSchool": "水城",
-      "department": "国際関係学部国際関係学科",
-      "grade": "2年",
+      "faculty": "国際関係学部",
+      "department": "国際関係学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'52\"21",
-          "date": "2024/04/13",
-          "competition": "第312回日本体育大学長距離競技会"
-        },
-        {
           "event": "5000m",
-          "time": "14'12\"50",
-          "date": "2025/06/01",
-          "competition": "第321回日本体育大学長距離競技会兼第15回NITTAIDA Challenge Games"
+          "time": "14:12.50"
         },
         {
           "event": "10000m",
-          "time": "29'38\"9",
-          "date": "2025/06/22",
-          "competition": "2025年度あおもりディスタンスチャレンジ記録会"
+          "time": "29:38.90"
         },
         {
-          "event": "ハーフ",
-          "time": "1:03'53",
-          "date": "2025/10/18",
-          "competition": "第102回東京箱根間往復大学駅伝競走予選会"
+          "event": "Half Marathon",
+          "time": "1:03:53"
         }
       ],
       "image": ""
     },
     {
-      "name": "関",
       "fullName": "関 朝陽",
       "reading": "せき ともはる",
-      "highSchool": "東京農業大学第三",
-      "department": "経営学部経営学科",
-      "grade": "2年",
+      "highSchool": "東農大三",
+      "faculty": "経営学部",
+      "department": "経営学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'51\"01",
-          "date": "2025/04/19",
-          "competition": "第1回早稲田大学競技会"
-        },
-        {
           "event": "5000m",
-          "time": "14'45\"47",
-          "date": "2025/06/01",
-          "competition": "第321回日本体育大学長距離競技会兼第15回NITTAIDAI Challenge Games"
+          "time": "14:45.47"
         }
       ],
       "image": ""
     },
     {
-      "name": "中村",
       "fullName": "中村 一誠",
       "reading": "なかむらいっせい",
       "highSchool": "京都外大西",
-      "department": "経済学部社会経済学科",
-      "grade": "2年",
+      "faculty": "経済学部",
+      "department": "社会経済学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "4'04\"21",
-          "date": "2024/07/20",
-          "competition": "Summer Game"
-        },
-        {
           "event": "5000m",
-          "time": "14'44\"58",
-          "date": "2023/09/23",
-          "competition": "2023年度奈良県第1回強化長距離記録会"
+          "time": "14:44.58"
         },
         {
-          "event": "ハーフ",
-          "time": "1:11'58",
-          "date": "2025/11/30",
-          "competition": "小江戸川越ハーフマラソン2025"
+          "event": "Half Marathon",
+          "time": "1:11:58"
         }
       ],
       "image": ""
     },
     {
-      "name": "日髙",
       "fullName": "日髙 龍之助",
       "reading": "ひだかりゅうのすけ",
       "highSchool": "宮崎日大",
-      "department": "スポーツ・健康科学部スポーツ科",
-      "grade": "2年",
+      "faculty": "スポーツ・健康科学部",
+      "department": "スポーツ科学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "3'59\"07",
-          "date": "2023/10/06",
-          "competition": "令和5年度全九州高校体育大会"
-        },
-        {
           "event": "5000m",
-          "time": "14'32\"06",
-          "date": "2023/11/11",
-          "competition": "第5回佐賀長距離記録会"
+          "time": "14:32.06"
         },
         {
           "event": "10000m",
-          "time": "29'38\"63",
-          "date": "2025/11/29",
-          "competition": "第325回日本体育大学長距離競技会兼第19回NITTAIDAI Challenge Games"
+          "time": "29:38.63"
         }
       ],
       "image": ""
     },
     {
-      "name": "増子",
       "fullName": "増子 岳",
       "reading": "ますこ がく",
       "highSchool": "東海大山形",
-      "department": "経済学部現代経済学科",
-      "grade": "2年",
+      "faculty": "経済学部",
+      "department": "現代経済学科",
       "personalBests": [
         {
-          "event": "1500m",
-          "time": "4'11\"94",
-          "date": "2021/07/24",
-          "competition": "第61回山形県中学校総合体育大会"
-        },
-        {
           "event": "5000m",
-          "time": "14'25\"85",
-          "date": "2025/06/01",
-          "competition": "第321回日本体育大学長距離競技会兼第15回NITTAIDAI Challenge Games"
+          "time": "14:25.85"
         },
         {
           "event": "10000m",
-          "time": "29'45\"70",
-          "date": "2025/11/29",
-          "competition": "第325回日本体育大学長距離競技会兼第19回NITTAIDAI Challenge Games"
+          "time": "29:45.70"
         },
         {
-          "event": "ハーフ",
-          "time": "1:04'26",
-          "date": "2025/10/18",
-          "competition": "第102回東京箱根間往復大学駅伝競走予選会"
+          "event": "Half Marathon",
+          "time": "1:04:26"
         }
       ],
       "image": ""

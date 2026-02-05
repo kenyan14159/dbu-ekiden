@@ -25,17 +25,17 @@ export default function TimeDisplay({
     sm: {
       container: 'text-xs',
       event: 'text-neutral-500',
-      time: 'font-mono font-medium text-neutral-900',
+      time: 'font-sans font-medium text-neutral-900',
     },
     md: {
       container: 'text-sm',
       event: 'text-neutral-500',
-      time: 'font-mono font-medium text-neutral-900',
+      time: 'font-sans font-medium text-neutral-900',
     },
     lg: {
       container: 'text-base',
       event: 'text-neutral-600',
-      time: 'font-mono font-bold text-lg text-daito-green',
+      time: 'font-sans font-bold text-lg text-daito-green',
     },
   };
 

@@ -74,7 +74,7 @@ export function generateArticleSchema(article: {
     "description": article.description,
     "datePublished": article.datePublished,
     "dateModified": article.dateModified || article.datePublished,
-    "image": article.image ? `${BASE_URL}${article.image}` : `${BASE_URL}/images/ogp/default-ogp.jpg`,
+    "image": article.image ? `${BASE_URL}${article.image}` : `${BASE_URL}/images/default-ogp.jpg`,
     "url": `${BASE_URL}${article.url}`,
     "author": {
       "@type": "Organization",

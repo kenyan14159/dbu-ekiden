@@ -29,10 +29,10 @@ export default function TeamInfo() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-3">
+                    <p className="text-daito-orange font-sans text-sm tracking-[0.3em] mb-3">
                         ABOUT THE TEAM
                     </p>
-                    <h2 className="text-2xl md:text-4xl font-serif font-light text-neutral-900 mb-3">
+                    <h2 className="text-2xl md:text-4xl font-sans font-light text-neutral-900 mb-3">
                         Long Distance Team
                     </h2>
                     <p className="text-sm md:text-base text-neutral-500">

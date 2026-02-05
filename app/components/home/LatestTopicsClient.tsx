@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import type { TopicItem } from '@/lib/types';
 
@@ -69,6 +70,22 @@ interface LatestTopicsClientProps {
 }
 
 export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) {
+  const [displayCount, setDisplayCount] = useState(3);
+
+  useEffect(() => {
+    const updateDisplayCount = () => {
+      // モバイル（768px未満）では2件、デスクトップでは3件
+      setDisplayCount(window.innerWidth < 768 ? 2 : 3);
+    };
+
+    // 初回設定
+    updateDisplayCount();
+
+    // リサイズ時の更新
+    window.addEventListener('resize', updateDisplayCount);
+    return () => window.removeEventListener('resize', updateDisplayCount);
+  }, []);
+
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6">
@@ -81,20 +98,20 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           className="flex items-baseline gap-4 mb-16"
         >
           <div>
-            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Latest Results</div>
-            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Latest Results</h2>
-            <p className="text-sm text-neutral-500 mt-2">最新リザルト</p>
+            <div className="text-[10px] tracking-[0.3em] text-neutral-300 uppercase">Latest News</div>
+            <h2 className="text-4xl md:text-5xl font-medium text-neutral-900">Latest News</h2>
+            <p className="text-sm text-neutral-500 mt-2">最新ニュース</p>
           </div>
         </motion.div>
 
         {/* Topics Grid */}
         {topics.length === 0 ? (
           <div className="text-center py-20 text-neutral-400">
-            最新のリザルトがありません
+            最新のニュースがありません
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
-            {topics.map((topic, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16">
+            {topics.slice(0, displayCount).map((topic, index) => (
               <TopicCard key={topic.id} topic={topic} index={index} />
             ))}
           </div>
@@ -108,10 +125,10 @@ export default function LatestTopicsClient({ topics }: LatestTopicsClientProps) 
           className="flex flex-wrap justify-center gap-4"
         >
           <Link
-            href="/results"
-            className="px-8 py-4 border border-neutral-200 rounded-full text-sm font-medium text-neutral-600 hover:border-daito-orange hover:text-daito-orange transition-all duration-300"
+            href="/news"
+            className="px-8 py-4 border border-neutral-200 rounded-full text-sm font-medium text-neutral-600 hover:border-daito-green hover:text-daito-green transition-all duration-300"
           >
-            リザルト一覧
+            ニュース一覧
           </Link>
         </motion.div>
       </div>

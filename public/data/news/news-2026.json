@@ -1,25 +1,25 @@
 {
   "articles": [
     {
-      "slug": "hakone-102-soukoukai",
+      "slug": "kanagawa-marathon-48",
       "id": 1,
-      "title": "第102回箱根駅伝壮行会を開催",
-      "date": "2026-01-01",
-      "image": ""
+      "title": "【第48回神奈川マラソン】結果報告",
+      "date": "2026-02-03",
+      "image": "/images/kanagawa.jpg"
     },
     {
-      "slug": "hakone-102-entry",
+      "slug": "marugame-half-2026",
       "id": 2,
-      "title": "第102回箱根駅伝エントリーメンバー（16名）発表！",
-      "date": "2026-01-01",
-      "image": ""
+      "title": "【第78回香川丸亀国際ハーフマラソン】結果報告",
+      "date": "2026-02-02",
+      "image": "/images/marugame.jpg"
     },
     {
-      "slug": "winter-camp-2025",
+      "slug": "hakone-102-results",
       "id": 3,
-      "title": "冬季強化合宿を実施",
-      "date": "2026-01-01",
-      "image": ""
+      "title": "第102回東京箱根間往復大学駅伝競走 結果報告",
+      "date": "2026-02-01",
+      "image": "/images/hakone.jpg"
     }
   ]
 }

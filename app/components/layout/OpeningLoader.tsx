@@ -63,7 +63,7 @@ export default function OpeningLoader() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.8 }}
-                            className="text-4xl md:text-6xl font-serif text-white font-light tracking-[0.2em] relative z-20"
+                            className="text-4xl md:text-6xl font-sans text-white font-light tracking-[0.2em] relative z-20"
                         >
                             歴史への礎
                         </motion.h1>

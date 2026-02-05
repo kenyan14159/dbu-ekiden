@@ -1,4 +1,161 @@
 {
-  "event": "ハーフマラソン",
-  "records": []
+  "event": "Half Marathon",
+  "records": [
+    {
+      "rank": 1,
+      "fullName": "大濱 逞真",
+      "highSchool": "仙台育英",
+      "time": "1:01:08"
+    },
+    {
+      "rank": 2,
+      "fullName": "棟方 一楽",
+      "highSchool": "弘前実業",
+      "time": "1:01:38"
+    },
+    {
+      "rank": 3,
+      "fullName": "菅﨑 大翔",
+      "highSchool": "トヨタ工業",
+      "time": "1:02:17"
+    },
+    {
+      "rank": 4,
+      "fullName": "中澤 真大",
+      "highSchool": "埼玉栄",
+      "time": "1:02:24"
+    },
+    {
+      "rank": 5,
+      "fullName": "藤原 幹大",
+      "highSchool": "東海大札幌",
+      "time": "1:02:34"
+    },
+    {
+      "rank": 6,
+      "fullName": "庄司 瑞輝",
+      "highSchool": "酒田南",
+      "time": "1:02:52"
+    },
+    {
+      "rank": 7,
+      "fullName": "エヴァンス・キプロップ",
+      "highSchool": "セントピーターズ",
+      "time": "1:03:08"
+    },
+    {
+      "rank": 8,
+      "fullName": "松浦 輝仁",
+      "highSchool": "坂戸西",
+      "time": "1:03:09"
+    },
+    {
+      "rank": 9,
+      "fullName": "宮倉 騎士",
+      "highSchool": "遊学館",
+      "time": "1:03:29"
+    },
+    {
+      "rank": 10,
+      "fullName": "和田 麻里",
+      "highSchool": "宮崎日大",
+      "time": "1:03:43"
+    },
+    {
+      "rank": 11,
+      "fullName": "鈴木 要",
+      "highSchool": "水城",
+      "time": "1:03:53"
+    },
+    {
+      "rank": 12,
+      "fullName": "清水 雄翔",
+      "highSchool": "慶誠",
+      "time": "1:04:03"
+    },
+    {
+      "rank": 13,
+      "fullName": "上田 翔大",
+      "highSchool": "西脇工",
+      "time": "1:04:03"
+    },
+    {
+      "rank": 14,
+      "fullName": "西村 悠誠",
+      "highSchool": "東海大札幌",
+      "time": "1:04:21"
+    },
+    {
+      "rank": 15,
+      "fullName": "石川 郁弥",
+      "highSchool": "花咲徳栄",
+      "time": "1:04:23"
+    },
+    {
+      "rank": 16,
+      "fullName": "増子 岳",
+      "highSchool": "東海大山形",
+      "time": "1:04:26"
+    },
+    {
+      "rank": 17,
+      "fullName": "平田 碧",
+      "highSchool": "比叡山",
+      "time": "1:05:50"
+    },
+    {
+      "rank": 18,
+      "fullName": "早乙女 良真",
+      "highSchool": "学法石川",
+      "time": "1:06:26"
+    },
+    {
+      "rank": 19,
+      "fullName": "庄治 大翔",
+      "highSchool": "岡山商大付",
+      "time": "1:06:39"
+    },
+    {
+      "rank": 20,
+      "fullName": "中澤 拓斗",
+      "highSchool": "仙台育英",
+      "time": "1:08:11"
+    },
+    {
+      "rank": 21,
+      "fullName": "小野寺 颯太",
+      "highSchool": "花巻東",
+      "time": "1:08:41"
+    },
+    {
+      "rank": 22,
+      "fullName": "福井 陽仁",
+      "highSchool": "青森山田",
+      "time": "1:09:45"
+    },
+    {
+      "rank": 23,
+      "fullName": "大澤 琉欧",
+      "highSchool": "学法石川",
+      "time": "1:10:21"
+    },
+    {
+      "rank": 24,
+      "fullName": "中村 一誠",
+      "highSchool": "京都外大西",
+      "time": "1:11:58"
+    },
+    {
+      "rank": 25,
+      "fullName": "越前谷 洋武",
+      "highSchool": "城西大城西",
+      "time": "1:16:15"
+    },
+    {
+      "rank": 26,
+      "fullName": "岡村 将英",
+      "highSchool": "三重",
+      "time": "1:19:12"
+    }
+  ]
 }

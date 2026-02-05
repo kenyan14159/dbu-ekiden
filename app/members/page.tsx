@@ -16,6 +16,7 @@ interface Member {
   image?: string;
   personalBests: PersonalBest[];
   highSchool?: string;
+  faculty?: string;
   department?: string;
 }
 
@@ -39,6 +40,7 @@ const normalizeMember = (member: Partial<Member> & { personalBests?: PersonalBes
   image: member.image,
   personalBests: normalizePersonalBests(member),
   highSchool: member.highSchool,
+  faculty: member.faculty,
   department: member.department,
 });
 

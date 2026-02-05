@@ -51,7 +51,7 @@ function MessageCard({ message, index }: { message: typeof messages[0]; index: n
       >
         <div className="p-6 md:p-8">
           {/* Quote Icon */}
-          <div className="text-6xl font-serif text-neutral-100 leading-none mb-4 group-hover:text-daito-green/20 transition-colors duration-300">
+          <div className="text-6xl font-sans text-neutral-100 leading-none mb-4 group-hover:text-daito-green/20 transition-colors duration-300">
             &ldquo;
           </div>
 
@@ -121,7 +121,7 @@ export default function SupportMessages() {
           className="text-center mb-16"
         >
           <div className="flex items-baseline justify-center gap-4 mb-6">
-            <span className="text-8xl md:text-9xl font-serif font-light text-neutral-100">04</span>
+            <span className="text-8xl md:text-9xl font-sans font-light text-neutral-100">04</span>
             <div className="-ml-6 text-left">
               <div className="text-[10px] tracking-[0.3em] text-daito-orange uppercase">Support Messages</div>
               <h2 className="text-2xl md:text-4xl font-medium text-neutral-900">応援メッセージ</h2>

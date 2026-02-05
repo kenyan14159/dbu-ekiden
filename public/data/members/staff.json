@@ -1,39 +1,39 @@
 {
   "staff": [
     {
-      "name": "大島",
-      "fullName": "大島 陽菜子",
-      "reading": "おおしま ひなこ",
-      "highSchool": "本庄東",
-      "department": "スポーツ・健康科学部看護学科",
-      "role": "マネージャー、スタッフ",
-      "image": ""
-    },
-    {
-      "name": "中村",
-      "fullName": "中村 千咲",
-      "reading": "なかむら ちさき",
-      "highSchool": "富士見",
-      "department": "経営学部経営学科",
-      "role": "マネージャー、スタッフ",
-      "image": ""
-    },
-    {
-      "name": "双木",
-      "fullName": "双木 陽翔",
-      "reading": "なみき ひなた",
-      "highSchool": "埼玉平成",
-      "department": "経営学部経営学科",
-      "role": "マネージャー、スタッフ",
-      "image": ""
-    },
-    {
-      "name": "半澤",
       "fullName": "半澤 彰基",
       "reading": "はんざわ てるもと",
       "highSchool": "草津東",
-      "department": "経営学部経営学科",
-      "role": "マネージャー、スタッフ",
+      "faculty": "経営学部",
+      "department": "経営学科",
+      "role": "主務",
+      "image": ""
+    },
+    {
+      "fullName": "大島 陽菜子",
+      "reading": "おおしま ひなこ",
+      "highSchool": "本庄東",
+      "faculty": "スポーツ・健康科学部",
+      "department": "看護学科",
+      "role": "マネージャー",
+      "image": ""
+    },
+    {
+      "fullName": "中村 千咲",
+      "reading": "なかむら ちさき",
+      "highSchool": "富士見",
+      "faculty": "経営学部",
+      "department": "経営学科",
+      "role": "マネージャー",
+      "image": ""
+    },
+    {
+      "fullName": "双木 陽翔",
+      "reading": "なみき ひなた",
+      "highSchool": "埼玉平成",
+      "faculty": "経営学部",
+      "department": "経営学科",
+      "role": "マネージャー",
       "image": ""
     }
   ]

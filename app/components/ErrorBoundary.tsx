@@ -89,7 +89,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
             </p>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
-                <p className="text-sm font-mono text-red-800 break-all mb-2">
+                <p className="text-sm font-sans text-red-800 break-all mb-2">
                   <strong>Error:</strong> {this.state.error.message}
                 </p>
                 {this.state.error.stack && (

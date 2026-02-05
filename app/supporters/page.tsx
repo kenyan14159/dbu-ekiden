@@ -29,7 +29,7 @@ export default function SupportersPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-green-100 via-amber-50 to-orange-100 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -38,12 +38,9 @@ export default function SupportersPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
               SUPPORTERS
             </h1>
-            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
-              サポーターの皆様
-            </p>
           </motion.div>
         </div>
       </section>
@@ -52,8 +49,8 @@ export default function SupportersPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
           {/* Breadcrumbs */}
-          <Breadcrumbs 
-            items={[{ label: 'サポーター' }]} 
+          <Breadcrumbs
+            items={[{ label: 'Supporters' }]}
             className="mb-8"
           />
 

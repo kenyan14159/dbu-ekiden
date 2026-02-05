@@ -3,21 +3,19 @@
 import Link from 'next/link';
 
 const footerLinks = [
-  { title: 'ニュース', link: '/news' },
-  { title: 'スケジュール', link: '/schedule' },
-  { title: 'リザルト', link: '/results' },
-  { title: 'メンバー紹介', link: '/members' },
-  { title: '歴代記録', link: '/records' },
-  { title: 'サイトについて', link: '/about' },
-  { title: 'メッセージ', link: '/message' },
-  { title: 'サポーターの皆様', link: '/supporters' },
-  { title: '限定コンテンツ', link: '/exclusive' },
-  { title: 'お問い合わせ', link: '/contact' },
+  { title: 'News', link: '/news' },
+  { title: 'Schedule', link: '/schedule' },
+  { title: 'Members', link: '/members' },
+  { title: 'Records', link: '/records' },
+  { title: 'About', link: '/about' },
+  { title: 'Message', link: '/message' },
+  { title: 'Supporters', link: '/supporters' },
+  { title: 'Contact', link: '/contact' },
 ];
 
 const universityLinks = [
-  { title: '大東文化大学', link: 'https://www.daito.ac.jp' },
-  { title: '大学スポーツ', link: 'https://www.daito.ac.jp/sport/' },
+  { title: 'Daito Bunka Univ.', link: 'https://www.daito.ac.jp' },
+  { title: 'University Sports', link: 'https://www.daito.ac.jp/sport/' },
 ];
 
 const socialLinks = [
@@ -50,7 +48,7 @@ export default function Footer() {
           <div className="max-w-5xl mx-auto">
             {/* Brand */}
             <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-xl md:text-2xl font-serif font-light tracking-wider text-white/90 mb-2">
+              <h2 className="text-xl md:text-2xl font-sans font-light tracking-wider text-white/90 mb-2">
                 DAITO BUNKA UNIVERSITY
               </h2>
               <p className="text-xs md:text-sm text-white/40 tracking-[0.3em]">EKIDEN TEAM</p>

@@ -154,7 +154,7 @@ export default function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-6 md:mb-12"
           >
-            <span className="font-mono text-xs sm:text-sm tracking-[0.5em] font-light bg-gradient-to-r from-daito-green via-daito-green/90 to-daito-orange bg-clip-text text-transparent">
+            <span className="font-sans text-xs sm:text-sm tracking-[0.5em] font-light bg-gradient-to-r from-daito-green via-daito-green/90 to-daito-orange bg-clip-text text-transparent">
               DAITO BUNKA UNIVERSITY EKIDEN TEAM
             </span>
           </motion.div>
@@ -164,7 +164,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="font-serif mb-6 md:mb-12"
+            className="font-sans mb-6 md:mb-12"
           >
           <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-extralight tracking-wide mb-6 md:mb-10 overflow-hidden leading-tight">
             {mainTitle.split("").map((char, i) => (

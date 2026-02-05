@@ -1,9 +1,8 @@
-import { getNewsMetadata } from '@/lib/data';
-import ObNewsPreviewClient from './ObNewsPreviewClient';
+import { getLatestTopics } from '@/lib/data';
+import LatestTopicsClient from './LatestTopicsClient';
 
 export default async function ObNewsPreview() {
-  const newsMetadata = await getNewsMetadata();
-  const preview = { articles: newsMetadata.articles.slice(0, 3) };
+  const topics = await getLatestTopics(3); // デスクトップで3件表示
 
-  return <ObNewsPreviewClient newsMetadata={preview} />;
+  return <LatestTopicsClient topics={topics} />;
 }

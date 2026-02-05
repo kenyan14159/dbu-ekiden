@@ -9,7 +9,6 @@ interface ScheduleEvent {
   title: string;
   date: string;
   endDate?: string;
-  category: string;
   description?: string;
   location?: string;
   isCancelled?: boolean;

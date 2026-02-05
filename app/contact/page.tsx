@@ -77,7 +77,7 @@ export default function ContactPage() {
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-neutral-50">
-        <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+        <section className="relative py-20 md:py-32 bg-gradient-to-br from-green-100 via-amber-50 to-orange-100 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
@@ -86,12 +86,9 @@ export default function ContactPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
                 THANK YOU
               </h1>
-              <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
-                お問い合わせ完了
-              </p>
             </motion.div>
           </div>
         </section>
@@ -131,7 +128,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-green-100 via-amber-50 to-orange-100 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -140,12 +137,9 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
               CONTACT
             </h1>
-            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
-              お問い合わせ
-            </p>
           </motion.div>
         </div>
       </section>
@@ -154,8 +148,8 @@ export default function ContactPage() {
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
           {/* Breadcrumbs */}
-          <Breadcrumbs 
-            items={[{ label: 'お問い合わせ' }]} 
+          <Breadcrumbs
+            items={[{ label: 'Contact' }]}
             className="mb-8 max-w-3xl mx-auto"
           />
 
@@ -174,8 +168,8 @@ export default function ContactPage() {
                   <div>
                     <h4 className="text-sm font-medium text-neutral-900 mb-1">住所</h4>
                     <p className="text-sm text-neutral-600 leading-relaxed">
-                      埼玉県東松山市大字西本宿1828番地2<br />
-                      大東文化大学陸上競技部クラブハウス
+                      <span className="block">埼玉県東松山市大字西本宿1828番地2</span>
+                      <span className="block text-xs mt-1 text-neutral-500">大東文化大学陸上競技部クラブハウス</span>
                     </p>
                   </div>
                 </div>
@@ -186,8 +180,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-neutral-900 mb-1">メールアドレス</h4>
-                    <p className="text-sm text-neutral-600">
-                      Info@daito-ekiden.jp
+                    <p className="text-sm text-neutral-600 min-h-[1.25rem]">
+
                     </p>
                   </div>
                 </div>
@@ -262,15 +256,15 @@ export default function ContactPage() {
                     <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-2">
                       お問い合わせ種類 <span className="text-red-500">*</span>
                     </label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        disabled={isSubmitting}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-daito-green focus:border-daito-green transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-daito-green focus:border-daito-green transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
                       <option value="">選択してください</option>
                       <option value="general">一般的なお問い合わせ</option>
                       <option value="support">ご支援・サポーター関連</option>
@@ -284,17 +278,17 @@ export default function ContactPage() {
                     <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-2">
                       お問い合わせ内容 <span className="text-red-500">*</span>
                     </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        disabled={isSubmitting}
-                        rows={6}
-                        placeholder="お問い合わせ内容をご記入ください"
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-daito-green focus:border-daito-green transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-                      />
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      disabled={isSubmitting}
+                      rows={6}
+                      placeholder="お問い合わせ内容をご記入ください"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-daito-green focus:border-daito-green transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
                   </div>
 
                   {/* Submit Button */}

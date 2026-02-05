@@ -1,0 +1,708 @@
+{
+    "members": [
+      {
+        "fullName": "石川 郁弥",
+        "reading": "いしかわ ふみや",
+        "highSchool": "花咲徳栄",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:39.97"
+          },
+          {
+            "event": "10000m",
+            "time": "29:48.02"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:04:23"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "沖野 凌我",
+        "reading": "おきの りょうが",
+        "highSchool": "学法石川",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:18.62"
+          },
+          {
+            "event": "10000m",
+            "time": "29:42.86"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "小野寺 颯太",
+        "reading": "おのでら そうた",
+        "highSchool": "花巻東",
+        "faculty": "経営学部",
+        "department": "経営学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:18.33"
+          },
+          {
+            "event": "10000m",
+            "time": "29:35.98"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:08:41"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "庄司 瑞輝",
+        "reading": "しょうじ みずき",
+        "highSchool": "酒田南",
+        "faculty": "経済学部",
+        "department": "現代経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:12.77"
+          },
+          {
+            "event": "10000m",
+            "time": "29:24.55"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:02:52"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "早乙女 良真",
+        "reading": "そうとめ りょうま",
+        "highSchool": "学法石川",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:29.76"
+          },
+          {
+            "event": "10000m",
+            "time": "30:41.30"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:06:26"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "高草木 架月",
+        "reading": "たかくさ ぎかづき",
+        "highSchool": "樹徳",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:24.78"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "西村 悠誠",
+        "reading": "にしむら ゆうせい",
+        "highSchool": "東海大札幌",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:06.81"
+          },
+          {
+            "event": "10000m",
+            "time": "29:27.02"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:04:21"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "藤原 幹大",
+        "reading": "ふじわら かんた",
+        "highSchool": "東海大札幌",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:10.38"
+          },
+          {
+            "event": "10000m",
+            "time": "28:50.30"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:02:34"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "宮倉 騎士",
+        "reading": "みやくら ないと",
+        "highSchool": "遊学館",
+        "faculty": "国際関係学部",
+        "department": "国際関係学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:04.83"
+          },
+          {
+            "event": "10000m",
+            "time": "29:25.74"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:03:29"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "棟方 一楽",
+        "reading": "むなかた かずら",
+        "highSchool": "弘前実業",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:11.09"
+          },
+          {
+            "event": "10000m",
+            "time": "28:19.82"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:01:38"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "和田 麻里",
+        "reading": "わだまさと",
+        "highSchool": "宮崎日大",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:25.17"
+          },
+          {
+            "event": "10000m",
+            "time": "29:42.89"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:03:43"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "エヴァンス・キプロップ",
+        "reading": "えヴぁんす きぷろっぷ",
+        "highSchool": "セントピーターズ",
+        "faculty": "外国語学部",
+        "department": "英語学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "13:49.75"
+          },
+          {
+            "event": "10000m",
+            "time": "28:29.35"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:03:08"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "大澤 琉欧",
+        "reading": "おおさわ りお",
+        "highSchool": "学法石川",
+        "faculty": "経済学部",
+        "department": "現代経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:09.39"
+          },
+          {
+            "event": "10000m",
+            "time": "29:24.44"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:10:21"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "大濱 逞真",
+        "reading": "おおはま たくま",
+        "highSchool": "仙台育英",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "13:35.78"
+          },
+          {
+            "event": "10000m",
+            "time": "28:33.58"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:01:08"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "清水 雄翔",
+        "reading": "しみず ゆうと",
+        "highSchool": "慶誠",
+        "faculty": "国際関係学部",
+        "department": "国際関係学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:24.11"
+          },
+          {
+            "event": "10000m",
+            "time": "28:56.45"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:04:03"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "庄治 大翔",
+        "reading": "しょうじ ひろと",
+        "highSchool": "岡山商大付",
+        "faculty": "経済学部",
+        "department": "現代経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:19.32"
+          },
+          {
+            "event": "10000m",
+            "time": "29:53.49"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:06:39"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "鈴木 青空",
+        "reading": "すずき かなめ",
+        "highSchool": "武蔵越生",
+        "faculty": "国際関係学部",
+        "department": "国際関係学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:07.68"
+          },
+          {
+            "event": "10000m",
+            "time": "29:21.48"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "中澤 拓斗",
+        "reading": "なかざわ たくと",
+        "highSchool": "仙台育英",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:33.94"
+          },
+          {
+            "event": "10000m",
+            "time": "30:36.95"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:08:11"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "中澤 真大",
+        "reading": "なかざわ まひろ",
+        "highSchool": "埼玉栄",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "13:55.23"
+          },
+          {
+            "event": "10000m",
+            "time": "28:29.46"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:02:24"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "野﨑 想",
+        "reading": "のざき そう",
+        "highSchool": "大牟田",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:15.09"
+          },
+          {
+            "event": "10000m",
+            "time": "29:46.71"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "平田 碧",
+        "reading": "ひらた そら",
+        "highSchool": "比叡山",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:18.08"
+          },
+          {
+            "event": "10000m",
+            "time": "29:36.78"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:05:50"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "福井 陽仁",
+        "reading": "ふくい はると",
+        "highSchool": "青森山田",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:19.02"
+          },
+          {
+            "event": "10000m",
+            "time": "30:31.83"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:09:45"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "松浦 輝仁",
+        "reading": "まつうら きらと",
+        "highSchool": "坂戸西",
+        "faculty": "経営学部",
+        "department": "経営学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:12.56"
+          },
+          {
+            "event": "10000m",
+            "time": "29:00.89"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:03:09"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "井上 陸斗",
+        "reading": "いのうえ りくと",
+        "highSchool": "埼玉栄",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:25.31"
+          },
+          {
+            "event": "10000m",
+            "time": "29:35.76"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "上田 翔大",
+        "reading": "うえだ しょうだい",
+        "highSchool": "西脇工",
+        "faculty": "スポーツ健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:08.55"
+          },
+          {
+            "event": "10000m",
+            "time": "32:54.88"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:04:03"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "越前谷 洋武",
+        "reading": "えちぜんや ひろむ",
+        "highSchool": "城西大城西",
+        "faculty": "経営学部",
+        "department": "経営学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:27.51"
+          },
+          {
+            "event": "10000m",
+            "time": "29:54.78"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:16:15"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "岡村 将英",
+        "reading": "おかむら しょうえい",
+        "highSchool": "三重",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:41.32"
+          },
+          {
+            "event": "10000m",
+            "time": "30:11.49"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:19:12"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "金子 大和",
+        "reading": "かねこ やまと",
+        "highSchool": "大東一",
+        "faculty": "国際関係学部",
+        "department": "国際関係学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:26.93"
+          },
+          {
+            "event": "10000m",
+            "time": "29:57.26"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "菅﨑 大翔",
+        "reading": "すがさき やまと",
+        "highSchool": "トヨタ工業",
+        "faculty": "スポーツ・健康科学部",
+        "department": "スポーツ科学科 ",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:12.55"
+          },
+          {
+            "event": "10000m",
+            "time": "29:04.7"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:02:17"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "鈴木 要",
+        "reading": "すずき かなめ",
+        "highSchool": "水城",
+        "faculty": "国際関係学部",
+        "department": "国際関係学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:12.50"
+          },
+          {
+            "event": "10000m",
+            "time": "29:38.90"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:03:53"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "関 朝陽",
+        "reading": "せき ともはる",
+        "highSchool": "東農大三",
+        "faculty": "経営学部",
+        "department": "経営学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:45.47"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "中村 一誠",
+        "reading": "なかむらいっせい",
+        "highSchool": "京都外大西",
+        "faculty": "経済学部",
+        "department": "社会経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:44.58"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:11:58"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "日髙 龍之助",
+        "reading": "ひだかりゅうのすけ",
+        "highSchool": "宮崎日大",
+        "faculty": "スポーツ・健康科学部",
+        "department": "スポーツ科学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:32.06"
+          },
+          {
+            "event": "10000m",
+            "time": "29:38.63"
+          }
+        ],
+        "image": ""
+      },
+      {
+        "fullName": "増子 岳",
+        "reading": "ますこ がく",
+        "highSchool": "東海大山形",
+        "faculty": "経済学部",
+        "department": "現代経済学科",
+        "personalBests": [
+          {
+            "event": "5000m",
+            "time": "14:25.85"
+          },
+          {
+            "event": "10000m",
+            "time": "29:45.70"
+          },
+          {
+            "event": "Half Marathon",
+            "time": "1:04:26"
+          }
+        ],
+        "image": ""
+      }
+    ]
+  }

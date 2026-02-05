@@ -10,14 +10,24 @@ const teamLinks = [
     link: '/members',
   },
   {
+    title: 'Records',
+    description: '自己ベストランキング',
+    link: '/records',
+  },
+  {
     title: 'News',
     description: 'ニュース',
     link: '/news',
   },
   {
-    title: 'Records',
-    description: '大東記録（準備中）',
-    link: '/records',
+    title: 'Schedule',
+    description: '大会スケジュール',
+    link: '/schedule',
+  },
+  {
+    title: 'Message',
+    description: '監督・選手からのメッセージ',
+    link: '/message',
   },
   {
     title: 'Supporters',
@@ -30,20 +40,9 @@ const teamLinks = [
     link: '/contact',
   },
   {
-    title: 'Exclusive',
-    description: '限定情報など',
-    link: '/exclusive',
-  },
-  {
-    title: '大東文化大学',
+    title: 'Daito Bunka Univ.',
     description: '大学公式サイト',
     link: 'https://www.daito.ac.jp',
-    external: true,
-  },
-  {
-    title: '大学スポーツ',
-    description: '大学スポーツ情報',
-    link: 'https://www.daito.ac.jp/sport/',
     external: true,
   },
 ];
@@ -60,13 +59,13 @@ export default function TeamLinks() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <p className="text-daito-orange font-mono text-sm tracking-[0.3em] mb-3">
+          <p className="text-daito-orange font-sans text-sm tracking-[0.3em] mb-3">
             EXPLORE TEAM
           </p>
-          <h2 className="text-2xl md:text-4xl font-serif font-light text-neutral-900">
+          <h2 className="text-2xl md:text-4xl font-sans font-light text-neutral-900">
             Team Links
           </h2>
-          <p className="text-sm text-neutral-500 mt-2">チームを知る</p>
+          <p className="text-sm text-neutral-500 mt-2">Explore Our Team</p>
         </motion.div>
 
         {/* Links Grid */}
@@ -93,7 +92,7 @@ export default function TeamLinks() {
                     {item.description}
                   </p>
                   <span className="text-sm font-medium text-daito-green">
-                    詳細を見る →
+                    View More →
                   </span>
                 </a>
               ) : (
@@ -108,7 +107,7 @@ export default function TeamLinks() {
                     {item.description}
                   </p>
                   <span className="text-sm font-medium text-daito-green">
-                    詳細を見る →
+                    View More →
                   </span>
                 </Link>
               )}

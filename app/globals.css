@@ -140,8 +140,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --font-sans: var(--font-noto-sans-jp), "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  --font-serif: var(--font-noto-serif-jp), "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-noto-sans-jp), "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-mono: var(--font-noto-sans-jp), "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 
   /* カスタムアニメーション */
   --animate-accordion-down: accordion-down 0.2s ease-out;
@@ -158,6 +158,11 @@
 *::before,
 *::after {
   border-color: hsl(var(--border));
+  font-family: var(--font-sans);
+}
+
+html {
+  font-family: var(--font-sans);
 }
 
 body {
@@ -190,6 +195,15 @@ html,
 body {
   overflow-x: hidden;
   max-width: 100%;
+}
+
+/* 全てのフォーム要素にもフォントを適用 */
+button,
+input,
+textarea,
+select,
+option {
+  font-family: var(--font-sans);
 }
 
 /* ========================================

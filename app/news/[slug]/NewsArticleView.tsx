@@ -29,7 +29,7 @@ export default function NewsArticleView({ article, previousArticle, nextArticle 
                     <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
                     <div className="container mx-auto px-6 relative z-10">
                         <div className="text-center">
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
                                 NOT FOUND
                             </h1>
                             <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
@@ -71,7 +71,7 @@ export default function NewsArticleView({ article, previousArticle, nextArticle 
                             </span>
                             <span className="text-neutral-600 text-sm">{formatDate(article.date)}</span>
                         </div>
-                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-light text-neutral-900 leading-tight">
+                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-sans font-light text-neutral-900 leading-tight">
                             {article.title}
                         </h1>
                     </motion.div>

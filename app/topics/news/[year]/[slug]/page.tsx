@@ -30,7 +30,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   const title = `${article.title} | 大東文化大学陸上競技部`;
   const description = article.title;
-  const image = article.image || '/images/ogp/default-ogp.jpg';
+  const image = article.image || '/images/default-ogp.jpg';
 
   return {
     title,
@@ -129,17 +129,17 @@ export default async function NewsDetailPage(props: Props) {
       />
       <NewsTemplate
         date={article.date}
-      title={article.title}
-      colorTheme="green"
-    >
-      <div className="prose prose-lg max-w-none">
-        {content.split('\n\n').map((paragraph, index) => (
-          <p key={index} className="text-neutral-700 leading-relaxed mb-4">
-            {paragraph}
-          </p>
-        ))}
-      </div>
-    </NewsTemplate>
+        title={article.title}
+        colorTheme="green"
+      >
+        <div className="prose prose-lg max-w-none">
+          {content.split('\n\n').map((paragraph, index) => (
+            <p key={index} className="text-neutral-700 leading-relaxed mb-4">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </NewsTemplate>
     </>
   );
 }

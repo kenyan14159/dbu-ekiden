@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="absolute inset-0 bg-gradient-to-br from-daito-green/30 via-transparent to-daito-orange/20" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-serif font-light text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-sans font-light text-white mb-4">
               記事が見つかりません
             </h1>
           </div>

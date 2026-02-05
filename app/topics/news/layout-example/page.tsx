@@ -29,7 +29,7 @@ export default function NewsLayoutExample() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
               NEWS
             </h1>
             <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">

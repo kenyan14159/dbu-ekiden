@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-neutral-50 via-white to-neutral-100 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-green-100 via-amber-50 to-orange-100 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -17,12 +17,9 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light text-neutral-900 mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900">
               ABOUT US
             </h1>
-            <p className="text-neutral-600 text-lg md:text-xl font-light tracking-[0.3em]">
-              サイトについて
-            </p>
           </motion.div>
         </div>
       </section>
@@ -38,8 +35,8 @@ export default function AboutPage() {
             className="max-w-3xl mx-auto"
           >
             {/* Breadcrumbs */}
-            <Breadcrumbs 
-              items={[{ label: 'サイトについて' }]} 
+            <Breadcrumbs
+              items={[{ label: 'About Us' }]}
               className="mb-8"
             />
 
@@ -51,9 +48,9 @@ export default function AboutPage() {
               </p>
               <div className="text-sm text-neutral-500 border-l-2 border-daito-green pl-4">
                 <p>管理：趣味で制作する現役駅伝部学生</p>
-                <a 
-                  href="https://shotaro.dev" 
-                  target="_blank" 
+                <a
+                  href="https://shotaro.dev"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-daito-green font-medium hover:underline inline-block"
                 >

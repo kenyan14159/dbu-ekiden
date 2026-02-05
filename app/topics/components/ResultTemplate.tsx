@@ -87,7 +87,7 @@ export default function ResultTemplate({
                     {teamResult.totalTime && (
                       <div className="bg-neutral-50 rounded-xl p-5 border border-neutral-200">
                         <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">総合タイム</p>
-                        <p className="text-lg md:text-xl font-bold font-mono text-neutral-900">{teamResult.totalTime}</p>
+                        <p className="text-lg md:text-xl font-bold font-sans text-neutral-900">{teamResult.totalTime}</p>
                       </div>
                     )}
                     {teamResult.outwardRank && (
@@ -95,7 +95,7 @@ export default function ResultTemplate({
                         <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">往路</p>
                         <p className="text-lg md:text-xl font-bold text-neutral-900">{teamResult.outwardRank}</p>
                         {teamResult.outwardTime && (
-                          <p className="text-sm font-mono text-neutral-600 mt-1">{teamResult.outwardTime}</p>
+                          <p className="text-sm font-sans text-neutral-600 mt-1">{teamResult.outwardTime}</p>
                         )}
                       </div>
                     )}
@@ -104,7 +104,7 @@ export default function ResultTemplate({
                         <p className="text-xs text-neutral-500 mb-2 uppercase tracking-wide">復路</p>
                         <p className="text-lg md:text-xl font-bold text-neutral-900">{teamResult.returnRank}</p>
                         {teamResult.returnTime && (
-                          <p className="text-sm font-mono text-neutral-600 mt-1">{teamResult.returnTime}</p>
+                          <p className="text-sm font-sans text-neutral-600 mt-1">{teamResult.returnTime}</p>
                         )}
                       </div>
                     )}

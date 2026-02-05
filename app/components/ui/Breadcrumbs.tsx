@@ -16,38 +16,38 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
-    <nav 
-      aria-label="パンくずリスト" 
+    <nav
+      aria-label="Breadcrumb"
       className={cn(
         "flex items-center space-x-1 text-sm text-neutral-600",
         className
       )}
     >
       {/* ホームリンク */}
-      <Link 
-        href="/" 
+      <Link
+        href="/"
         className="hover:text-daito-green transition-colors"
-        aria-label="ホーム"
+        aria-label="Home"
       >
-        ホーム
+        Home
       </Link>
 
       {/* パンくずアイテム */}
       {items.map((item, index) => {
         const isLast = index === items.length - 1;
-        
+
         return (
           <div key={index} className="flex items-center space-x-1">
             <ChevronRight className="w-4 h-4 text-neutral-400" />
             {item.href && !isLast ? (
-              <Link 
+              <Link
                 href={item.href}
                 className="hover:text-daito-green transition-colors"
               >
                 {item.label}
               </Link>
             ) : (
-              <span 
+              <span
                 className={cn(
                   "font-medium",
                   isLast ? "text-neutral-900" : "text-neutral-600"
