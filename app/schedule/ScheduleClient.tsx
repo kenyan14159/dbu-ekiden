@@ -41,7 +41,7 @@ function formatDateRange(startDate: string, endDate?: string): string {
   return `${start}～${endDateObj.getMonth() + 1}月${endDay}日(${endDayOfWeek})`;
 }
 
-export default function ScheduleClient({ year, events }: ScheduleClientProps) {
+export default function ScheduleClient({ year: _year, events }: ScheduleClientProps) {
   // 日付順にソート
   const sortedEvents = [...events].sort((a, b) => {
     const dateA = new Date(a.date).getTime();

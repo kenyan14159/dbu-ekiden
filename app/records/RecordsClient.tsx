@@ -44,7 +44,7 @@ function ParallaxHero() {
   );
 }
 
-function RankingTable({ records, eventName }: { records: Record[]; eventName: string }) {
+function RankingTable({ records, eventName: _eventName }: { records: Record[]; eventName: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

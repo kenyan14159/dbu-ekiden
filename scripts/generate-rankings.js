@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 
@@ -9,9 +10,9 @@ const allMemberData = JSON.parse(fs.readFileSync(allMemberPath, 'utf8'));
 // 新形式: "14:39.97" (分:秒.ミリ秒) または "1:04:23" (時:分:秒)
 function parseTimeToSeconds(timeStr) {
   if (!timeStr) return Infinity;
-  
+
   const parts = timeStr.split(':');
-  
+
   // ハーフマラソンのフォーマット: "1:04:23" (時:分:秒)
   if (parts.length === 3) {
     const hours = parseInt(parts[0], 10);
@@ -19,7 +20,7 @@ function parseTimeToSeconds(timeStr) {
     const seconds = parseInt(parts[2], 10);
     return hours * 3600 + minutes * 60 + seconds;
   }
-  
+
   // 通常のフォーマット: "14:39.97" (分:秒.ミリ秒)
   if (parts.length === 2) {
     const minutes = parseInt(parts[0], 10);
@@ -28,7 +29,7 @@ function parseTimeToSeconds(timeStr) {
     const centiseconds = secondsParts[1] ? parseInt(secondsParts[1], 10) : 0;
     return minutes * 60 + seconds + centiseconds / 100;
   }
-  
+
   return Infinity;
 }
 
@@ -37,14 +38,14 @@ function parseTimeToSeconds(timeStr) {
 // "1:10:21" → "1:10'21"
 function formatTime(timeStr) {
   if (!timeStr) return timeStr;
-  
+
   const parts = timeStr.split(':');
-  
+
   // ハーフマラソンのフォーマット: "1:10:21" → "1:10'21"
   if (parts.length === 3) {
     return `${parts[0]}:${parts[1]}'${parts[2]}`;
   }
-  
+
   // 通常のフォーマット: "14:09.39" → "14'09\"39"
   if (parts.length === 2) {
     const minutes = parts[0];
@@ -53,14 +54,14 @@ function formatTime(timeStr) {
     const centiseconds = secondsParts[1] || '0';
     return `${minutes}'${seconds}"${centiseconds}`;
   }
-  
+
   return timeStr;
 }
 
 // 種目ごとにデータを抽出
 function extractEventRecords(members, eventName) {
   const records = [];
-  
+
   for (const member of members) {
     const personalBest = member.personalBests.find(pb => pb.event === eventName);
     if (personalBest) {
@@ -72,10 +73,10 @@ function extractEventRecords(members, eventName) {
       });
     }
   }
-  
+
   // タイム順にソート（速い順）
   records.sort((a, b) => a._seconds - b._seconds);
-  
+
   // 順位を追加し、_secondsを削除
   return records.map((record, index) => ({
     rank: index + 1,
@@ -102,13 +103,13 @@ if (!fs.existsSync(outputDir)) {
 // 各種目のランキングを生成
 for (const mapping of eventMappings) {
   const records = extractEventRecords(allMemberData.members, mapping.event);
-  
+
   if (records.length > 0) {
     const outputData = {
       event: mapping.event,
       records: records
     };
-    
+
     const outputPath = path.join(outputDir, mapping.filename);
     fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2), 'utf8');
     console.log(`Generated ${mapping.filename} with ${records.length} records`);
