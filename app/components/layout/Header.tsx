@@ -7,7 +7,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const navSections = [
+
+interface NavItem {
+  title: string;
+  link: string;
+}
+
+interface NavSection {
+  title: string;
+  link: string;
+  items: NavItem[] | null;
+}
+
+const navSections: NavSection[] = [
   {
     title: 'Members',
     link: '/members',
