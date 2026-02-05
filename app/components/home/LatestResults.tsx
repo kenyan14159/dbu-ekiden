@@ -1,4 +1,4 @@
-import { getLatestResults } from '@/lib/data';
+import { getLatestTopics } from '@/lib/data';
 import LatestTopicsClient from './LatestTopicsClient';
 
 /**
@@ -6,7 +6,8 @@ import LatestTopicsClient from './LatestTopicsClient';
  * データフェッチはサーバーサイドで実行され、クライアントコンポーネントに渡される
  */
 export default async function LatestResults() {
-  const results = await getLatestResults(3);
+  const results = await getLatestTopics(3);
 
   return <LatestTopicsClient topics={results} />;
 }
+
