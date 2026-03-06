@@ -33,6 +33,7 @@ interface Staff {
   reading: string;
   role: string;
   highSchool?: string;
+  faculty?: string;
   department?: string;
   image?: string;
 }
@@ -65,7 +66,7 @@ function ParallaxHero() {
       <div className="absolute inset-0 bg-gradient-to-br from-daito-green/5 via-transparent to-daito-orange/5" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 via-neutral-600 to-neutral-500 mb-4">
             MEMBERS
           </h1>
         </div>
@@ -172,10 +173,11 @@ function StaffCard({ staff, index }: { staff: Staff; index: number }) {
         {staff.role && (
           <p className="text-xs text-daito-green mt-1 font-medium">{staff.role}</p>
         )}
-        {(staff.highSchool || staff.department) && (
+        {(staff.highSchool || staff.faculty || staff.department) && (
           <div className="text-[10px] text-neutral-400 mt-1 space-y-0.5">
-            {staff.highSchool && <div>出身: {staff.highSchool}</div>}
-            {staff.department && <div className="line-clamp-1">{staff.department}</div>}
+            {staff.highSchool && <div>出身高校: {staff.highSchool}</div>}
+            {staff.faculty && <div>学部: {staff.faculty}</div>}
+            {staff.department && <div>学科: {staff.department}</div>}
           </div>
         )}
       </div>

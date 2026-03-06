@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Bebas_Neue } from 'next/font/google';
 
-const bebas = Bebas_Neue({ weight: '400', subsets: ['latin'] });
 
 const records = [
     {
@@ -60,7 +58,7 @@ export default function TopRecords() {
                     className="text-center mb-12"
                 >
                     <p className="text-daito-green font-bold tracking-[0.3em] text-sm mb-2 uppercase">UNIVERSITY</p>
-                    <h2 className={cn("text-6xl md:text-8xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-500", bebas.className)}>
+                    <h2 className={cn("text-6xl md:text-8xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-500 font-bold")}>
                         RECORDS
                     </h2>
                 </motion.div>
@@ -92,7 +90,7 @@ export default function TopRecords() {
                                     <h3 className="text-sm font-medium text-neutral-400 mb-2 uppercase tracking-widest">
                                         {record.event}
                                     </h3>
-                                    <div className={cn("text-5xl md:text-6xl text-white mb-4 tracking-tighter", bebas.className)}>
+                                    <div className={cn("text-5xl md:text-6xl text-white mb-4 tracking-tighter font-bold")}>
                                         {record.time}
                                     </div>
                                     <div className="flex items-center gap-3">

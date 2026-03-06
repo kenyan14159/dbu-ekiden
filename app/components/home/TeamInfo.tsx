@@ -19,7 +19,7 @@ const teamInfo = [
 
 export default function TeamInfo() {
     return (
-        <section className="py-20 md:py-28 bg-neutral-50">
+        <section className="py-20 md:py-28 bg-white">
             <div className="container mx-auto px-6">
                 {/* Section Header */}
                 <motion.div
@@ -54,7 +54,7 @@ export default function TeamInfo() {
                     <p className="text-base md:text-lg text-neutral-600 leading-relaxed text-center">
                         正月の風物詩とも言える箱根駅伝に<span className="text-neutral-900 font-medium">55回出場</span>し、
                         <span className="text-neutral-900 font-medium">4度の総合優勝</span>を誇る伝統のある大東文化大学陸上競技部。
-                        「<span className="font-medium text-neutral-900">歴史への礎～あの場所でやり返す～</span>」というスローガンのもとに、
+                        「<span className="font-bold text-neutral-900">歴史への礎～あの場所でやり返す～</span>」というスローガンのもとに、
                         先輩方が築き上げた歴史と伝統を引き継ぎ、
                         学生三大駅伝での上位入賞を目指して日々の練習に取り組んでいます。
                     </p>

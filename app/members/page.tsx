@@ -25,6 +25,9 @@ interface Staff {
   fullName: string;
   reading: string;
   role: string;
+  highSchool?: string;
+  faculty?: string;
+  department?: string;
   image?: string;
 }
 
@@ -42,6 +45,17 @@ const normalizeMember = (member: Partial<Member> & { personalBests?: PersonalBes
   highSchool: member.highSchool,
   faculty: member.faculty,
   department: member.department,
+});
+
+const normalizeStaff = (staff: Partial<Staff> & { fullName?: string }) => ({
+  name: staff.name ?? staff.fullName ?? '',
+  fullName: staff.fullName ?? staff.name ?? '',
+  reading: staff.reading ?? '',
+  role: staff.role ?? '',
+  highSchool: staff.highSchool,
+  faculty: staff.faculty,
+  department: staff.department,
+  image: staff.image,
 });
 
 interface MembersData {

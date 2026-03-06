@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import Image from "next/image";
+import { motion, useScroll, useTransform, Variants, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 // パーティクルの型定義
@@ -15,9 +16,25 @@ interface Particle {
   opacity: number;
 }
 
+const HERO_IMAGES = [
+  {
+    src: "/images/102-hakone-yosen/a27.jpg",
+    alt: "箱根駅伝予選会のレース写真",
+    position: "center 38%",
+  },
+  {
+    src: "/images/2025-all-japan-ekiden/a31.jpg",
+    alt: "全日本大学駅伝のレース写真",
+    position: "center 30%",
+  },
+] as const;
+
+const SLIDE_INTERVAL = 6000;
+
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -44,6 +61,15 @@ export default function Hero() {
     }
     return () => clearTimeout(timer);
   }, []);
+
+  // スライドショーの自動進行
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % HERO_IMAGES.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(interval);
+  }, [prefersReducedMotion]);
 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -101,23 +127,38 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
-      className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-100 via-amber-50 to-orange-100"
+      className="relative flex min-h-[720px] h-screen items-center justify-center overflow-hidden md:min-h-[800px]"
     >
-      {/* Animated Background Gradient */}
+      {/* Background Images - Slideshow */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-daito-green/8 via-transparent to-daito-orange/12" />
-        <motion.div
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(243, 152, 0, 0.08) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 80%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, rgba(0, 77, 37, 0.08) 0%, transparent 50%)',
-            ],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0"
-        />
+        <AnimatePresence mode="sync">
+          {HERO_IMAGES.map((image, index) =>
+            index === currentIndex ? (
+              <motion.div
+                key={image.src}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.4, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="100vw"
+                  className="object-cover scale-[1.03]"
+                  style={{ objectPosition: image.position }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/55 via-neutral-950/15 to-neutral-950/45" />
+                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/65 to-transparent" />
+              </motion.div>
+            ) : null
+          )}
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/35" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.25)_0%,transparent_65%)]" />
       </div>
 
       {/* Floating Particles (CSS Animation) - パフォーマンス最適化 */}
@@ -147,82 +188,97 @@ export default function Hero() {
           style={{ opacity }}
           className="relative z-10 container mx-auto px-6 text-center"
         >
-          {/* English Title */}
+          {/* English Label */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 md:mb-12"
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 md:mb-10 flex items-center justify-center gap-4"
           >
-            <span className="font-sans text-xs sm:text-sm tracking-[0.5em] font-light bg-gradient-to-r from-daito-green via-daito-green/90 to-daito-orange bg-clip-text text-transparent">
+            <div className="h-px w-8 md:w-12 bg-white/30" />
+            <span
+              className="font-display text-[10px] sm:text-xs md:text-sm font-light uppercase text-white/55"
+              style={{ letterSpacing: '0.45em' }}
+            >
               DAITO BUNKA UNIVERSITY EKIDEN TEAM
             </span>
+            <div className="h-px w-8 md:w-12 bg-white/30" />
           </motion.div>
 
-          {/* Main Title - Character by Character Animation */}
-          <motion.h1 
+          {/* Main Title - Noto Serif JP: 格調ある明朝体 */}
+          <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="font-sans mb-6 md:mb-12"
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="mb-8 md:mb-12"
           >
-          <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-extralight tracking-wide mb-6 md:mb-10 overflow-hidden leading-tight">
-            {mainTitle.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                custom={i}
-                variants={letterVariants}
-                initial="hidden"
-                animate="visible"
-                className="inline-block"
-                style={{
-                  background: 'linear-gradient(135deg, #004d25 0%, #006633 40%, #d97706 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
+            <div
+              className="overflow-hidden leading-[1.0]"
+              style={{ fontFamily: 'var(--font-hero-serif)' }}
+            >
+              {mainTitle.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="inline-block text-6xl sm:text-8xl md:text-9xl lg:text-[10.5rem] font-bold"
+                  style={{
+                    color: '#FFFFFF',
+                    textShadow: '0 0 60px rgba(255,255,255,0.14), 0 2px 35px rgba(0,0,0,0.5)',
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+
+            {/* Gold accent line */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="mx-auto mt-5 md:mt-7 h-[1px] w-20 md:w-32 bg-gradient-to-r from-transparent via-amber-400/80 to-transparent"
+            />
+
+            {/* Subtitle */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-5 md:mt-7 flex items-center justify-center gap-5"
+            >
+              <div className="h-px w-6 md:w-10 bg-amber-400/50" />
+              <span
+                className="font-hero-jp text-base sm:text-xl md:text-2xl font-light tracking-[0.32em] text-amber-100/85"
               >
-                {char}
-              </motion.span>
-            ))}
-          </div>
-          
-          {/* Subtitle */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 md:mt-6"
-          >
-            <span className="text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.3em] bg-gradient-to-r from-daito-green/80 via-daito-green/70 to-daito-orange/80 bg-clip-text text-transparent">
-              {subTitle}
-            </span>
-          </motion.div>
-        </motion.h1>
-
-        {/* Decorative Elements */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1 }}
-          className="flex items-center justify-center gap-4 mt-6 md:mt-12"
-        >
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-20 h-[1px] bg-gradient-to-r from-transparent via-daito-green/40 to-daito-orange/40"
-          />
-          <div className="w-2 h-2 rounded-full bg-gradient-to-br from-daito-green to-daito-orange shadow-lg" />
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-20 h-[1px] bg-gradient-to-l from-transparent via-daito-orange/40 to-daito-green/40"
-          />
-        </motion.div>
+                {subTitle}
+              </span>
+              <div className="h-px w-6 md:w-10 bg-amber-400/50" />
+            </motion.div>
+          </motion.h1>
 
         </motion.div>
+      )}
+
+      {/* Slide Indicators */}
+      {mounted && HERO_IMAGES.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2.5">
+          {HERO_IMAGES.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`スライド ${index + 1}`}
+              className={`rounded-full transition-all duration-500 ${
+                index === currentIndex
+                  ? "h-2 w-8 bg-white"
+                  : "h-2 w-2 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          ))}
+        </div>
       )}
     </motion.section>
   );

@@ -51,7 +51,7 @@ export default function ObNewsPreviewClient({ newsMetadata }: ObNewsPreviewClien
                 className="group h-full"
               >
                 <Link
-                  href={`/topics/news/2026/${article.slug}`}
+                  href={`/news/2026/${article.slug}`}
                   className="block bg-white rounded-xl border border-neutral-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-daito-green/30 h-full flex flex-col"
                 >
                   {/* Image */}
@@ -78,7 +78,7 @@ export default function ObNewsPreviewClient({ newsMetadata }: ObNewsPreviewClien
                       </span>
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-4 md:p-5 flex-1 flex flex-col">
                     <p className="text-xs text-neutral-400 mb-2">{formatDate(article.date)}</p>

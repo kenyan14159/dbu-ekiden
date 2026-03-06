@@ -61,7 +61,7 @@ export default function ScheduleClient({ year: _year, events }: ScheduleClientPr
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 via-neutral-600 to-neutral-500">
               SCHEDULE
             </h1>
           </motion.div>

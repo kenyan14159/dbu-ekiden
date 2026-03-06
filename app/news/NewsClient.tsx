@@ -33,7 +33,7 @@ export default function NewsClient({ newsMetadata }: NewsClientProps) {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-light text-neutral-900 mb-4">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 via-neutral-600 to-neutral-500 mb-4">
               NEWS
             </h1>
           </motion.div>
@@ -63,7 +63,7 @@ export default function NewsClient({ newsMetadata }: NewsClientProps) {
                 transition={{ delay: index * 0.05, duration: 0.5 }}
               >
                 <Link
-                  href={`/topics/news/2026/${article.slug}`}
+                  href={`/news/2026/${article.slug}`}
                   className="block bg-white rounded-xl border border-neutral-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-daito-green/30 group h-full flex flex-col"
                 >
                   {/* Image */}

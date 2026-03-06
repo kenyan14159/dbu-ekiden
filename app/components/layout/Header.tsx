@@ -123,7 +123,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <OptimizedImage
-              src="/images/daito-ekiden.png"
+              src="/images/daito-logo.png"
               alt="大東文化大学 陸上競技部 男子長距離ブロック"
               width={180}
               height={40}

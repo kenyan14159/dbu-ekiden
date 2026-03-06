@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Noto_Sans_JP, Noto_Serif_JP, Zen_Kaku_Gothic_New, Oswald } from 'next/font/google';
 import './globals.css';
 import Header from '@/app/components/layout/Header';
 import Footer from '@/app/components/layout/Footer';
@@ -14,6 +14,28 @@ const notoSansJP = Noto_Sans_JP({
     variable: '--font-noto-sans-jp',
     display: 'swap',
     preload: true,
+});
+
+const notoSerifJP = Noto_Serif_JP({
+    weight: ['700', '900'],
+    subsets: ['latin'],
+    variable: '--font-noto-serif-jp',
+    display: 'swap',
+    preload: false,
+});
+
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+    weight: ['400', '500', '700', '900'],
+    subsets: ['latin'],
+    variable: '--font-zen-kaku',
+    display: 'swap',
+});
+
+const oswald = Oswald({
+    weight: ['400', '500', '600', '700'],
+    subsets: ['latin'],
+    variable: '--font-oswald',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -30,8 +52,8 @@ export const metadata: Metadata = {
         },
     },
     icons: {
-        icon: '/images/daito-ekiden-logo.png',
-        apple: '/images/daito-ekiden-logo.png',
+        icon: '/images/daito-mark.jpg',
+        apple: '/images/daito-mark.jpg',
     },
     openGraph: {
         title: '大東文化大学陸上競技部男子長距離ブロック',
@@ -64,7 +86,7 @@ export default function RootLayout({
     const sportsTeamSchema = generateSportsTeamSchema();
 
     return (
-        <html lang="ja" className={notoSansJP.variable}>
+        <html lang="ja" className={`${notoSansJP.variable} ${notoSerifJP.variable} ${zenKakuGothicNew.variable} ${oswald.variable}`} suppressHydrationWarning>
             <body className="font-sans antialiased">
                 <Script
                     id="organization-schema"
