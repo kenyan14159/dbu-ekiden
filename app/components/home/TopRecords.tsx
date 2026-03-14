@@ -20,7 +20,7 @@ const records = [
     {
         event: "Half Marathon",
         name: "大濱 逞真",
-        time: "1:01:08",
+        time: "1:00:48",
         color: "from-daito-orange"
     }
 ];

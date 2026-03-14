@@ -1,20 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, Variants, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-
-// パーティクルの型定義
-interface Particle {
-  id: number;
-  width: number;
-  height: number;
-  top: number;
-  left: number;
-  duration: number;
-  delay: number;
-  opacity: number;
-}
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const HERO_IMAGES = [
   {
@@ -29,257 +17,150 @@ const HERO_IMAGES = [
   },
 ] as const;
 
-const SLIDE_INTERVAL = 6000;
+const SLIDE_INTERVAL = 7000;
+
+const EN_LABEL = "DAITO BUNKA UNIVERSITY EKIDEN TEAM";
+const MAIN_TITLE = "歴史への礎";
+const SUB_TITLE = "あの場所で、やり返す。";
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true);
-    }, 0);
-
-    // prefers-reduced-motion の検出
-    if (typeof window !== 'undefined') {
-      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const timer2 = setTimeout(() => {
-        setPrefersReducedMotion(mediaQuery.matches);
-      }, 0);
-
-      const handleChange = (e: MediaQueryListEvent) => {
-        setPrefersReducedMotion(e.matches);
-      };
-
-      mediaQuery.addEventListener('change', handleChange);
-      return () => {
-        clearTimeout(timer);
-        clearTimeout(timer2);
-        mediaQuery.removeEventListener('change', handleChange);
-      };
-    }
-    return () => clearTimeout(timer);
-  }, []);
-
-  // スライドショーの自動進行
   useEffect(() => {
     if (prefersReducedMotion) return;
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % HERO_IMAGES.length);
+    const intervalId = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
     }, SLIDE_INTERVAL);
-    return () => clearInterval(interval);
+    return () => window.clearInterval(intervalId);
   }, [prefersReducedMotion]);
 
-  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.55], ["0%", "10%"]);
 
-  const mainTitle = "歴史への礎";
-  const subTitle = "～あの場所でやり返す〜";
+  const revealTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const };
 
-  const letterVariants: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.5 + i * 0.05,
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    }),
-  };
-
-  // パーティクルをuseStateとuseEffectで生成（レンダリング中の不純関数呼び出しを回避）
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      const timer = setTimeout(() => {
-        setParticles([]);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-
-    const timer = setTimeout(() => {
-      setParticles(
-        Array.from({ length: 10 }, (_, i) => ({
-          id: i,
-          width: Math.random() * 4 + 1,
-          height: Math.random() * 4 + 1,
-          top: Math.random() * 100,
-          left: Math.random() * 100,
-          duration: Math.random() * 10 + 10,
-          delay: Math.random() * 5,
-          opacity: Math.random() * 0.5 + 0.2,
-        }))
-      );
-    }, 0);
-
-    return () => clearTimeout(timer);
-  }, [prefersReducedMotion]);
+  const slideTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 1.4, ease: [0.4, 0, 0.2, 1] as const };
 
   return (
-    <motion.section
+    <section
       ref={ref}
-      className="relative flex min-h-[720px] h-screen items-center justify-center overflow-hidden md:min-h-[800px]"
+      className="relative isolate flex min-h-[700px] h-[100svh] items-end overflow-hidden md:min-h-[820px]"
     >
-      {/* Background Images - Slideshow */}
       <div className="absolute inset-0">
-        <AnimatePresence mode="sync">
-          {HERO_IMAGES.map((image, index) =>
-            index === currentIndex ? (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.4, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  priority={index === 0}
-                  sizes="100vw"
-                  className="object-cover scale-[1.03]"
-                  style={{ objectPosition: image.position }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/55 via-neutral-950/15 to-neutral-950/45" />
-                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/65 to-transparent" />
-              </motion.div>
-            ) : null
-          )}
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={HERO_IMAGES[currentIndex].src}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={slideTransition}
+            className="absolute inset-0"
+          >
+            <Image
+              src={HERO_IMAGES[currentIndex].src}
+              alt={HERO_IMAGES[currentIndex].alt}
+              fill
+              priority={currentIndex === 0}
+              sizes="100vw"
+              className="object-cover scale-[1.04]"
+              style={{ objectPosition: HERO_IMAGES[currentIndex].position }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-hero-emerald/80 via-hero-emerald/45 to-black/75" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_22%,rgba(255,206,117,0.24),transparent_48%)]" />
+          </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/35" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.25)_0%,transparent_65%)]" />
+        <motion.div
+          aria-hidden="true"
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  opacity: [0.18, 0.32, 0.18],
+                  scale: [1, 1.08, 1],
+                }
+          }
+          transition={
+            prefersReducedMotion
+              ? undefined
+              : { duration: 12, repeat: Infinity, ease: "easeInOut" }
+          }
+          className="absolute -right-20 top-8 h-[28rem] w-[28rem] rounded-full bg-hero-amber/20 blur-[120px]"
+        />
+        <div className="hero-grid absolute inset-0 opacity-25" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black/80 to-transparent" />
       </div>
 
-      {/* Floating Particles (CSS Animation) - パフォーマンス最適化 */}
-      {mounted && particles.length > 0 && (
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" aria-hidden="true">
-          {particles.map((particle, index) => (
-            <div
-              key={particle.id}
-              className={`absolute rounded-full blur-[1px] animate-blob ${index % 3 === 0 ? 'bg-daito-orange' : 'bg-daito-green'}`}
-              style={{
-                width: `${particle.width}px`,
-                height: `${particle.height}px`,
-                top: `${particle.top}%`,
-                left: `${particle.left}%`,
-                animationDuration: `${particle.duration}s`,
-                animationDelay: `${particle.delay}s`,
-                opacity: particle.opacity,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Content */}
-      {mounted && (
-        <motion.div
-          style={{ opacity }}
-          className="relative z-10 container mx-auto px-6 text-center"
-        >
-          {/* English Label */}
+      <motion.div
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="relative z-10 container mx-auto w-full px-6 pb-16 sm:pb-20 md:pb-24"
+      >
+        <div className="mx-auto max-w-[980px]">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 md:mb-10 flex items-center justify-center gap-4"
+            transition={revealTransition}
+            className="mb-5 flex w-full items-center gap-4 sm:mb-8"
           >
-            <div className="h-px w-8 md:w-12 bg-white/30" />
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-hero-amber/90 sm:w-12" />
             <span
-              className="font-display text-[10px] sm:text-xs md:text-sm font-light uppercase text-white/55"
-              style={{ letterSpacing: '0.45em' }}
+              className="font-display text-[10px] font-medium uppercase text-white/75 sm:text-xs md:text-sm"
+              style={{ letterSpacing: "0.42em" }}
             >
-              DAITO BUNKA UNIVERSITY EKIDEN TEAM
+              {EN_LABEL}
             </span>
-            <div className="h-px w-8 md:w-12 bg-white/30" />
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-hero-amber/90 sm:w-12" />
           </motion.div>
 
-          {/* Main Title - Noto Serif JP: 格調ある明朝体 */}
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="mb-8 md:mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.14 }}
+            className="font-hero-serif text-[clamp(2.8rem,11vw,8.6rem)] leading-[0.94] tracking-[0.04em] text-hero-mist drop-shadow-[0_10px_45px_rgba(0,0,0,0.55)]"
           >
-            <div
-              className="overflow-hidden leading-[1.0]"
-              style={{ fontFamily: 'var(--font-hero-serif)' }}
-            >
-              {mainTitle.split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  custom={i}
-                  variants={letterVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="inline-block text-6xl sm:text-8xl md:text-9xl lg:text-[10.5rem] font-bold"
-                  style={{
-                    color: '#FFFFFF',
-                    textShadow: '0 0 60px rgba(255,255,255,0.14), 0 2px 35px rgba(0,0,0,0.5)',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </div>
-
-            {/* Gold accent line */}
-            <motion.div
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto mt-5 md:mt-7 h-[1px] w-20 md:w-32 bg-gradient-to-r from-transparent via-amber-400/80 to-transparent"
-            />
-
-            {/* Subtitle */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 md:mt-7 flex items-center justify-center gap-5"
-            >
-              <div className="h-px w-6 md:w-10 bg-amber-400/50" />
-              <span
-                className="font-hero-jp text-base sm:text-xl md:text-2xl font-light tracking-[0.32em] text-amber-100/85"
-              >
-                {subTitle}
-              </span>
-              <div className="h-px w-6 md:w-10 bg-amber-400/50" />
-            </motion.div>
+            {MAIN_TITLE}
           </motion.h1>
 
-        </motion.div>
-      )}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...revealTransition, delay: prefersReducedMotion ? 0 : 0.26 }}
+            className="mt-5 inline-flex items-center gap-3 rounded-full border border-white/20 bg-black/25 px-4 py-2 backdrop-blur-sm sm:mt-7 sm:px-6 sm:py-3"
+          >
+            <span className="h-[7px] w-[7px] rounded-full bg-hero-amber shadow-[0_0_18px_rgba(253,183,83,0.85)]" />
+            <span className="font-hero-jp text-xs font-medium tracking-[0.2em] text-white sm:text-base md:text-[1.45rem]">
+              {SUB_TITLE}
+            </span>
+          </motion.div>
+        </div>
+      </motion.div>
 
-      {/* Slide Indicators */}
-      {mounted && HERO_IMAGES.length > 1 && (
-        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2.5">
-          {HERO_IMAGES.map((_, index) => (
+      {HERO_IMAGES.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2.5 sm:bottom-8">
+          {HERO_IMAGES.map((image, index) => (
             <button
-              key={index}
+              key={image.src}
               onClick={() => setCurrentIndex(index)}
               aria-label={`スライド ${index + 1}`}
-              className={`rounded-full transition-all duration-500 ${
+              className={`h-[3px] rounded-full transition-all duration-500 ${
                 index === currentIndex
-                  ? "h-2 w-8 bg-white"
-                  : "h-2 w-2 bg-white/40 hover:bg-white/70"
+                  ? "w-10 bg-hero-amber"
+                  : "w-4 bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
         </div>
       )}
-    </motion.section>
+    </section>
   );
 }
