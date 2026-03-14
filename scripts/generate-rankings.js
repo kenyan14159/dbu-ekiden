@@ -77,9 +77,8 @@ function extractEventRecords(members, eventName) {
   // タイム順にソート（速い順）
   records.sort((a, b) => a._seconds - b._seconds);
 
-  // 順位を追加し、_secondsを削除
-  return records.map((record, index) => ({
-    rank: index + 1,
+  // タイム順に整列したデータのみを返す（順位は表示側で自動計算）
+  return records.map((record) => ({
     fullName: record.fullName,
     highSchool: record.highSchool,
     time: record.time

@@ -52,11 +52,6 @@ export default function Gallery() {
   const [images, setImages] = useState<string[]>(INITIAL_IMAGES);
   const [modalIndex, setModalIndex] = useState<number | null>(null);
   const [fading, setFading] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleShuffle = useCallback(() => {
     if (fading) return;
@@ -94,7 +89,7 @@ export default function Gallery() {
   }, [modalImage, images.length]);
 
   const modal =
-    mounted && modalImage
+    typeof document !== 'undefined' && modalImage
       ? createPortal(
           <AnimatePresence>
             <motion.div

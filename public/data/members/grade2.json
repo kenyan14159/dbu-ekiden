@@ -79,7 +79,7 @@
         },
         {
           "event": "Half Marathon",
-          "time": "1:19:12"
+          "time": "1:06:10"
         }
       ],
       "image": ""
@@ -173,7 +173,7 @@
         },
         {
           "event": "Half Marathon",
-          "time": "1:11:58"
+          "time": "1:04:57"
         }
       ],
       "image": ""
@@ -192,6 +192,10 @@
         {
           "event": "10000m",
           "time": "29:38.63"
+        },
+        {
+          "event": "Half Marathon",
+          "time": "1:03:50"
         }
       ],
       "image": ""
@@ -213,7 +217,7 @@
         },
         {
           "event": "Half Marathon",
-          "time": "1:04:26"
+          "time": "1:03:20"
         }
       ],
       "image": ""

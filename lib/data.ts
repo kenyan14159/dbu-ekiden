@@ -83,7 +83,7 @@ export async function getLatestTopics(limit: number = 3): Promise<TopicItem[]> {
       type: 'NEWS' as const,
       date: toDisplayDate(article.date),
       title: article.title,
-      link: `/topics/news/2026/${article.slug}`,
+      link: `/news/2026/${article.slug}`,
       excerpt: article.title,
       image: article.image,
       sortKey: toSortKey(article.date),

@@ -85,7 +85,7 @@ async function getMembersData(): Promise<{ membersData: MembersData; staffData: 
         thirdYear: (grade3.members || []).map(normalizeMember),
         fourthYear: fourthYearMembers.map(normalizeMember),
       },
-      staffData: staff.staff || [],
+      staffData: (staff.staff || []).map(normalizeStaff),
     };
   } catch (error) {
     console.error('Failed to load members data:', error);

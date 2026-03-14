@@ -44,7 +44,7 @@ function ParallaxHero() {
   );
 }
 
-function RankingTable({ records, eventName: _eventName }: { records: Record[]; eventName: string }) {
+function RankingTable({ records }: { records: Record[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -243,7 +243,6 @@ export default function RecordsClient({ recordsData }: RecordsClientProps) {
             <RankingTable
               key={activeTab}
               records={currentRecords}
-              eventName={activeTab}
             />
           ) : (
             <div className="text-center py-20 text-neutral-400">

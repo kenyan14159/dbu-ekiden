@@ -51,7 +51,7 @@ export default function NewsTemplate({
           <div className="grid gap-4 md:grid-cols-2 mb-8">
             {previousArticle ? (
               <Link
-                href={`/topics/news/2026/${previousArticle.slug}`}
+                href={`/news/2026/${previousArticle.slug}`}
                 className="flex items-center gap-3 p-4 border border-neutral-200 hover:border-neutral-400 transition-colors"
               >
                 <svg className="w-5 h-5 text-neutral-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -70,7 +70,7 @@ export default function NewsTemplate({
 
             {nextArticle ? (
               <Link
-                href={`/topics/news/2026/${nextArticle.slug}`}
+                href={`/news/2026/${nextArticle.slug}`}
                 className="flex items-center justify-end gap-3 p-4 border border-neutral-200 hover:border-neutral-400 transition-colors text-right"
               >
                 <div className="min-w-0">
